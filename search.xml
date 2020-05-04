@@ -1616,11 +1616,6 @@ Logs lg2
       </tags>
   </entry>
   <entry>
-    <title>test</title>
-    <url>/test/</url>
-    <content><![CDATA[<h3 id="一、测试"><a href="#一、测试" class="headerlink" title="一、测试"></a>一、测试</h3><h4 id="1-1-测试1"><a href="#1-1-测试1" class="headerlink" title="1.1 测试1"></a>1.1 测试1</h4>]]></content>
-  </entry>
-  <entry>
     <title>初识redis</title>
     <url>/redis%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h3 id="一、初始Redis"><a href="#一、初始Redis" class="headerlink" title="一、初始Redis"></a>一、初始Redis</h3><p>１．基本知识</p>
@@ -4068,10 +4063,5 @@ console<span class="token punctuation">.</span><span class="token function">log<
       <tags>
         <tag>Vue</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>test2</title>
-    <url>/test2/</url>
-    <content><![CDATA[<h4 id="eeeeeee"><a href="#eeeeeee" class="headerlink" title="eeeeeee"></a>eeeeeee</h4>]]></content>
   </entry>
 </search>
