@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="初次整合springboot+kafka, 凌">
+    <meta name="keywords" content="img-test, 凌">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>初次整合springboot+kafka | 凌</title>
+    <title>img-test | 凌</title>
     <link rel="icon" type="image/png" href="/blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/blog/libs/awesome/css/all.css">
@@ -202,12 +202,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/blog/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">初次整合springboot+kafka</h1>
+                    <h1 class="description center-align post-title">img-test</h1>
                 </div>
             </div>
         </div>
@@ -322,29 +322,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/blog/tags/SpringBoot/">
-                                <span class="chip bg-color">SpringBoot</span>
-                            </a>
-                        
-                            <a href="/blog/tags/kafka/">
-                                <span class="chip bg-color">kafka</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/blog/categories/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="post-category">
-                                后端框架
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -353,7 +336,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-29
+                    2020-05-07
                 </div>
                 
 
@@ -369,11 +352,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>一、kafka的下载与使用<br>进入官网：<a href="http://kafka.apache.org/" target="_blank" rel="noopener">http://kafka.apache.org/</a><img src="..%5Cimages%5Ckafka01.png" alt="在这里插入图片描述"><br><img src="..%5Cimages%5Ckafka02.png" alt="在这里插入图片描述"><br><img src="..%5Cimages%5Ckafka03.png" alt="在这里插入图片描述"><br>下载好之后解压进入config文件夹编辑一下server.properties和    zookeeper.properties这两个配置文件，目前我也就更改了一下数据存储位置和日志存储位置<br><img src="..%5Cimages%5Ckafka04.png" alt="在这里插入图片描述">)<img src="..%5Cimages%5Ckafka05.png" alt="在这里插入图片描述"><br>然后就可以启动：</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token punctuation">.</span><span class="token operator">/</span>zookeeper<span class="token operator">-</span>server<span class="token operator">-</span><span class="token function">start</span><span class="token punctuation">.</span>sh <span class="token operator">/</span>home<span class="token operator">/</span>glh<span class="token operator">/</span>kafka_2<span class="token punctuation">.</span>13<span class="token operator">-</span>2<span class="token punctuation">.</span>4<span class="token punctuation">.</span>0<span class="token operator">/</span>config<span class="token operator">/</span>zookeeper<span class="token punctuation">.</span>properties &amp; <span class="token punctuation">.</span><span class="token operator">/</span>kafka<span class="token operator">-</span>server<span class="token operator">-</span><span class="token function">start</span><span class="token punctuation">.</span>sh <span class="token operator">/</span>home<span class="token operator">/</span>glh<span class="token operator">/</span>kafka_2<span class="token punctuation">.</span>13<span class="token operator">-</span>2<span class="token punctuation">.</span>4<span class="token punctuation">.</span>0<span class="token operator">/</span>config<span class="token operator">/</span>server<span class="token punctuation">.</span>properties
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="..%5Cimages%5Ckafka06.png" alt="在这里插入图片描述"><br>检查是否启动成功，另开一个终端，输入jps，这个就是启动成功<br><img src="..%5Cimages%5Ckafka07.png" alt="在这里插入图片描述"><br>测试是否可以正常工作，上面启动的端口暂时不要关闭，再开两个终端窗口<br>窗口一：</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token punctuation">.</span><span class="token operator">/</span>bin<span class="token operator">/</span>kafka<span class="token operator">-</span>topics<span class="token punctuation">.</span>sh <span class="token operator">--</span>create <span class="token operator">--</span>zookeeper 127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:2181 <span class="token operator">--</span>replication<span class="token operator">-</span>factor 1 <span class="token operator">--</span>partitions 1 <span class="token operator">--</span>topic hello<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <p><img src="%5Cimg-test@Conditional%E6%89%A9%E5%B1%95.png" alt=""></p>
 
             </div>
             <hr/>
@@ -399,7 +378,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://sky508.gitee.io/blog/blog/post/572f0779.html">https://sky508.gitee.io/blog/blog/post/572f0779.html</a>
+                    <a href="https://sky508.gitee.io/blog/blog/post/957c3c9b.html">https://sky508.gitee.io/blog/blog/post/957c3c9b.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -436,15 +415,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/blog/tags/SpringBoot/">
-                                    <span class="chip bg-color">SpringBoot</span>
-                                </a>
-                            
-                                <a href="/blog/tags/kafka/">
-                                    <span class="chip bg-color">kafka</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -607,52 +578,40 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/blog/post/5f9a6bb0.html">
+                <a href="/blog/post/957c3c9b.html">
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/3.jpg" class="responsive-img" alt="初识Vue">
+                        <img src="/blog/medias/featureimages/12.jpg" class="responsive-img" alt="img-test">
                         
-                        <span class="card-title">初识Vue</span>
+                        <span class="card-title">img-test</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一、初始Vue１．Vue(读音：/vju:/，类似于view)，不要读错，不要读成v　u　e三个字母。
-２．Vue是一个渐进式框架
-。渐进式意味着你可以将Vue作为你应用的一部分嵌入到其中，带来更丰富的交互体验。
-。如果你希望将更多的业务逻
+                            
+
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-07
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="post-category">
-                                    前端框架
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            glh
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/blog/tags/Vue/">
-                        <span class="chip bg-color">Vue</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -663,24 +622,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/blog/post/2c96e6e6.html">
+                <a href="/blog/post/1011da49.html">
                     <div class="card-image">
                         
                         
-                        <img src="/blog/medias/featureimages/2.jpg" class="responsive-img" alt="搭建个人的ngrok服务器">
+                        <img src="/blog/medias/featureimages/17.jpg" class="responsive-img" alt="OneDrive网盘5T空间获取方法">
                         
-                        <span class="card-title">搭建个人的ngrok服务器</span>
+                        <span class="card-title">OneDrive网盘5T空间获取方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            忙活了大半天，终于成功的搭建好了，并且可用，就是所处环境网速限制，体验感不强。在此记录一下过程出现的问题及解决方法，仅供参考。附上以为大佬的ngrok的安装教程http://www.sunnyos.com/article-show-48.h
+                            获取office365教育版邮箱及密码的地址
+步骤一、访问 https://xlu.me/
+
+步骤二、接下来填入相关信息
+1、2处填写不要太随意，不然以后你自己也不记得了
+3处是固定的，默认即可
+4处填一个能接收5处验证码的邮箱，可使用正紧
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-07
                             </span>
                         <span class="publish-author">
                             
@@ -697,8 +662,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/blog/tags/ngrok/">
-                        <span class="chip bg-color">ngrok</span>
+                    <a href="/blog/tags/onedrive/">
+                        <span class="chip bg-color">onedrive</span>
                     </a>
                     
                 </div>
