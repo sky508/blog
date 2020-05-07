@@ -1,36 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>OneDrive网盘5T空间获取方法</title>
-    <url>/post/1011da49.html</url>
-    <content><![CDATA[<p>获取office365教育版邮箱及密码的地址</p>
-<h4 id="步骤一、访问"><a href="#步骤一、访问" class="headerlink" title="步骤一、访问"></a>步骤一、访问</h4><p> <a href="https://xlu.me/" target="_blank" rel="noopener">https://xlu.me/</a></p>
-<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%951.png" alt=""></p>
-<h4 id="步骤二、接下来填入相关信息"><a href="#步骤二、接下来填入相关信息" class="headerlink" title="步骤二、接下来填入相关信息"></a>步骤二、接下来填入相关信息</h4><p><img src="%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%962.png" alt=""></p>
-<p>1、2处填写不要太随意，不然以后你自己也不记得了</p>
-<p>3处是固定的，默认即可</p>
-<p>4处填一个能接收5处验证码的邮箱，可使用正紧邮箱，也可使用临时邮箱，提供一个临时邮箱生成地址，临时邮箱接收验证码可能会存在延时，请耐心</p>
-<p><strong>推荐临时邮箱地址1</strong>：<a href="http://24mail.chacuo.net/" target="_blank" rel="noopener">http://24mail.chacuo.net/</a></p>
-<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%963.png" alt=""><strong>推荐临时邮箱地址2</strong>：<a href="https://t.odmail.cn/" target="_blank" rel="noopener">https://t.odmail.cn/</a></p>
-<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%964.png" alt=""></p>
-<h4 id="步骤三、上述操作结束，成功之后出现下述界面"><a href="#步骤三、上述操作结束，成功之后出现下述界面" class="headerlink" title="步骤三、上述操作结束，成功之后出现下述界面"></a>步骤三、上述操作结束，成功之后出现下述界面</h4><p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%965.png" alt=""></p>
-<h4 id="步骤四、准备进行登录"><a href="#步骤四、准备进行登录" class="headerlink" title="步骤四、准备进行登录"></a>步骤四、准备进行登录</h4><p>访问<a href="https://signup.microsoft.com/signup?sku=faculty" target="_blank" rel="noopener">https://signup.microsoft.com/signup?sku=faculty</a></p>
-<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%966.png" alt=""></p>
-<p>肯定会出现以下这个界面，然后点击登录，在登录页面输入刚才生成的邮箱账号及密码即可，初次登录会要求更改默认密码，按照提示更改就行</p>
-<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%967.png" alt=""></p>
-<p>操作结束就成功了</p>
-<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%968.png" alt=""></p>
-<h4 id="步骤五、登录"><a href="#步骤五、登录" class="headerlink" title="步骤五、登录"></a>步骤五、登录</h4><p>你的OneDrive客户端就可以看到了，网页版怎么看我倒是不知道，在电脑上我使用的RaiDrive进行账户登录</p>
-<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%969.png" alt=""></p>
-<h4 id="步骤六、接下来可以进行文件的存储了，反正比某盘要好用"><a href="#步骤六、接下来可以进行文件的存储了，反正比某盘要好用" class="headerlink" title="步骤六、接下来可以进行文件的存储了，反正比某盘要好用"></a>步骤六、接下来可以进行文件的存储了，反正比某盘要好用</h4>]]></content>
-      <categories>
-        <category>技巧介绍</category>
-      </categories>
-      <tags>
-        <tag>onedrive</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SpringBoot+thymeleaf+shiro整合小总结</title>
     <url>/post/9adc8b84.html</url>
     <content><![CDATA[<p>首先确保在不进行shiro整合时正常登录以及拥有权限，然后我们再开始，以下是我个人的思路。<br>首先，准备依赖（这里只讲关键依赖，目前我就用到了这些，够用就行，也别把相关依赖全部弄进来）：</p>
@@ -1900,31 +1870,6 @@ insert的功能片段在div标签中
       </tags>
   </entry>
   <entry>
-    <title>git基础操作</title>
-    <url>/post/aa301862.html</url>
-    <content><![CDATA[<p><code>git init</code> ：进入需要git的目录下，设置为本地仓库，执行后会生成一个.git文件</p>
-<p><code>git add .</code>：将未添加的文件添加到本地缓存</p>
-<p><code>git add xxx.js yyy.html</code>：将特定文件添加到git缓存</p>
-<p><code>git commit -m &#39;提交描述&#39;</code>：记录变更到仓库</p>
-<p>需要建立远程仓库，可以使用gitub、gitlab等，复制git仓库的http地址</p>
-<p><code>git remote add origin 拷贝的远程项目地址</code>：设置远程仓库地址，接下来输入git账号及密码</p>
-<p><code>git push -u origin master</code>：提交文件到远程仓库</p>
-<p>设置tag</p>
-<p><code>git tag tag名字</code>：例如git tag 01知识点1，设置当前编辑的文件处于01知识点1的tag下</p>
-<p><code>git tag</code>：查看所有的tag</p>
-<p><code>git push --tags</code>：提交所有的tags到远程仓库</p>
-<p><code>git status</code>：查看工作区状态</p>
-<p>如果想回到某一个tag，去查看相应的信息</p>
-<p><code>git checkout tag名字</code></p>
-]]></content>
-      <categories>
-        <category>代码管理工具</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>初识SpringBoot之日志框架</title>
     <url>/post/d0db4d7d.html</url>
     <content><![CDATA[<h3 id="一、市面上的日志框架"><a href="#一、市面上的日志框架" class="headerlink" title="一、市面上的日志框架"></a>一、市面上的日志框架</h3><p>JUL 、JCL、Jboss-logging、logback、log4j、log4j2、slf4j…….</p>
@@ -2152,6 +2097,31 @@ Base logback configuration provided for compatibility with Spring Boot 1.1
       </categories>
       <tags>
         <tag>SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git基础操作</title>
+    <url>/post/aa301862.html</url>
+    <content><![CDATA[<p><code>git init</code> ：进入需要git的目录下，设置为本地仓库，执行后会生成一个.git文件</p>
+<p><code>git add .</code>：将未添加的文件添加到本地缓存</p>
+<p><code>git add xxx.js yyy.html</code>：将特定文件添加到git缓存</p>
+<p><code>git commit -m &#39;提交描述&#39;</code>：记录变更到仓库</p>
+<p>需要建立远程仓库，可以使用gitub、gitlab等，复制git仓库的http地址</p>
+<p><code>git remote add origin 拷贝的远程项目地址</code>：设置远程仓库地址，接下来输入git账号及密码</p>
+<p><code>git push -u origin master</code>：提交文件到远程仓库</p>
+<p>设置tag</p>
+<p><code>git tag tag名字</code>：例如git tag 01知识点1，设置当前编辑的文件处于01知识点1的tag下</p>
+<p><code>git tag</code>：查看所有的tag</p>
+<p><code>git push --tags</code>：提交所有的tags到远程仓库</p>
+<p><code>git status</code>：查看工作区状态</p>
+<p>如果想回到某一个tag，去查看相应的信息</p>
+<p><code>git checkout tag名字</code></p>
+]]></content>
+      <categories>
+        <category>代码管理工具</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -2829,23 +2799,6 @@ sdiff <span class="token operator">&lt;</span>key1<span class="token operator">>
       </tags>
   </entry>
   <entry>
-    <title>初次整合springboot+kafka</title>
-    <url>/post/572f0779.html</url>
-    <content><![CDATA[<p>一、kafka的下载与使用<br>进入官网：<a href="http://kafka.apache.org/" target="_blank" rel="noopener">http://kafka.apache.org/</a><img src="..%5Cimages%5Ckafka01.png" alt="在这里插入图片描述"><br><img src="..%5Cimages%5Ckafka02.png" alt="在这里插入图片描述"><br><img src="..%5Cimages%5Ckafka03.png" alt="在这里插入图片描述"><br>下载好之后解压进入config文件夹编辑一下server.properties和    zookeeper.properties这两个配置文件，目前我也就更改了一下数据存储位置和日志存储位置<br><img src="..%5Cimages%5Ckafka04.png" alt="在这里插入图片描述">)<img src="..%5Cimages%5Ckafka05.png" alt="在这里插入图片描述"><br>然后就可以启动：</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token punctuation">.</span><span class="token operator">/</span>zookeeper<span class="token operator">-</span>server<span class="token operator">-</span><span class="token function">start</span><span class="token punctuation">.</span>sh <span class="token operator">/</span>home<span class="token operator">/</span>glh<span class="token operator">/</span>kafka_2<span class="token punctuation">.</span>13<span class="token operator">-</span>2<span class="token punctuation">.</span>4<span class="token punctuation">.</span>0<span class="token operator">/</span>config<span class="token operator">/</span>zookeeper<span class="token punctuation">.</span>properties &amp; <span class="token punctuation">.</span><span class="token operator">/</span>kafka<span class="token operator">-</span>server<span class="token operator">-</span><span class="token function">start</span><span class="token punctuation">.</span>sh <span class="token operator">/</span>home<span class="token operator">/</span>glh<span class="token operator">/</span>kafka_2<span class="token punctuation">.</span>13<span class="token operator">-</span>2<span class="token punctuation">.</span>4<span class="token punctuation">.</span>0<span class="token operator">/</span>config<span class="token operator">/</span>server<span class="token punctuation">.</span>properties
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="..%5Cimages%5Ckafka06.png" alt="在这里插入图片描述"><br>检查是否启动成功，另开一个终端，输入jps，这个就是启动成功<br><img src="..%5Cimages%5Ckafka07.png" alt="在这里插入图片描述"><br>测试是否可以正常工作，上面启动的端口暂时不要关闭，再开两个终端窗口<br>窗口一：</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token punctuation">.</span><span class="token operator">/</span>bin<span class="token operator">/</span>kafka<span class="token operator">-</span>topics<span class="token punctuation">.</span>sh <span class="token operator">--</span>create <span class="token operator">--</span>zookeeper 127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:2181 <span class="token operator">--</span>replication<span class="token operator">-</span>factor 1 <span class="token operator">--</span>partitions 1 <span class="token operator">--</span>topic hello<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-]]></content>
-      <categories>
-        <category>后端框架</category>
-      </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-        <tag>kafka</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>刷题记录</title>
     <url>/post/fe644ae0.html</url>
     <content><![CDATA[]]></content>
@@ -2870,6 +2823,23 @@ sdiff <span class="token operator">&lt;</span>key1<span class="token operator">>
       </tags>
   </entry>
   <entry>
+    <title>初次整合springboot+kafka</title>
+    <url>/post/572f0779.html</url>
+    <content><![CDATA[<p>一、kafka的下载与使用<br>进入官网：<a href="http://kafka.apache.org/" target="_blank" rel="noopener">http://kafka.apache.org/</a><img src="..%5Cimages%5Ckafka01.png" alt="在这里插入图片描述"><br><img src="..%5Cimages%5Ckafka02.png" alt="在这里插入图片描述"><br><img src="..%5Cimages%5Ckafka03.png" alt="在这里插入图片描述"><br>下载好之后解压进入config文件夹编辑一下server.properties和    zookeeper.properties这两个配置文件，目前我也就更改了一下数据存储位置和日志存储位置<br><img src="..%5Cimages%5Ckafka04.png" alt="在这里插入图片描述">)<img src="..%5Cimages%5Ckafka05.png" alt="在这里插入图片描述"><br>然后就可以启动：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token punctuation">.</span><span class="token operator">/</span>zookeeper<span class="token operator">-</span>server<span class="token operator">-</span><span class="token function">start</span><span class="token punctuation">.</span>sh <span class="token operator">/</span>home<span class="token operator">/</span>glh<span class="token operator">/</span>kafka_2<span class="token punctuation">.</span>13<span class="token operator">-</span>2<span class="token punctuation">.</span>4<span class="token punctuation">.</span>0<span class="token operator">/</span>config<span class="token operator">/</span>zookeeper<span class="token punctuation">.</span>properties &amp; <span class="token punctuation">.</span><span class="token operator">/</span>kafka<span class="token operator">-</span>server<span class="token operator">-</span><span class="token function">start</span><span class="token punctuation">.</span>sh <span class="token operator">/</span>home<span class="token operator">/</span>glh<span class="token operator">/</span>kafka_2<span class="token punctuation">.</span>13<span class="token operator">-</span>2<span class="token punctuation">.</span>4<span class="token punctuation">.</span>0<span class="token operator">/</span>config<span class="token operator">/</span>server<span class="token punctuation">.</span>properties
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="..%5Cimages%5Ckafka06.png" alt="在这里插入图片描述"><br>检查是否启动成功，另开一个终端，输入jps，这个就是启动成功<br><img src="..%5Cimages%5Ckafka07.png" alt="在这里插入图片描述"><br>测试是否可以正常工作，上面启动的端口暂时不要关闭，再开两个终端窗口<br>窗口一：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token punctuation">.</span><span class="token operator">/</span>bin<span class="token operator">/</span>kafka<span class="token operator">-</span>topics<span class="token punctuation">.</span>sh <span class="token operator">--</span>create <span class="token operator">--</span>zookeeper 127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:2181 <span class="token operator">--</span>replication<span class="token operator">-</span>factor 1 <span class="token operator">--</span>partitions 1 <span class="token operator">--</span>topic hello<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+]]></content>
+      <categories>
+        <category>后端框架</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+        <tag>kafka</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>解决进入docker之后无法输入中文的简单解决方法</title>
     <url>/post/d15a4a60.html</url>
     <content><![CDATA[<p>在进入docker的命令上设置语言编码格式：</p>
@@ -2882,6 +2852,36 @@ sdiff <span class="token operator">&lt;</span>key1<span class="token operator">>
       </categories>
       <tags>
         <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OneDrive网盘5T空间获取方法</title>
+    <url>/post/1011da49.html</url>
+    <content><![CDATA[<p>获取office365教育版邮箱及密码的地址</p>
+<h4 id="步骤一、访问"><a href="#步骤一、访问" class="headerlink" title="步骤一、访问"></a>步骤一、访问</h4><p> <a href="https://xlu.me/" target="_blank" rel="noopener">https://xlu.me/</a></p>
+<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%951.png" alt=""></p>
+<h4 id="步骤二、接下来填入相关信息"><a href="#步骤二、接下来填入相关信息" class="headerlink" title="步骤二、接下来填入相关信息"></a>步骤二、接下来填入相关信息</h4><p><img src="%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%962.png" alt=""></p>
+<p>1、2处填写不要太随意，不然以后你自己也不记得了</p>
+<p>3处是固定的，默认即可</p>
+<p>4处填一个能接收5处验证码的邮箱，可使用正紧邮箱，也可使用临时邮箱，提供一个临时邮箱生成地址，临时邮箱接收验证码可能会存在延时，请耐心</p>
+<p><strong>推荐临时邮箱地址1</strong>：<a href="http://24mail.chacuo.net/" target="_blank" rel="noopener">http://24mail.chacuo.net/</a></p>
+<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%963.png" alt=""><strong>推荐临时邮箱地址2</strong>：<a href="https://t.odmail.cn/" target="_blank" rel="noopener">https://t.odmail.cn/</a></p>
+<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%964.png" alt=""></p>
+<h4 id="步骤三、上述操作结束，成功之后出现下述界面"><a href="#步骤三、上述操作结束，成功之后出现下述界面" class="headerlink" title="步骤三、上述操作结束，成功之后出现下述界面"></a>步骤三、上述操作结束，成功之后出现下述界面</h4><p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%965.png" alt=""></p>
+<h4 id="步骤四、准备进行登录"><a href="#步骤四、准备进行登录" class="headerlink" title="步骤四、准备进行登录"></a>步骤四、准备进行登录</h4><p>访问<a href="https://signup.microsoft.com/signup?sku=faculty" target="_blank" rel="noopener">https://signup.microsoft.com/signup?sku=faculty</a></p>
+<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%966.png" alt=""></p>
+<p>肯定会出现以下这个界面，然后点击登录，在登录页面输入刚才生成的邮箱账号及密码即可，初次登录会要求更改默认密码，按照提示更改就行</p>
+<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%967.png" alt=""></p>
+<p>操作结束就成功了</p>
+<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%968.png" alt=""></p>
+<h4 id="步骤五、登录"><a href="#步骤五、登录" class="headerlink" title="步骤五、登录"></a>步骤五、登录</h4><p>你的OneDrive客户端就可以看到了，网页版怎么看我倒是不知道，在电脑上我使用的RaiDrive进行账户登录</p>
+<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%969.png" alt=""></p>
+<h4 id="步骤六、接下来可以进行文件的存储了，反正比某盘要好用"><a href="#步骤六、接下来可以进行文件的存储了，反正比某盘要好用" class="headerlink" title="步骤六、接下来可以进行文件的存储了，反正比某盘要好用"></a>步骤六、接下来可以进行文件的存储了，反正比某盘要好用</h4>]]></content>
+      <categories>
+        <category>技巧介绍</category>
+      </categories>
+      <tags>
+        <tag>onedrive</tag>
       </tags>
   </entry>
   <entry>
