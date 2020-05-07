@@ -423,7 +423,7 @@
             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.4.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>２）、 /**　访问当前项目的任何资源</p>
-<p><img src="/blog/blog/post/29159a57/..%5Cimages%5Cweb-static.png" alt></p>
+<p><img src="..%5Cimages%5Cweb-static.png" alt=""></p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>
     prefix <span class="token operator">=</span> <span class="token string">"spring.resources"</span><span class="token punctuation">,</span>
     ignoreUnknownFields <span class="token operator">=</span> <span class="token boolean">false</span>
@@ -452,11 +452,11 @@
 <p>３）、欢迎页：静态资源文件夹下的所有index.html页面；被　 /**　映射</p>
 <p>​        例如:localhost:8080/ －－－－此时会去静态资源下去找index.html文件</p>
 <p>4）、所有的**/favicon.ico　都是在静态资源文件夹下找；可以更改如图的图标，不更改就默认使用它的图标；</p>
-<p><img src="/blog/blog/post/29159a57/..%5Cimages%5Cfavicon.png" alt></p>
+<p><img src="..%5Cimages%5Cfavicon.png" alt=""></p>
 <p>５）、如果想自己定义静态资源文件夹，就在application.properties/yml文件中配置(数组之间用逗号隔开)，会覆盖默认的静态资源访问配置，如下：</p>
 <pre class="line-numbers language-properties"><code class="language-properties"><span class="token attr-name">spring.resources.static-locations</span><span class="token punctuation">=</span><span class="token attr-value">classpath:/hello/,classpath:/team/glh/</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="三、模板引擎"><a href="#三、模板引擎" class="headerlink" title="三、模板引擎"></a>三、模板引擎</h3><p>JSP、Velocity、Freemarker、Thymeleaf</p>
-<p><img src="/blog/blog/post/29159a57/..%5Cimages%5C%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E.png" alt></p>
+<p><img src="..%5Cimages%5C%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E.png" alt=""></p>
 <p>SpringBoot推荐使用的是Thymeleaf：语法简单，功能强大</p>
 <p>１．引入Thymeleaf</p>
 <pre class="line-numbers language-xml"><code class="language-xml">   <span class="token comment" spellcheck="true">&lt;!--切换Thymeleaf版本--></span>
@@ -512,7 +512,7 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>３）语法规则</p>
 <p><strong>th:任意html属性；来替换原生属性的值（10 Attribute Preceden）</strong></p>
-<p><img src="/blog/blog/post/29159a57/..%5Cimages%5Cthmeleaf-th%E8%AF%AD%E6%B3%95.png" alt></p>
+<p><img src="..%5Cimages%5Cthmeleaf-th%E8%AF%AD%E6%B3%95.png" alt=""></p>
 <p><strong>表达式（4 Standard Expression Synt）？</strong></p>
 <pre class="line-numbers language-properties"><code class="language-properties"><span class="token attr-name">Simple</span> <span class="token attr-value">expressions:(表达式语法)</span>
 <span class="token attr-name">    Variable</span> <span class="token attr-value">Expressions: ${...} //获取变量值(OGNL表达式)</span>
@@ -931,8 +931,8 @@ insert的功能片段在div标签中
 <p>３、<strong>引入片段的时候传入参数</strong></p>
 <pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name"><span class="token namespace">th:</span>replace</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>::frag (onevar<span class="token punctuation">=</span>${value1},twovar<span class="token punctuation">=</span>${value2})<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>４、举例</p>
-<p><img src="/blog/blog/post/29159a57/..%5Cimages%5C%E5%91%98%E5%B7%A5%E5%88%97%E8%A1%A8.png" alt></p>
-<p><img src="/blog/blog/post/29159a57/..%5Cimages%5C%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2.png" alt></p>
+<p><img src="..%5Cimages%5C%E5%91%98%E5%B7%A5%E5%88%97%E8%A1%A8.png" alt=""></p>
+<p><img src="..%5Cimages%5C%E4%BF%AE%E6%94%B9%E9%A1%B5%E9%9D%A2.png" alt=""></p>
 
             </div>
             <hr/>
