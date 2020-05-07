@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>初识SpringBoot配置</title>
-    <url>/post/6ae47735.html</url>
+    <url>/blog/post/6ae47735.html</url>
     <content><![CDATA[<h3 id="１、-Value的使用"><a href="#１、-Value的使用" class="headerlink" title="１、@Value的使用"></a>１、@Value的使用</h3><p><img src="..%5Cimages@Value.png" alt=""></p>
 <h3 id="2-Value获取值和-ConfigurationProperties获取值比较"><a href="#2-Value获取值和-ConfigurationProperties获取值比较" class="headerlink" title="2.　@Value获取值和@ConfigurationProperties获取值比较"></a>2.　@Value获取值和@ConfigurationProperties获取值比较</h3><table>
 <thead>
@@ -324,8 +324,38 @@ Negative matches<span class="token operator">:</span>　　<span class="token co
       </tags>
   </entry>
   <entry>
+    <title>OneDrive网盘5T空间获取方法</title>
+    <url>/blog/post/1011da49.html</url>
+    <content><![CDATA[<p>获取office365教育版邮箱及密码的地址</p>
+<h4 id="步骤一、访问"><a href="#步骤一、访问" class="headerlink" title="步骤一、访问"></a>步骤一、访问</h4><p> <a href="https://xlu.me/" target="_blank" rel="noopener">https://xlu.me/</a></p>
+<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%951.png" alt=""></p>
+<h4 id="步骤二、接下来填入相关信息"><a href="#步骤二、接下来填入相关信息" class="headerlink" title="步骤二、接下来填入相关信息"></a>步骤二、接下来填入相关信息</h4><p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%962.png" alt=""></p>
+<p>1、2处填写不要太随意，不然以后你自己也不记得了</p>
+<p>3处是固定的，默认即可</p>
+<p>4处填一个能接收5处验证码的邮箱，可使用正紧邮箱，也可使用临时邮箱，提供一个临时邮箱生成地址，临时邮箱接收验证码可能会存在延时，请耐心</p>
+<p><strong>推荐临时邮箱地址1</strong>：<a href="http://24mail.chacuo.net/" target="_blank" rel="noopener">http://24mail.chacuo.net/</a></p>
+<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%963.png" alt=""><strong>推荐临时邮箱地址2</strong>：<a href="https://t.odmail.cn/" target="_blank" rel="noopener">https://t.odmail.cn/</a></p>
+<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%964.png" alt=""></p>
+<h4 id="步骤三、上述操作结束，成功之后出现下述界面"><a href="#步骤三、上述操作结束，成功之后出现下述界面" class="headerlink" title="步骤三、上述操作结束，成功之后出现下述界面"></a>步骤三、上述操作结束，成功之后出现下述界面</h4><p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%965.png" alt=""></p>
+<h4 id="步骤四、准备进行登录"><a href="#步骤四、准备进行登录" class="headerlink" title="步骤四、准备进行登录"></a>步骤四、准备进行登录</h4><p>访问<a href="https://signup.microsoft.com/signup?sku=faculty" target="_blank" rel="noopener">https://signup.microsoft.com/signup?sku=faculty</a></p>
+<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%966.png" alt=""></p>
+<p>肯定会出现以下这个界面，然后点击登录，在登录页面输入刚才生成的邮箱账号及密码即可，初次登录会要求更改默认密码，按照提示更改就行</p>
+<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%967.png" alt=""></p>
+<p>操作结束就成功了</p>
+<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%968.png" alt=""></p>
+<h4 id="步骤五、登录"><a href="#步骤五、登录" class="headerlink" title="步骤五、登录"></a>步骤五、登录</h4><p>你的OneDrive客户端就可以看到了，网页版怎么看我倒是不知道，在电脑上我使用的RaiDrive进行账户登录</p>
+<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%969.png" alt=""></p>
+<h4 id="步骤六、接下来可以进行文件的存储了，反正比某盘要好用"><a href="#步骤六、接下来可以进行文件的存储了，反正比某盘要好用" class="headerlink" title="步骤六、接下来可以进行文件的存储了，反正比某盘要好用"></a>步骤六、接下来可以进行文件的存储了，反正比某盘要好用</h4>]]></content>
+      <categories>
+        <category>技巧介绍</category>
+      </categories>
+      <tags>
+        <tag>onedrive</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SpringBoot+thymeleaf+shiro整合小总结</title>
-    <url>/post/9adc8b84.html</url>
+    <url>/blog/post/9adc8b84.html</url>
     <content><![CDATA[<p>首先确保在不进行shiro整合时正常登录以及拥有权限，然后我们再开始，以下是我个人的思路。<br>首先，准备依赖（这里只讲关键依赖，目前我就用到了这些，够用就行，也别把相关依赖全部弄进来）：</p>
 <pre class="line-numbers language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!--shiro依赖--></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
@@ -1037,38 +1067,33 @@ Negative matches<span class="token operator">:</span>　　<span class="token co
       </tags>
   </entry>
   <entry>
-    <title>OneDrive网盘5T空间获取方法</title>
-    <url>/post/1011da49.html</url>
-    <content><![CDATA[<p>获取office365教育版邮箱及密码的地址</p>
-<h4 id="步骤一、访问"><a href="#步骤一、访问" class="headerlink" title="步骤一、访问"></a>步骤一、访问</h4><p> <a href="https://xlu.me/" target="_blank" rel="noopener">https://xlu.me/</a></p>
-<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%951.png" alt=""></p>
-<h4 id="步骤二、接下来填入相关信息"><a href="#步骤二、接下来填入相关信息" class="headerlink" title="步骤二、接下来填入相关信息"></a>步骤二、接下来填入相关信息</h4><p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%962.png" alt=""></p>
-<p>1、2处填写不要太随意，不然以后你自己也不记得了</p>
-<p>3处是固定的，默认即可</p>
-<p>4处填一个能接收5处验证码的邮箱，可使用正紧邮箱，也可使用临时邮箱，提供一个临时邮箱生成地址，临时邮箱接收验证码可能会存在延时，请耐心</p>
-<p><strong>推荐临时邮箱地址1</strong>：<a href="http://24mail.chacuo.net/" target="_blank" rel="noopener">http://24mail.chacuo.net/</a></p>
-<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%963.png" alt=""><strong>推荐临时邮箱地址2</strong>：<a href="https://t.odmail.cn/" target="_blank" rel="noopener">https://t.odmail.cn/</a></p>
-<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%964.png" alt=""></p>
-<h4 id="步骤三、上述操作结束，成功之后出现下述界面"><a href="#步骤三、上述操作结束，成功之后出现下述界面" class="headerlink" title="步骤三、上述操作结束，成功之后出现下述界面"></a>步骤三、上述操作结束，成功之后出现下述界面</h4><p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%965.png" alt=""></p>
-<h4 id="步骤四、准备进行登录"><a href="#步骤四、准备进行登录" class="headerlink" title="步骤四、准备进行登录"></a>步骤四、准备进行登录</h4><p>访问<a href="https://signup.microsoft.com/signup?sku=faculty" target="_blank" rel="noopener">https://signup.microsoft.com/signup?sku=faculty</a></p>
-<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%966.png" alt=""></p>
-<p>肯定会出现以下这个界面，然后点击登录，在登录页面输入刚才生成的邮箱账号及密码即可，初次登录会要求更改默认密码，按照提示更改就行</p>
-<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%967.png" alt=""></p>
-<p>操作结束就成功了</p>
-<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%968.png" alt=""></p>
-<h4 id="步骤五、登录"><a href="#步骤五、登录" class="headerlink" title="步骤五、登录"></a>步骤五、登录</h4><p>你的OneDrive客户端就可以看到了，网页版怎么看我倒是不知道，在电脑上我使用的RaiDrive进行账户登录</p>
-<p><img src="..%5Cimages%5COD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%969.png" alt=""></p>
-<h4 id="步骤六、接下来可以进行文件的存储了，反正比某盘要好用"><a href="#步骤六、接下来可以进行文件的存储了，反正比某盘要好用" class="headerlink" title="步骤六、接下来可以进行文件的存储了，反正比某盘要好用"></a>步骤六、接下来可以进行文件的存储了，反正比某盘要好用</h4>]]></content>
+    <title>git基础操作</title>
+    <url>/blog/post/aa301862.html</url>
+    <content><![CDATA[<p><code>git init</code> ：进入需要git的目录下，设置为本地仓库，执行后会生成一个.git文件</p>
+<p><code>git add .</code>：将未添加的文件添加到本地缓存</p>
+<p><code>git add xxx.js yyy.html</code>：将特定文件添加到git缓存</p>
+<p><code>git commit -m &#39;提交描述&#39;</code>：记录变更到仓库</p>
+<p>需要建立远程仓库，可以使用gitub、gitlab等，复制git仓库的http地址</p>
+<p><code>git remote add origin 拷贝的远程项目地址</code>：设置远程仓库地址，接下来输入git账号及密码</p>
+<p><code>git push -u origin master</code>：提交文件到远程仓库</p>
+<p>设置tag</p>
+<p><code>git tag tag名字</code>：例如git tag 01知识点1，设置当前编辑的文件处于01知识点1的tag下</p>
+<p><code>git tag</code>：查看所有的tag</p>
+<p><code>git push --tags</code>：提交所有的tags到远程仓库</p>
+<p><code>git status</code>：查看工作区状态</p>
+<p>如果想回到某一个tag，去查看相应的信息</p>
+<p><code>git checkout tag名字</code></p>
+]]></content>
       <categories>
-        <category>技巧介绍</category>
+        <category>代码管理工具</category>
       </categories>
       <tags>
-        <tag>onedrive</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
     <title>初识SpringBoot关于web开发</title>
-    <url>/post/29159a57.html</url>
+    <url>/blog/post/29159a57.html</url>
     <content><![CDATA[<h3 id="一、使用SpringBoot"><a href="#一、使用SpringBoot" class="headerlink" title="一、使用SpringBoot"></a>一、使用SpringBoot</h3><p>１．创建SpringBoot应用，选中我们需要的模块；</p>
 <p>２．SpringBoot已经默认将这些场景配置好了，只需要在配置文件中指定少量配置就可以运行起来；</p>
 <p>３．接下里自己编写业务代码；</p>
@@ -1647,7 +1672,7 @@ insert的功能片段在div标签中
   </entry>
   <entry>
     <title>初识SpringBoot之错误处理机制</title>
-    <url>/post/9e23b664.html</url>
+    <url>/blog/post/9e23b664.html</url>
     <content><![CDATA[<h3 id="一、默认错误处理机制"><a href="#一、默认错误处理机制" class="headerlink" title="一、默认错误处理机制"></a>一、默认错误处理机制</h3><p>１．默认效果：</p>
 <p>１）．浏览器，默认返回一个错误页面</p>
 <p><img src="..%5Cimages%5C%E9%BB%98%E8%AE%A4%E9%94%99%E8%AF%AF%E9%A1%B5%E9%9D%A2%E4%BF%A1%E6%81%AF.png" alt=""></p>
@@ -1900,8 +1925,111 @@ insert的功能片段在div标签中
       </tags>
   </entry>
   <entry>
+    <title>idea下git的基础操作</title>
+    <url>/blog/post/4f4a33fd.html</url>
+    <content><![CDATA[<p>前提：电脑上自行安装好git，记得在IDEA的settings里面配置一下git的路径</p>
+<p><img src="..%5Cimages%5Cgit01.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第一步：在idea上创建Git Repository…</p>
+<p><img src="..%5Cimages%5Cgit02.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第二步：选中你要上传的项目，例如我要上传的是demo</p>
+<p>​                                            <img src="..%5Cimages%5Cgit03.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第三步：在VCS这个下面找到Git-Remotes，并输入你在Git网页上的地址</p>
+<p><img src="..%5Cimages%5Cgit04.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="..%5Cimages%5Cgit05.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">)<img src="..%5Cimages%5Cgit12.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">)<img src="..%5Cimages%5Cgit13.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第四步：在你要上传的项目上右键，找到Git-add,然后你会发现你项目下的文件变成了</p>
+<p><img src="..%5Cimages%5Cgit06.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第五步：在同样的位置右键，找到Git-Commit Directory…</p>
+<p><img src="..%5Cimages%5Cgit07.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第六步：输入描述信息，然后commit，其他不用管</p>
+<p><img src="..%5Cimages%5Cgit08.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第七步：在相同位置同样右键，找到Git-repository-push,点击它</p>
+<p><img src="..%5Cimages%5Cgit09.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第八步：在接下来的界面点击push</p>
+<p><img src="..%5Cimages%5Cgit10.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第九步：在右下角出现push successful就是成功了</p>
+<p><img src="..%5Cimages%5Cgit11.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+]]></content>
+      <categories>
+        <category>idea</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jqGrid自定义搜索框进行条件查询并且刷新表格</title>
+    <url>/blog/post/f3e55310.html</url>
+    <content><![CDATA[<p>前提：正常使用jqGrid表格插件，只是不愿意使用它的搜索框，所以选择自定义；</p>
+<p>直接上代码：</p>
+<p>前端：</p>
+<p>页面显示：</p>
+<p><img src="..%5Cimages%5Cjqgrid01.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>页面代码（很简单，就是从别的页面扣了一个过来）：</p>
+<p><strong>html:</strong></p>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>alert alert-info<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+<span class="token comment" spellcheck="true">&lt;!--                                        &lt;form class="form-search" action="" method="post">--></span>
+
+                                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>input-icon<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+                                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>搜索 ...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-search-input<span class="token punctuation">"</span></span>
+                                           <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>condition<span class="token punctuation">"</span></span>
+                                           <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>condition<span class="token punctuation">"</span></span>
+                                        <span class="token attr-name">autocomplete</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>off<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+
+                                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>icon-search nav-search-icon<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">></span></span>
+
+                                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+
+<span class="token comment" spellcheck="true">&lt;!--                                        &lt;/form>--></span>
+
+                                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><strong>js:</strong></p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//自定义搜索框的数据返回及显示，返回时刷新表格</span>
+                <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#condition"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">keydown</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>keyCode <span class="token operator">==</span> <span class="token string">"13"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//keyCode=13是回车键；数字不同代表监听的按键不同</span>
+                        <span class="token comment" spellcheck="true">// alert("asdsdfsdf");</span>
+                        <span class="token keyword">var</span> condition<span class="token operator">=</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#condition"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"搜索条件："</span><span class="token operator">+</span>condition<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token comment" spellcheck="true">//清空表格中数据</span>
+                        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#grid-table"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">jqGrid</span><span class="token punctuation">(</span><span class="token string">"clearGridData"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token comment" spellcheck="true">//重新接收表格数据</span>
+                        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#grid-table"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">jqGrid</span><span class="token punctuation">(</span><span class="token string">"setGridParam"</span><span class="token punctuation">,</span><span class="token punctuation">{</span>
+                            url<span class="token punctuation">:</span><span class="token string">"/sys-permission/page-list?condition="</span><span class="token operator">+</span>condition<span class="token punctuation">,</span>
+                            dataType<span class="token punctuation">:</span><span class="token string">"json"</span><span class="token punctuation">,</span>
+                            type<span class="token punctuation">:</span><span class="token string">"post"</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trigger</span><span class="token punctuation">(</span><span class="token string">"reloadGrid"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>controller:</p>
+<pre class="line-numbers language-java"><code class="language-java">    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/list"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"sys/permission/list"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@ResponseBody</span>
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/page-list"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">pageList</span><span class="token punctuation">(</span>String condition<span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+        List<span class="token operator">&lt;</span>SysPermissionVO<span class="token operator">></span> permissions<span class="token operator">=</span>sysPermissionService<span class="token punctuation">.</span><span class="token function">listVos</span><span class="token punctuation">(</span>condition<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> JSON<span class="token punctuation">.</span><span class="token function">toJSONString</span><span class="token punctuation">(</span>permissions<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>总算可以正常显示了，欢迎留言交流。</p>
+]]></content>
+      <categories>
+        <category>前端学习</category>
+      </categories>
+      <tags>
+        <tag>jqGrid</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>初识SpringBoot之日志框架</title>
-    <url>/post/d0db4d7d.html</url>
+    <url>/blog/post/d0db4d7d.html</url>
     <content><![CDATA[<h3 id="一、市面上的日志框架"><a href="#一、市面上的日志框架" class="headerlink" title="一、市面上的日志框架"></a>一、市面上的日志框架</h3><p>JUL 、JCL、Jboss-logging、logback、log4j、log4j2、slf4j…….</p>
 <table>
 <thead>
@@ -2130,136 +2258,8 @@ Base logback configuration provided for compatibility with Spring Boot 1.1
       </tags>
   </entry>
   <entry>
-    <title>git基础操作</title>
-    <url>/post/aa301862.html</url>
-    <content><![CDATA[<p><code>git init</code> ：进入需要git的目录下，设置为本地仓库，执行后会生成一个.git文件</p>
-<p><code>git add .</code>：将未添加的文件添加到本地缓存</p>
-<p><code>git add xxx.js yyy.html</code>：将特定文件添加到git缓存</p>
-<p><code>git commit -m &#39;提交描述&#39;</code>：记录变更到仓库</p>
-<p>需要建立远程仓库，可以使用gitub、gitlab等，复制git仓库的http地址</p>
-<p><code>git remote add origin 拷贝的远程项目地址</code>：设置远程仓库地址，接下来输入git账号及密码</p>
-<p><code>git push -u origin master</code>：提交文件到远程仓库</p>
-<p>设置tag</p>
-<p><code>git tag tag名字</code>：例如git tag 01知识点1，设置当前编辑的文件处于01知识点1的tag下</p>
-<p><code>git tag</code>：查看所有的tag</p>
-<p><code>git push --tags</code>：提交所有的tags到远程仓库</p>
-<p><code>git status</code>：查看工作区状态</p>
-<p>如果想回到某一个tag，去查看相应的信息</p>
-<p><code>git checkout tag名字</code></p>
-]]></content>
-      <categories>
-        <category>代码管理工具</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>idea下git的基础操作</title>
-    <url>/post/4f4a33fd.html</url>
-    <content><![CDATA[<p>前提：电脑上自行安装好git，记得在IDEA的settings里面配置一下git的路径</p>
-<p><img src="..%5Cimages%5Cgit01.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第一步：在idea上创建Git Repository…</p>
-<p><img src="..%5Cimages%5Cgit02.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第二步：选中你要上传的项目，例如我要上传的是demo</p>
-<p>​                                            <img src="..%5Cimages%5Cgit03.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第三步：在VCS这个下面找到Git-Remotes，并输入你在Git网页上的地址</p>
-<p><img src="..%5Cimages%5Cgit04.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p><img src="..%5Cimages%5Cgit05.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">)<img src="..%5Cimages%5Cgit12.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">)<img src="..%5Cimages%5Cgit13.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第四步：在你要上传的项目上右键，找到Git-add,然后你会发现你项目下的文件变成了</p>
-<p><img src="..%5Cimages%5Cgit06.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第五步：在同样的位置右键，找到Git-Commit Directory…</p>
-<p><img src="..%5Cimages%5Cgit07.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第六步：输入描述信息，然后commit，其他不用管</p>
-<p><img src="..%5Cimages%5Cgit08.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第七步：在相同位置同样右键，找到Git-repository-push,点击它</p>
-<p><img src="..%5Cimages%5Cgit09.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第八步：在接下来的界面点击push</p>
-<p><img src="..%5Cimages%5Cgit10.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第九步：在右下角出现push successful就是成功了</p>
-<p><img src="..%5Cimages%5Cgit11.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-]]></content>
-      <categories>
-        <category>idea</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>jqGrid自定义搜索框进行条件查询并且刷新表格</title>
-    <url>/post/f3e55310.html</url>
-    <content><![CDATA[<p>前提：正常使用jqGrid表格插件，只是不愿意使用它的搜索框，所以选择自定义；</p>
-<p>直接上代码：</p>
-<p>前端：</p>
-<p>页面显示：</p>
-<p><img src="..%5Cimages%5Cjqgrid01.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>页面代码（很简单，就是从别的页面扣了一个过来）：</p>
-<p><strong>html:</strong></p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>alert alert-info<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-
-<span class="token comment" spellcheck="true">&lt;!--                                        &lt;form class="form-search" action="" method="post">--></span>
-
-                                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>input-icon<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-
-                                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>搜索 ...<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-search-input<span class="token punctuation">"</span></span>
-                                           <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>condition<span class="token punctuation">"</span></span>
-                                           <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>condition<span class="token punctuation">"</span></span>
-                                        <span class="token attr-name">autocomplete</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>off<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-
-                                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>icon-search nav-search-icon<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">></span></span>
-
-                                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
-
-<span class="token comment" spellcheck="true">&lt;!--                                        &lt;/form>--></span>
-
-                                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p><strong>js:</strong></p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//自定义搜索框的数据返回及显示，返回时刷新表格</span>
-                <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#condition"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">keydown</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>keyCode <span class="token operator">==</span> <span class="token string">"13"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//keyCode=13是回车键；数字不同代表监听的按键不同</span>
-                        <span class="token comment" spellcheck="true">// alert("asdsdfsdf");</span>
-                        <span class="token keyword">var</span> condition<span class="token operator">=</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#condition"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"搜索条件："</span><span class="token operator">+</span>condition<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                        <span class="token comment" spellcheck="true">//清空表格中数据</span>
-                        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#grid-table"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">jqGrid</span><span class="token punctuation">(</span><span class="token string">"clearGridData"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                        <span class="token comment" spellcheck="true">//重新接收表格数据</span>
-                        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#grid-table"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">jqGrid</span><span class="token punctuation">(</span><span class="token string">"setGridParam"</span><span class="token punctuation">,</span><span class="token punctuation">{</span>
-                            url<span class="token punctuation">:</span><span class="token string">"/sys-permission/page-list?condition="</span><span class="token operator">+</span>condition<span class="token punctuation">,</span>
-                            dataType<span class="token punctuation">:</span><span class="token string">"json"</span><span class="token punctuation">,</span>
-                            type<span class="token punctuation">:</span><span class="token string">"post"</span>
-                        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trigger</span><span class="token punctuation">(</span><span class="token string">"reloadGrid"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    <span class="token punctuation">}</span>
-                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>controller:</p>
-<pre class="line-numbers language-java"><code class="language-java">    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/list"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> String <span class="token function">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token string">"sys/permission/list"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@ResponseBody</span>
-    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/page-list"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> String <span class="token function">pageList</span><span class="token punctuation">(</span>String condition<span class="token punctuation">)</span><span class="token punctuation">{</span>
-
-        List<span class="token operator">&lt;</span>SysPermissionVO<span class="token operator">></span> permissions<span class="token operator">=</span>sysPermissionService<span class="token punctuation">.</span><span class="token function">listVos</span><span class="token punctuation">(</span>condition<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">return</span> JSON<span class="token punctuation">.</span><span class="token function">toJSONString</span><span class="token punctuation">(</span>permissions<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>总算可以正常显示了，欢迎留言交流。</p>
-]]></content>
-      <categories>
-        <category>前端学习</category>
-      </categories>
-      <tags>
-        <tag>jqGrid</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>leetcode做题记录</title>
-    <url>/post/76a1ede8.html</url>
+    <url>/blog/post/76a1ede8.html</url>
     <content><![CDATA[<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h3 id="一、跳跃游戏"><a href="#一、跳跃游戏" class="headerlink" title="一、跳跃游戏"></a>一、<a href="https://leetcode-cn.com/problems/jump-game/" target="_blank" rel="noopener">跳跃游戏</a></h3><p><strong>题目描述</strong>：给定一个非负整数数组，你最初位于数组的第一个位置。</p>
 <p>数组中的每个元素代表你在该位置可以跳跃的最大长度。</p>
 <p>判断你是否能够到达最后一个位置。</p>
@@ -2448,7 +2448,7 @@ Logs lg2
   </entry>
   <entry>
     <title>初识redis</title>
-    <url>/post/67d51f09.html</url>
+    <url>/blog/post/67d51f09.html</url>
     <content><![CDATA[<h3 id="一、初始Redis"><a href="#一、初始Redis" class="headerlink" title="一、初始Redis"></a>一、初始Redis</h3><p>１．基本知识</p>
 <p>Redis:REmote DIctionary Server(远程字典服务器)</p>
 <p>是完全开元免费的，用c语言开发的，遵守BSD协议，是一个高性能的（key-value）分布式内存数据库，基于内存运行并支持持久化的NoSQL数据库，是当前最热门的NoSQL数据库之一，也被人们称为数据结构服务器。</p>
@@ -2800,7 +2800,7 @@ sdiff <span class="token operator">&lt;</span>key1<span class="token operator">>
   </entry>
   <entry>
     <title>ubuntu16.04下安装flameshot时出现Unkown module(s) in QT:svg的解决方法</title>
-    <url>/post/b0689396.html</url>
+    <url>/blog/post/b0689396.html</url>
     <content><![CDATA[<p>在安装之前先保证ubuntu16.04安装过QT5，并配置好环境变量(配置etc下的profile文件，在最后一行写下如下代码（以下为示例，地址填实际的地址）：</p>
 <p>#——qt start——<br>export QT5_HOME=/usr/lib/x86_64-linux-gnu/qt5<br>export PATH=${QT5_HOME}/bin:$PATH<br>#————–qt end————-</p>
 <p>);</p>
@@ -2829,13 +2829,8 @@ sdiff <span class="token operator">&lt;</span>key1<span class="token operator">>
       </tags>
   </entry>
   <entry>
-    <title>刷题记录</title>
-    <url>/post/fe644ae0.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>初次整合springboot+kafka</title>
-    <url>/post/572f0779.html</url>
+    <url>/blog/post/572f0779.html</url>
     <content><![CDATA[<p>一、kafka的下载与使用<br>进入官网：<a href="http://kafka.apache.org/" target="_blank" rel="noopener">http://kafka.apache.org/</a><img src="..%5Cimages%5Ckafka01.png" alt="在这里插入图片描述"><br><img src="..%5Cimages%5Ckafka02.png" alt="在这里插入图片描述"><br><img src="..%5Cimages%5Ckafka03.png" alt="在这里插入图片描述"><br>下载好之后解压进入config文件夹编辑一下server.properties和    zookeeper.properties这两个配置文件，目前我也就更改了一下数据存储位置和日志存储位置<br><img src="..%5Cimages%5Ckafka04.png" alt="在这里插入图片描述">)<img src="..%5Cimages%5Ckafka05.png" alt="在这里插入图片描述"><br>然后就可以启动：</p>
 <pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token punctuation">.</span><span class="token operator">/</span>zookeeper<span class="token operator">-</span>server<span class="token operator">-</span><span class="token function">start</span><span class="token punctuation">.</span>sh <span class="token operator">/</span>home<span class="token operator">/</span>glh<span class="token operator">/</span>kafka_2<span class="token punctuation">.</span>13<span class="token operator">-</span>2<span class="token punctuation">.</span>4<span class="token punctuation">.</span>0<span class="token operator">/</span>config<span class="token operator">/</span>zookeeper<span class="token punctuation">.</span>properties &amp; <span class="token punctuation">.</span><span class="token operator">/</span>kafka<span class="token operator">-</span>server<span class="token operator">-</span><span class="token function">start</span><span class="token punctuation">.</span>sh <span class="token operator">/</span>home<span class="token operator">/</span>glh<span class="token operator">/</span>kafka_2<span class="token punctuation">.</span>13<span class="token operator">-</span>2<span class="token punctuation">.</span>4<span class="token punctuation">.</span>0<span class="token operator">/</span>config<span class="token operator">/</span>server<span class="token punctuation">.</span>properties
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -2851,8 +2846,13 @@ sdiff <span class="token operator">&lt;</span>key1<span class="token operator">>
       </tags>
   </entry>
   <entry>
+    <title>刷题记录</title>
+    <url>/blog/post/fe644ae0.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>搭建个人的ngrok服务器</title>
-    <url>/post/2c96e6e6.html</url>
+    <url>/blog/post/2c96e6e6.html</url>
     <content><![CDATA[<p>忙活了大半天，终于成功的搭建好了，并且可用，就是所处环境网速限制，体验感不强。在此记录一下过程出现的问题及解决方法，仅供参考。<br>附上以为大佬的ngrok的安装教程<a href="http://www.sunnyos.com/article-show-48.html" target="_blank" rel="noopener">http://www.sunnyos.com/article-show-48.html</a><br>一、安装go的时候，版本尽量高点，我是在官网下载的，别直接在使用sudo apt-get install xxx获取，这个版本不行，到后面编译ngrok的客户端和服务端的时候会出问题。<br>二、服务器端:进入到ngrok目录下的bin目录，使用sudo ./bin/ngrokd -domain=”自定义的域名” -httpAddr=”:访问的端口”<br>        客户端:进入到存在ngrok客户端程序的目录，同级目录下建立ngrok.cfg文件，输入一下内容：</p>
 <pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">server_addr</span><span class="token punctuation">:</span> <span class="token string">"xxxx.com:4443"</span> <span class="token comment" spellcheck="true"># xxxx.com是公网主机的域名，与你在进行秘钥生成时用到的域名要一致，不然启动客户端时tunnel status会一直是reconnecting，4443是公网主机默认的端口不要改动</span>
         <span class="token key atrule">trust_host_root_certs</span><span class="token punctuation">:</span> <span class="token boolean important">false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -2871,7 +2871,7 @@ sdiff <span class="token operator">&lt;</span>key1<span class="token operator">>
   </entry>
   <entry>
     <title>解决进入docker之后无法输入中文的简单解决方法</title>
-    <url>/post/d15a4a60.html</url>
+    <url>/blog/post/d15a4a60.html</url>
     <content><![CDATA[<p>在进入docker的命令上设置语言编码格式：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">docker <span class="token function">exec</span> -it 容器名称 <span class="token function">env</span> LANG<span class="token operator">=</span>C.UTF-8 <span class="token function">bash</span>   <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><strong><em>注意</em></strong>：LANG=C.UTF-8大写，不要小写<br><img src="..%5Cimages%5Cdocker01.png" alt="实际操作图片"><br>感谢dockone这条讨论带来的解决办法<br><a href="http://dockone.io/question/195" target="_blank" rel="noopener">dockerone</a></p>
@@ -2886,7 +2886,7 @@ sdiff <span class="token operator">&lt;</span>key1<span class="token operator">>
   </entry>
   <entry>
     <title>初识Vue</title>
-    <url>/post/5f9a6bb0.html</url>
+    <url>/blog/post/5f9a6bb0.html</url>
     <content><![CDATA[<h3 id="一、初始Vue"><a href="#一、初始Vue" class="headerlink" title="一、初始Vue"></a>一、初始Vue</h3><p>１．Vue(读音：/vju:/，类似于view)，不要读错，不要读成v　u　e三个字母。</p>
 <p>２．Vue是一个渐进式框架</p>
 <p>。渐进式意味着你可以将Vue作为你应用的一部分嵌入到其中，带来更丰富的交互体验。</p>
