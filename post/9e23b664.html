@@ -367,9 +367,9 @@
             <div id="articleContent">
                 <h3 id="一、默认错误处理机制"><a href="#一、默认错误处理机制" class="headerlink" title="一、默认错误处理机制"></a>一、默认错误处理机制</h3><p>１．默认效果：</p>
 <p>１）．浏览器，默认返回一个错误页面</p>
-<p><img src="..%5Cimages%5C%E9%BB%98%E8%AE%A4%E9%94%99%E8%AF%AF%E9%A1%B5%E9%9D%A2%E4%BF%A1%E6%81%AF.png" alt=""></p>
+<p><img src="../images/%E9%BB%98%E8%AE%A4%E9%94%99%E8%AF%AF%E9%A1%B5%E9%9D%A2%E4%BF%A1%E6%81%AF.png" alt=""></p>
 <p>浏览器发送请求的请求头：</p>
-<p><img src="..%5Cimages%5C%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E7%9A%84%E8%AF%B7%E6%B1%82%E5%A4%B4.png" alt=""></p>
+<p><img src="../images/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E7%9A%84%E8%AF%B7%E6%B1%82%E5%A4%B4.png" alt=""></p>
 <p>２）．如果其他客户端访问，默认响应一个json数据</p>
 <pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
     <span class="token property">"timestamp"</span><span class="token operator">:</span> <span class="token number">1581062865115</span><span class="token punctuation">,</span>
@@ -379,7 +379,7 @@
     <span class="token property">"path"</span><span class="token operator">:</span> <span class="token string">"/hello2"</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>例如postman发送请求的请求头:</p>
-<p><img src="..%5Cimages%5Cpostman%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E7%9A%84%E8%AF%B7%E6%B1%82%E5%A4%B4.png" alt=""></p>
+<p><img src="../images/postman%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E7%9A%84%E8%AF%B7%E6%B1%82%E5%A4%B4.png" alt=""></p>
 <p>原理：参照ErrorMvcAutoConfiguration.class错误处理的自动配置；</p>
 <p>给容器中添加了一下组件：</p>
 <p>１．DefaultErrorAttributes</p>
@@ -491,7 +491,7 @@
     exception<span class="token operator">:</span>异常对象
     message<span class="token operator">:</span>异常信息
     errors<span class="token operator">:</span>JSR303数据校验的错误都在这里面<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>举例：<img src="..%5Cimages%5Cerror-4xx-5xx.png" alt="">        <img src="..%5Cimages%5Ceg-5xx.html.png" alt=""></p>
+<p>举例：<img src="../images/error-4xx-5xx.png" alt="">        <img src="../images/eg-5xx.html.png" alt=""></p>
 <p>b).<strong>没有模板引擎的情况下（模板引擎找不到这个错误页面）</strong>，静态资源文件夹下去找<strong>（了解即可）</strong></p>
 <p>​        c).以上都没有，就是来到默认的空白信息页面</p>
 <p>２）、如何定制错误的json数据</p>

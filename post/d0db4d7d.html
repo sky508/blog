@@ -391,10 +391,10 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>图示：</p>
-<p><img src="..%5Cimages%5Cslf4j-concrete-bindings.png" alt=""></p>
+<p><img src="../images/slf4j-concrete-bindings.png" alt=""></p>
 <p>每个日志的实现框架都有自己的配置文件，使用slf4j之后，<strong>配置文件还是做成日志实现框架的配置文件</strong>。</p>
 <p>２．统一日志记录为slf4j</p>
-<img src="..\images\slf4j-统一日志记录.png"  />
+<img src="../images/slf4j-统一日志记录.png"  />
 
 <p><strong>步骤：</strong></p>
 <p>1). 先把系统中其他的日志框架排除出去</p>
@@ -413,12 +413,12 @@
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="..%5Cimages%5Cslf4j%EF%BC%8Dspringboot.png" alt=""></p>
+<p><img src="../images/slf4j%EF%BC%8Dspringboot.png" alt=""></p>
 <p>总结：</p>
 <p>１）、SpringBoot使用slf4j+logback做日志记录；</p>
 <p>２）、SpringBoot也把其他的日志替换成slf4j；</p>
 <p>３）、中间替换包？</p>
-<p><img src="..%5Cimages%5Cslf4j-jul.png" alt=""></p>
+<p><img src="../images/slf4j-jul.png" alt=""></p>
 <p>４）、如果我们要引入其他框架，一定要把这个框架默认的日志依赖移除掉；</p>
 <p>Spring框架用的是commons-logging；类似于以下写法，排除掉commons-logging</p>
 <pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
