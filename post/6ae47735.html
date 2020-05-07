@@ -365,7 +365,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="１、-Value的使用"><a href="#１、-Value的使用" class="headerlink" title="１、@Value的使用"></a>１、@Value的使用</h3><p><img src="..%5Cimages@Value.png" alt=""></p>
+                <h3 id="１、-Value的使用"><a href="#１、-Value的使用" class="headerlink" title="１、@Value的使用"></a>１、@Value的使用</h3><p><img src="/blog/blog/post/6ae47735/..%5Cimages@Value.png" alt></p>
 <h3 id="2-Value获取值和-ConfigurationProperties获取值比较"><a href="#2-Value获取值和-ConfigurationProperties获取值比较" class="headerlink" title="2.　@Value获取值和@ConfigurationProperties获取值比较"></a>2.　@Value获取值和@ConfigurationProperties获取值比较</h3><table>
 <thead>
 <tr>
@@ -401,7 +401,7 @@
 </tr>
 </tbody></table>
 <p>注意:  JSR303数据校验(@Validated)</p>
-<p><img src="..%5Cimages%5CJSR303%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C.png" alt=""></p>
+<p><img src="/blog/blog/post/6ae47735/..%5Cimages%5CJSR303%E6%95%B0%E6%8D%AE%E6%A0%A1%E9%AA%8C.png" alt></p>
 <p>配置文件yml还是properties他们都能获取到值，</p>
 <p>如果我们只是在某个业务逻辑中获取配置文件中<strong>某项值</strong>，使用@Value</p>
 <p>如果我们专门编写了一个javaBean来和配置文件中进行映射，那我们就直接使用@ConfigurationProperties</p>
@@ -504,7 +504,7 @@
 <span class="token attr-name">person.dog.number</span><span class="token punctuation">=</span><span class="token attr-value">10001</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="5、Profile"><a href="#5、Profile" class="headerlink" title="5、Profile"></a>5、Profile</h3><h4 id="5-1-多Profile文件"><a href="#5-1-多Profile文件" class="headerlink" title="5.1.多Profile文件"></a><strong>5.1.多Profile文件</strong></h4><p>我们在主配置文件编写的时候，文件名可以是　application-{profile}.properties/yml</p>
 <p>默认使用application.properties的配置；</p>
-<p><img src="..%5Cimages%5Cprofiles-1.png" alt=""></p>
+<p><img src="/blog/blog/post/6ae47735/..%5Cimages%5Cprofiles-1.png" alt></p>
 <h4 id="5-2-yml支持多文档方式"><a href="#5-2-yml支持多文档方式" class="headerlink" title="5.2.yml支持多文档方式"></a>5.2.yml支持多文档方式</h4><p>yaml使用—进行document进行分割</p>
 <pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
   <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8081</span>
@@ -524,11 +524,11 @@
 <h4 id="5-3-激活指定Profile"><a href="#5-3-激活指定Profile" class="headerlink" title="5.3.激活指定Profile"></a>5.3.激活指定Profile</h4><p> 1.在配置文件中指定 spring.profiles.active=dev</p>
 <p>2.命令配置：</p>
 <p>方法一：<strong>在idea中直接进行配置</strong>命令行参数：–spring.profiles.active=dev</p>
-<p><img src="..%5Cimages%5Cprofiles-2.png" alt=""></p>
+<p><img src="/blog/blog/post/6ae47735/..%5Cimages%5Cprofiles-2.png" alt></p>
 <p>方法二：<strong>在idea中直接进行配置</strong>虚拟机参数：-Dspring.profiles.active=dev            </p>
-<p><img src="..%5Cimages%5Cprofiles-4.png" alt=""></p>
-<p>方法三：　<strong>在终端使用运行打包后的应用</strong>：        <img src="..%5Cimages%5Cprofiles-3.png" alt=""></p>
-<h3 id="６-配置文件加载位置"><a href="#６-配置文件加载位置" class="headerlink" title="６. 配置文件加载位置"></a>６. 配置文件加载位置</h3><p><img src="..%5Cimages%5C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E4%BD%8D%E7%BD%AE.png" alt=""></p>
+<p><img src="/blog/blog/post/6ae47735/..%5Cimages%5Cprofiles-4.png" alt></p>
+<p>方法三：　<strong>在终端使用运行打包后的应用</strong>：        <img src="/blog/blog/post/6ae47735/..%5Cimages%5Cprofiles-3.png" alt></p>
+<h3 id="６-配置文件加载位置"><a href="#６-配置文件加载位置" class="headerlink" title="６. 配置文件加载位置"></a>６. 配置文件加载位置</h3><p><img src="/blog/blog/post/6ae47735/..%5Cimages%5C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E4%BD%8D%E7%BD%AE.png" alt></p>
 <p><strong>注意</strong>：他们之间是互补配置</p>
 <p>​        <strong>修改默认的路径配置</strong>：方法一：使用 spring.context-path=/boot02 ，在路径访问时需要在前面加上/boot02</p>
 <p>​                                            方法二：使用spring.config.location=/home/glh/ideaproject/application.properties 改变默认的配置文件位置</p>
@@ -561,16 +561,16 @@
 <p><a href="https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/html/appendix-configuration-metadata.html#configuration-metadata-format" target="_blank" rel="noopener">官网链接</a></p>
 <p><strong>自动配置原理：</strong></p>
 <p>１）、SpringBoot 启动的时候加载主配置类，开启了自动配置功能@EnableAutoConfiguration</p>
-<p><img src="..%5Cimages%5C%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%EF%BC%91.png" alt=""></p>
+<p><img src="/blog/blog/post/6ae47735/..%5Cimages%5C%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%EF%BC%91.png" alt></p>
 <p>２）、@EnableAutoConfiguration作用：</p>
 <pre><code>        - 利用EnableAutoConfigurationSelector给容器中导入一些组件;
-        - 可以查看getAutoConfigurationEntry()方法的内容;</code></pre><p><img src="..%5Cimages%5C%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%EF%BC%92.png" alt=""></p>
+        - 可以查看getAutoConfigurationEntry()方法的内容;</code></pre><p><img src="/blog/blog/post/6ae47735/..%5Cimages%5C%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%EF%BC%92.png" alt></p>
 <ul>
 <li>扫描所有jar包类路径下：META-INF/spring.factories，把扫描到的这些文件的内容包装成properties对象，从properties中获取到 EnableAutoConfiguration.class类（类名）对应的值，然后把他们添加在容器中。</li>
 </ul>
-<p><img src="..%5Cimages%5C%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%EF%BC%93.png" alt=""></p>
+<p><img src="/blog/blog/post/6ae47735/..%5Cimages%5C%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%EF%BC%93.png" alt></p>
 <p><strong><em>就是将类路径META-INF/spring.factories　里面配置的所有EnableAutoConfiguration的值加入到容器中</em></strong>（注意：不是所有的这个路径下的spring.factories文件里面都有EnableAutoConfiguration这个变量）</p>
-<p><img src="..%5Cimages%5C%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%EF%BC%94.png" alt=""></p>
+<p><img src="/blog/blog/post/6ae47735/..%5Cimages%5C%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%EF%BC%94.png" alt></p>
 <p>每一个这样的xxxAutoConfiguration类都是容器中的一个组件，都加入到容器当中，用他们做自动配置；</p>
 <p>３）、每一个自动配置类进行自动配置功能；</p>
 <p>４）、以<strong>HttpEncodingAutoConfiguration(Http编码自动配置)</strong>为例解释一下自动配置原理</p>
@@ -625,7 +625,7 @@
 <p>​    b)、我们看我们需要的功能有没有SpringBoot默认写好的自动配置类；</p>
 <p>​    c)、我们再来看这个自动配置类中到底配置了哪些组件；（只要我们需要的组件有，我们就不需要再来配置了）</p>
 <p>​    d)、给容器中自动配置类添加组件的时候，会从properties类中获取某些属性，我们就可以在配置文件中指定这些属性的值；</p>
-<h3 id="９、-Conditional"><a href="#９、-Conditional" class="headerlink" title="９、@Conditional"></a>９、@Conditional</h3><p><img src="..%5Cimages@Conditional%E6%89%A9%E5%B1%95.png" alt=""></p>
+<h3 id="９、-Conditional"><a href="#９、-Conditional" class="headerlink" title="９、@Conditional"></a>９、@Conditional</h3><p><img src="/blog/blog/post/6ae47735/..%5Cimages@Conditional%E6%89%A9%E5%B1%95.png" alt></p>
 <p><strong>自动配置类必须在一定的条件下才能生效</strong></p>
 <p><strong>怎么才能知道自动配置类生效</strong>：我们可以通过启用　debug=true 属性，来让控制台打印自动配置报告，这样我们就能很方便知道哪些自动配置类生效了；</p>
 <pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
