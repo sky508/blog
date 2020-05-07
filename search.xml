@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>OneDrive网盘5T空间获取方法</title>
+    <url>/blog/post/1011da49.html</url>
+    <content><![CDATA[<p>获取office365教育版邮箱及密码的地址</p>
+<h4 id="步骤一、访问"><a href="#步骤一、访问" class="headerlink" title="步骤一、访问"></a>步骤一、访问</h4><p> <a href="https://xlu.me/" target="_blank" rel="noopener">https://xlu.me/</a></p>
+<p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%951.png" alt=""></p>
+<h4 id="步骤二、接下来填入相关信息"><a href="#步骤二、接下来填入相关信息" class="headerlink" title="步骤二、接下来填入相关信息"></a>步骤二、接下来填入相关信息</h4><p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%962.png" alt=""></p>
+<p>1、2处填写不要太随意，不然以后你自己也不记得了</p>
+<p>3处是固定的，默认即可</p>
+<p>4处填一个能接收5处验证码的邮箱，可使用正紧邮箱，也可使用临时邮箱，提供一个临时邮箱生成地址，临时邮箱接收验证码可能会存在延时，请耐心</p>
+<p><strong>推荐临时邮箱地址1</strong>：<a href="http://24mail.chacuo.net/" target="_blank" rel="noopener">http://24mail.chacuo.net/</a></p>
+<p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%963.png" alt=""><strong>推荐临时邮箱地址2</strong>：<a href="https://t.odmail.cn/" target="_blank" rel="noopener">https://t.odmail.cn/</a></p>
+<p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%964.png" alt=""></p>
+<h4 id="步骤三、上述操作结束，成功之后出现下述界面"><a href="#步骤三、上述操作结束，成功之后出现下述界面" class="headerlink" title="步骤三、上述操作结束，成功之后出现下述界面"></a>步骤三、上述操作结束，成功之后出现下述界面</h4><p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%965.png" alt=""></p>
+<h4 id="步骤四、准备进行登录"><a href="#步骤四、准备进行登录" class="headerlink" title="步骤四、准备进行登录"></a>步骤四、准备进行登录</h4><p>访问<a href="https://signup.microsoft.com/signup?sku=faculty" target="_blank" rel="noopener">https://signup.microsoft.com/signup?sku=faculty</a></p>
+<p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%966.png" alt=""></p>
+<p>肯定会出现以下这个界面，然后点击登录，在登录页面输入刚才生成的邮箱账号及密码即可，初次登录会要求更改默认密码，按照提示更改就行</p>
+<p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%967.png" alt=""></p>
+<p>操作结束就成功了</p>
+<p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%968.png" alt=""></p>
+<h4 id="步骤五、登录"><a href="#步骤五、登录" class="headerlink" title="步骤五、登录"></a>步骤五、登录</h4><p>你的OneDrive客户端就可以看到了，网页版怎么看我倒是不知道，在电脑上我使用的RaiDrive进行账户登录</p>
+<p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%969.png" alt=""></p>
+<h4 id="步骤六、接下来可以进行文件的存储了，反正比某盘要好用"><a href="#步骤六、接下来可以进行文件的存储了，反正比某盘要好用" class="headerlink" title="步骤六、接下来可以进行文件的存储了，反正比某盘要好用"></a>步骤六、接下来可以进行文件的存储了，反正比某盘要好用</h4>]]></content>
+      <categories>
+        <category>技巧介绍</category>
+      </categories>
+      <tags>
+        <tag>onedrive</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>初识SpringBoot配置</title>
     <url>/blog/post/6ae47735.html</url>
     <content><![CDATA[<h3 id="１、-Value的使用"><a href="#１、-Value的使用" class="headerlink" title="１、@Value的使用"></a>１、@Value的使用</h3><p><img src="../images/@Value.png" alt=""></p>
@@ -321,36 +351,6 @@ Negative matches<span class="token operator">:</span>　　<span class="token co
       </categories>
       <tags>
         <tag>SpringBoot</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>OneDrive网盘5T空间获取方法</title>
-    <url>/blog/post/1011da49.html</url>
-    <content><![CDATA[<p>获取office365教育版邮箱及密码的地址</p>
-<h4 id="步骤一、访问"><a href="#步骤一、访问" class="headerlink" title="步骤一、访问"></a>步骤一、访问</h4><p> <a href="https://xlu.me/" target="_blank" rel="noopener">https://xlu.me/</a></p>
-<p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%951.png" alt=""></p>
-<h4 id="步骤二、接下来填入相关信息"><a href="#步骤二、接下来填入相关信息" class="headerlink" title="步骤二、接下来填入相关信息"></a>步骤二、接下来填入相关信息</h4><p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%962.png" alt=""></p>
-<p>1、2处填写不要太随意，不然以后你自己也不记得了</p>
-<p>3处是固定的，默认即可</p>
-<p>4处填一个能接收5处验证码的邮箱，可使用正紧邮箱，也可使用临时邮箱，提供一个临时邮箱生成地址，临时邮箱接收验证码可能会存在延时，请耐心</p>
-<p><strong>推荐临时邮箱地址1</strong>：<a href="http://24mail.chacuo.net/" target="_blank" rel="noopener">http://24mail.chacuo.net/</a></p>
-<p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%963.png" alt=""><strong>推荐临时邮箱地址2</strong>：<a href="https://t.odmail.cn/" target="_blank" rel="noopener">https://t.odmail.cn/</a></p>
-<p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%964.png" alt=""></p>
-<h4 id="步骤三、上述操作结束，成功之后出现下述界面"><a href="#步骤三、上述操作结束，成功之后出现下述界面" class="headerlink" title="步骤三、上述操作结束，成功之后出现下述界面"></a>步骤三、上述操作结束，成功之后出现下述界面</h4><p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%965.png" alt=""></p>
-<h4 id="步骤四、准备进行登录"><a href="#步骤四、准备进行登录" class="headerlink" title="步骤四、准备进行登录"></a>步骤四、准备进行登录</h4><p>访问<a href="https://signup.microsoft.com/signup?sku=faculty" target="_blank" rel="noopener">https://signup.microsoft.com/signup?sku=faculty</a></p>
-<p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%966.png" alt=""></p>
-<p>肯定会出现以下这个界面，然后点击登录，在登录页面输入刚才生成的邮箱账号及密码即可，初次登录会要求更改默认密码，按照提示更改就行</p>
-<p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%967.png" alt=""></p>
-<p>操作结束就成功了</p>
-<p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%968.png" alt=""></p>
-<h4 id="步骤五、登录"><a href="#步骤五、登录" class="headerlink" title="步骤五、登录"></a>步骤五、登录</h4><p>你的OneDrive客户端就可以看到了，网页版怎么看我倒是不知道，在电脑上我使用的RaiDrive进行账户登录</p>
-<p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%969.png" alt=""></p>
-<h4 id="步骤六、接下来可以进行文件的存储了，反正比某盘要好用"><a href="#步骤六、接下来可以进行文件的存储了，反正比某盘要好用" class="headerlink" title="步骤六、接下来可以进行文件的存储了，反正比某盘要好用"></a>步骤六、接下来可以进行文件的存储了，反正比某盘要好用</h4>]]></content>
-      <categories>
-        <category>技巧介绍</category>
-      </categories>
-      <tags>
-        <tag>onedrive</tag>
       </tags>
   </entry>
   <entry>
@@ -1646,236 +1646,6 @@ insert的功能片段在div标签中
       </tags>
   </entry>
   <entry>
-    <title>初识SpringBoot之日志框架</title>
-    <url>/blog/post/d0db4d7d.html</url>
-    <content><![CDATA[<h3 id="一、市面上的日志框架"><a href="#一、市面上的日志框架" class="headerlink" title="一、市面上的日志框架"></a>一、市面上的日志框架</h3><p>JUL 、JCL、Jboss-logging、logback、log4j、log4j2、slf4j…….</p>
-<table>
-<thead>
-<tr>
-<th>日志门面(日志的抽象层)</th>
-<th>日志实现</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><del>JCL(Jakarta Commons Logging)</del> 、<strong>slf4j</strong>(Simple Logging Facade for Java)、<del>Jboss-logging</del></td>
-<td>Log4j、JUL(java.util.logging)、Log4j2、<strong>Logback</strong></td>
-</tr>
-</tbody></table>
-<p>SpringBoot底层是Spring,它默认使用的日志框架是JCL</p>
-<p><strong>SpringBoot选用slf4j和Logback；</strong></p>
-<h3 id="二、SLF4J的使用"><a href="#二、SLF4J的使用" class="headerlink" title="二、SLF4J的使用"></a>二、SLF4J的使用</h3><p>１．使用(导入slf4j和logback的依赖即可)：日志记录方法的调用，不是直接调用日志的实现类，而是调用日志抽象层里面的方法；</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">import</span> org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Logger<span class="token punctuation">;</span>
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>LoggerFactory<span class="token punctuation">;</span>
-
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloWorld</span> <span class="token punctuation">{</span>
-  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    Logger logger <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>HelloWorld<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"Hello World"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>图示：</p>
-<p><img src="../images/slf4j-concrete-bindings.png" alt=""></p>
-<p>每个日志的实现框架都有自己的配置文件，使用slf4j之后，<strong>配置文件还是做成日志实现框架的配置文件</strong>。</p>
-<p>２．统一日志记录为slf4j</p>
-<img src="../images/slf4j-统一日志记录.png"  />
-
-<p><strong>步骤：</strong></p>
-<p>1). 先把系统中其他的日志框架排除出去</p>
-<p>2). 用中间包来替换原有的日志框架</p>
-<p>3). 我们导入slf4j其他的实现</p>
-<h3 id="三、SpringBoot日志关系"><a href="#三、SpringBoot日志关系" class="headerlink" title="三、SpringBoot日志关系"></a>三、SpringBoot日志关系</h3><pre class="line-numbers language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>SpringBoot使用它做日志记录</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="../images/slf4j%EF%BC%8Dspringboot.png" alt=""></p>
-<p>总结：</p>
-<p>１）、SpringBoot使用slf4j+logback做日志记录；</p>
-<p>２）、SpringBoot也把其他的日志替换成slf4j；</p>
-<p>３）、中间替换包？</p>
-<p><img src="../images/slf4j-jul.png" alt=""></p>
-<p>４）、如果我们要引入其他框架，一定要把这个框架默认的日志依赖移除掉；</p>
-<p>Spring框架用的是commons-logging；类似于以下写法，排除掉commons-logging</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-core<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusions</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusion</span><span class="token punctuation">></span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>commons-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>commons-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusion</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusions</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>SpringBoot能自动匹配所有的日志，而且底层使用的是slf4j+logback的方式记录日志，引入其他框架时，只需要把这个框架依赖的日志框架排除掉即可。</strong></p>
-<h3 id="四、日志的使用"><a href="#四、日志的使用" class="headerlink" title="四、日志的使用"></a>四、日志的使用</h3><p><a href="https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/html/spring-boot-features.html#boot-features-logging" target="_blank" rel="noopener">官网链接 4. Logging</a></p>
-<ol>
-<li><p>使用</p>
-<pre class="line-numbers language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//日志记录器</span>
-    Logger logger<span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">void</span> <span class="token function">contextLoads</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-       <span class="token comment" spellcheck="true">//日志的级别,从上至下级别由低到高</span>
-        <span class="token comment" spellcheck="true">//可以调整输出的日志级别，日志就只会在这个级别及以后的高级别生效</span>
-        logger<span class="token punctuation">.</span><span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－这是一个trace日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－这是一个debug日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//SpringBoot默认给我们使用的是info级别的,没有指定就使用其默认的级别，</span>
-        <span class="token comment" spellcheck="true">// 调整可以在配置文件中调整，例如调整为root 级别：                logging.level.team.glh.demo.springboottest=trace</span>
-        logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－－这是一个info日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        logger<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－－这是一个warn日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－这是一个error日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>在org/springframework/boot/spring-boot/2.2.2.RELEASE/spring-boot-2.2.2.RELEASE.jar!/org/springframework/boot/logging/logback/base.xml中制定了日志级别为info级别</strong></p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
-
-<span class="token comment" spellcheck="true">&lt;!--
-Base logback configuration provided for compatibility with Spring Boot 1.1
---></span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>included</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span> <span class="token attr-name">resource</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org/springframework/boot/logging/logback/defaults.xml<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>LOG_FILE<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/spring.log}<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span> <span class="token attr-name">resource</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org/springframework/boot/logging/logback/console-appender.xml<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span> <span class="token attr-name">resource</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org/springframework/boot/logging/logback/file-appender.xml<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token comment" spellcheck="true">&lt;!--此处指定日志的默认级别为info级别--></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>root</span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>INFO<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender-ref</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>CONSOLE<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender-ref</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>FILE<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>root</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>included</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<ol start="2">
-<li><p>调整日志级别</p>
-<p>1)  application.yaml</p>
-<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true">#logging.level.team.glh.demo.springboottest: trace</span>
-<span class="token key atrule">logging</span><span class="token punctuation">:</span>
-  <span class="token key atrule">level</span><span class="token punctuation">:</span>
-    <span class="token key atrule">team</span><span class="token punctuation">:</span>
-      <span class="token key atrule">glh</span><span class="token punctuation">:</span>
-        <span class="token key atrule">demo</span><span class="token punctuation">:</span>
-          <span class="token key atrule">springboottest</span><span class="token punctuation">:</span> trace     <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>2) application.properties </p>
-<pre class="line-numbers language-properties"><code class="language-properties"><span class="token attr-name">logging.level.team.glh.demo.springboottest</span><span class="token punctuation">=</span><span class="token attr-value">trace</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="3">
-<li><p>更改日志的一些默认配置</p>
-<p>在以前的版本中使用下面这种可以修改配置</p>
-<pre class="line-numbers language-properties"><code class="language-properties"><span class="token attr-name">logging.level.team.glh.demo.springboottest</span><span class="token punctuation">=</span><span class="token attr-value">trace</span>
-<span class="token comment" spellcheck="true">#可以指定文件位置，但是必须指定文件名，如果不指定路径，默认在当前项目下生成</span>
-<span class="token comment" spellcheck="true">#logging.file=/home/glh/IdeaProjects/logs/spring-boot-test-demo/spring-boot-test.log</span>
-<span class="token comment" spellcheck="true">#只需要指定日志生成路径，默认生成文件spring.log</span>
-<span class="token attr-name">logging.path</span><span class="token punctuation">=</span><span class="token attr-value">/home/glh/IdeaProjects/logs/spring-boot-test-demo</span>
-<span class="token comment" spellcheck="true">#在控制台输出的格式</span>
-<span class="token attr-name">logging.pattern.console</span><span class="token punctuation">=</span><span class="token attr-value">[%d{yyyy-MM-dd}]:%p %l%m%n</span>
-<span class="token comment" spellcheck="true">#指定文件中日志输出的格式</span>
-<span class="token attr-name">logging.pattern.file</span><span class="token punctuation">=</span><span class="token attr-value">[%d{yyyy-MM-dd}]:%p %l%m%n</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>而在现如今的版本中可以这么指定（spring-boot.2.2.2.RELEASE）</p>
-<pre class="line-numbers language-properties"><code class="language-properties"><span class="token comment" spellcheck="true">#只需要指定日志生成路径，默认生成文件spring.log</span>
-<span class="token comment" spellcheck="true">#logging.file.path=/home/glh/IdeaProjects/logs/spring-boot-test-demo</span>
-<span class="token comment" spellcheck="true">#可以指定文件位置，但是必须指定文件名，如果不指定路径，默认在当前项目下生成</span>
-<span class="token attr-name">logging.file.name</span><span class="token punctuation">=</span><span class="token attr-value">/home/glh/IdeaProjects/logs/spring-boot-test-demo/spring-boot-test.log</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>官方介绍</p>
-<table>
-<thead>
-<tr>
-<th align="left"><code>logging.file.name</code></th>
-<th align="left"><code>logging.file.path</code></th>
-<th align="left">Example</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><em>(none)</em></td>
-<td align="left"><em>(none)</em></td>
-<td align="left"></td>
-<td align="left">Console only logging.</td>
-</tr>
-<tr>
-<td align="left">Specific file</td>
-<td align="left"><em>(none)</em></td>
-<td align="left"><code>my.log</code></td>
-<td align="left">Writes to the specified log file. Names can be an exact location or relative to the current directory.</td>
-</tr>
-<tr>
-<td align="left"><em>(none)</em></td>
-<td align="left">Specific directory</td>
-<td align="left"><code>/var/log</code></td>
-<td align="left">Writes <code>spring.log</code> to the specified directory. Names can be an exact location or relative to the current directory.</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-</li>
-</ol>
-<p>４.　指定配置文件</p>
-<p><a href="https://www.cnblogs.com/light-zhang/p/8744647.html" target="_blank" rel="noopener">模板参考</a></p>
-<table>
-<thead>
-<tr>
-<th align="left">Logging System</th>
-<th align="left">Customization</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Logback</td>
-<td align="left"><code>logback-spring.xml</code>, <code>logback-spring.groovy</code>, <code>logback.xml</code>, or <code>logback.groovy</code></td>
-</tr>
-<tr>
-<td align="left">Log4j2</td>
-<td align="left"><code>log4j2-spring.xml</code> or <code>log4j2.xml</code></td>
-</tr>
-<tr>
-<td align="left">JDK (Java Util Logging)</td>
-<td align="left"><code>logging.properties</code></td>
-</tr>
-</tbody></table>
-<p>logback.xml:可以被日志框架识别；<strong>可以使用下面的profile进行日志类型指定，例如：在不同环境下使用不同格式的日志类型</strong></p>
-<pre class="line-numbers language-xml"><code class="language-xml"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>springProfile</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dev<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pattern</span><span class="token punctuation">></span></span>
-                    [%-5level] -----------------============= %d{${DATETIME}} [%thread] %logger{36} - %m%n
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pattern</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>springProfile</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>springProfile</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>!dev<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pattern</span><span class="token punctuation">></span></span>
-                    [%-5level] ----------------- %d{${DATETIME}} [%thread] %logger{36} - %m%n
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pattern</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>springProfile</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>５．切换日志框架</p>
-<p>先把原先的日志框架排除，再引入新的日志框架依赖</p>
-<p>例如：切换为log4j2日志框架</p>
-<pre class="line-numbers language-xml"><code class="language-xml">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-web<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-            <span class="token comment" spellcheck="true">&lt;!--排除原先的logging日志框架--></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusions</span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusion</span><span class="token punctuation">></span></span>
-                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusion</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusions</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
-        <span class="token comment" spellcheck="true">&lt;!--引入新的日志框架依赖，版本号自动匹配--></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-log4j2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-]]></content>
-      <categories>
-        <category>后端框架</category>
-      </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>初识SpringBoot之错误处理机制</title>
     <url>/blog/post/9e23b664.html</url>
     <content><![CDATA[<h3 id="一、默认错误处理机制"><a href="#一、默认错误处理机制" class="headerlink" title="一、默认错误处理机制"></a>一、默认错误处理机制</h3><p>１．默认效果：</p>
@@ -2130,6 +1900,293 @@ Base logback configuration provided for compatibility with Spring Boot 1.1
       </tags>
   </entry>
   <entry>
+    <title>初识SpringBoot之日志框架</title>
+    <url>/blog/post/d0db4d7d.html</url>
+    <content><![CDATA[<h3 id="一、市面上的日志框架"><a href="#一、市面上的日志框架" class="headerlink" title="一、市面上的日志框架"></a>一、市面上的日志框架</h3><p>JUL 、JCL、Jboss-logging、logback、log4j、log4j2、slf4j…….</p>
+<table>
+<thead>
+<tr>
+<th>日志门面(日志的抽象层)</th>
+<th>日志实现</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>JCL(Jakarta Commons Logging)</del> 、<strong>slf4j</strong>(Simple Logging Facade for Java)、<del>Jboss-logging</del></td>
+<td>Log4j、JUL(java.util.logging)、Log4j2、<strong>Logback</strong></td>
+</tr>
+</tbody></table>
+<p>SpringBoot底层是Spring,它默认使用的日志框架是JCL</p>
+<p><strong>SpringBoot选用slf4j和Logback；</strong></p>
+<h3 id="二、SLF4J的使用"><a href="#二、SLF4J的使用" class="headerlink" title="二、SLF4J的使用"></a>二、SLF4J的使用</h3><p>１．使用(导入slf4j和logback的依赖即可)：日志记录方法的调用，不是直接调用日志的实现类，而是调用日志抽象层里面的方法；</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">import</span> org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Logger<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>LoggerFactory<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloWorld</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Logger logger <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>HelloWorld<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"Hello World"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>图示：</p>
+<p><img src="../images/slf4j-concrete-bindings.png" alt=""></p>
+<p>每个日志的实现框架都有自己的配置文件，使用slf4j之后，<strong>配置文件还是做成日志实现框架的配置文件</strong>。</p>
+<p>２．统一日志记录为slf4j</p>
+<img src="../images/slf4j-统一日志记录.png"  />
+
+<p><strong>步骤：</strong></p>
+<p>1). 先把系统中其他的日志框架排除出去</p>
+<p>2). 用中间包来替换原有的日志框架</p>
+<p>3). 我们导入slf4j其他的实现</p>
+<h3 id="三、SpringBoot日志关系"><a href="#三、SpringBoot日志关系" class="headerlink" title="三、SpringBoot日志关系"></a>三、SpringBoot日志关系</h3><pre class="line-numbers language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>SpringBoot使用它做日志记录</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="../images/slf4j%EF%BC%8Dspringboot.png" alt=""></p>
+<p>总结：</p>
+<p>１）、SpringBoot使用slf4j+logback做日志记录；</p>
+<p>２）、SpringBoot也把其他的日志替换成slf4j；</p>
+<p>３）、中间替换包？</p>
+<p><img src="../images/slf4j-jul.png" alt=""></p>
+<p>４）、如果我们要引入其他框架，一定要把这个框架默认的日志依赖移除掉；</p>
+<p>Spring框架用的是commons-logging；类似于以下写法，排除掉commons-logging</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-core<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusions</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusion</span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>commons-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>commons-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusion</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusions</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>SpringBoot能自动匹配所有的日志，而且底层使用的是slf4j+logback的方式记录日志，引入其他框架时，只需要把这个框架依赖的日志框架排除掉即可。</strong></p>
+<h3 id="四、日志的使用"><a href="#四、日志的使用" class="headerlink" title="四、日志的使用"></a>四、日志的使用</h3><p><a href="https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/html/spring-boot-features.html#boot-features-logging" target="_blank" rel="noopener">官网链接 4. Logging</a></p>
+<ol>
+<li><p>使用</p>
+<pre class="line-numbers language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//日志记录器</span>
+    Logger logger<span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">void</span> <span class="token function">contextLoads</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token comment" spellcheck="true">//日志的级别,从上至下级别由低到高</span>
+        <span class="token comment" spellcheck="true">//可以调整输出的日志级别，日志就只会在这个级别及以后的高级别生效</span>
+        logger<span class="token punctuation">.</span><span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－这是一个trace日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－这是一个debug日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//SpringBoot默认给我们使用的是info级别的,没有指定就使用其默认的级别，</span>
+        <span class="token comment" spellcheck="true">// 调整可以在配置文件中调整，例如调整为root 级别：                logging.level.team.glh.demo.springboottest=trace</span>
+        logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－－这是一个info日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        logger<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－－这是一个warn日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－这是一个error日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>在org/springframework/boot/spring-boot/2.2.2.RELEASE/spring-boot-2.2.2.RELEASE.jar!/org/springframework/boot/logging/logback/base.xml中制定了日志级别为info级别</strong></p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+
+<span class="token comment" spellcheck="true">&lt;!--
+Base logback configuration provided for compatibility with Spring Boot 1.1
+--></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>included</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span> <span class="token attr-name">resource</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org/springframework/boot/logging/logback/defaults.xml<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>LOG_FILE<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/spring.log}<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span> <span class="token attr-name">resource</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org/springframework/boot/logging/logback/console-appender.xml<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span> <span class="token attr-name">resource</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org/springframework/boot/logging/logback/file-appender.xml<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token comment" spellcheck="true">&lt;!--此处指定日志的默认级别为info级别--></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>root</span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>INFO<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender-ref</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>CONSOLE<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender-ref</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>FILE<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>root</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>included</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<ol start="2">
+<li><p>调整日志级别</p>
+<p>1)  application.yaml</p>
+<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true">#logging.level.team.glh.demo.springboottest: trace</span>
+<span class="token key atrule">logging</span><span class="token punctuation">:</span>
+  <span class="token key atrule">level</span><span class="token punctuation">:</span>
+    <span class="token key atrule">team</span><span class="token punctuation">:</span>
+      <span class="token key atrule">glh</span><span class="token punctuation">:</span>
+        <span class="token key atrule">demo</span><span class="token punctuation">:</span>
+          <span class="token key atrule">springboottest</span><span class="token punctuation">:</span> trace     <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>2) application.properties </p>
+<pre class="line-numbers language-properties"><code class="language-properties"><span class="token attr-name">logging.level.team.glh.demo.springboottest</span><span class="token punctuation">=</span><span class="token attr-value">trace</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="3">
+<li><p>更改日志的一些默认配置</p>
+<p>在以前的版本中使用下面这种可以修改配置</p>
+<pre class="line-numbers language-properties"><code class="language-properties"><span class="token attr-name">logging.level.team.glh.demo.springboottest</span><span class="token punctuation">=</span><span class="token attr-value">trace</span>
+<span class="token comment" spellcheck="true">#可以指定文件位置，但是必须指定文件名，如果不指定路径，默认在当前项目下生成</span>
+<span class="token comment" spellcheck="true">#logging.file=/home/glh/IdeaProjects/logs/spring-boot-test-demo/spring-boot-test.log</span>
+<span class="token comment" spellcheck="true">#只需要指定日志生成路径，默认生成文件spring.log</span>
+<span class="token attr-name">logging.path</span><span class="token punctuation">=</span><span class="token attr-value">/home/glh/IdeaProjects/logs/spring-boot-test-demo</span>
+<span class="token comment" spellcheck="true">#在控制台输出的格式</span>
+<span class="token attr-name">logging.pattern.console</span><span class="token punctuation">=</span><span class="token attr-value">[%d{yyyy-MM-dd}]:%p %l%m%n</span>
+<span class="token comment" spellcheck="true">#指定文件中日志输出的格式</span>
+<span class="token attr-name">logging.pattern.file</span><span class="token punctuation">=</span><span class="token attr-value">[%d{yyyy-MM-dd}]:%p %l%m%n</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>而在现如今的版本中可以这么指定（spring-boot.2.2.2.RELEASE）</p>
+<pre class="line-numbers language-properties"><code class="language-properties"><span class="token comment" spellcheck="true">#只需要指定日志生成路径，默认生成文件spring.log</span>
+<span class="token comment" spellcheck="true">#logging.file.path=/home/glh/IdeaProjects/logs/spring-boot-test-demo</span>
+<span class="token comment" spellcheck="true">#可以指定文件位置，但是必须指定文件名，如果不指定路径，默认在当前项目下生成</span>
+<span class="token attr-name">logging.file.name</span><span class="token punctuation">=</span><span class="token attr-value">/home/glh/IdeaProjects/logs/spring-boot-test-demo/spring-boot-test.log</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>官方介绍</p>
+<table>
+<thead>
+<tr>
+<th align="left"><code>logging.file.name</code></th>
+<th align="left"><code>logging.file.path</code></th>
+<th align="left">Example</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><em>(none)</em></td>
+<td align="left"><em>(none)</em></td>
+<td align="left"></td>
+<td align="left">Console only logging.</td>
+</tr>
+<tr>
+<td align="left">Specific file</td>
+<td align="left"><em>(none)</em></td>
+<td align="left"><code>my.log</code></td>
+<td align="left">Writes to the specified log file. Names can be an exact location or relative to the current directory.</td>
+</tr>
+<tr>
+<td align="left"><em>(none)</em></td>
+<td align="left">Specific directory</td>
+<td align="left"><code>/var/log</code></td>
+<td align="left">Writes <code>spring.log</code> to the specified directory. Names can be an exact location or relative to the current directory.</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+</ol>
+<p>４.　指定配置文件</p>
+<p><a href="https://www.cnblogs.com/light-zhang/p/8744647.html" target="_blank" rel="noopener">模板参考</a></p>
+<table>
+<thead>
+<tr>
+<th align="left">Logging System</th>
+<th align="left">Customization</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Logback</td>
+<td align="left"><code>logback-spring.xml</code>, <code>logback-spring.groovy</code>, <code>logback.xml</code>, or <code>logback.groovy</code></td>
+</tr>
+<tr>
+<td align="left">Log4j2</td>
+<td align="left"><code>log4j2-spring.xml</code> or <code>log4j2.xml</code></td>
+</tr>
+<tr>
+<td align="left">JDK (Java Util Logging)</td>
+<td align="left"><code>logging.properties</code></td>
+</tr>
+</tbody></table>
+<p>logback.xml:可以被日志框架识别；<strong>可以使用下面的profile进行日志类型指定，例如：在不同环境下使用不同格式的日志类型</strong></p>
+<pre class="line-numbers language-xml"><code class="language-xml"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>springProfile</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dev<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pattern</span><span class="token punctuation">></span></span>
+                    [%-5level] -----------------============= %d{${DATETIME}} [%thread] %logger{36} - %m%n
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pattern</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>springProfile</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>springProfile</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>!dev<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pattern</span><span class="token punctuation">></span></span>
+                    [%-5level] ----------------- %d{${DATETIME}} [%thread] %logger{36} - %m%n
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pattern</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>springProfile</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>５．切换日志框架</p>
+<p>先把原先的日志框架排除，再引入新的日志框架依赖</p>
+<p>例如：切换为log4j2日志框架</p>
+<pre class="line-numbers language-xml"><code class="language-xml">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-web<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token comment" spellcheck="true">&lt;!--排除原先的logging日志框架--></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusions</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusion</span><span class="token punctuation">></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusion</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusions</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+        <span class="token comment" spellcheck="true">&lt;!--引入新的日志框架依赖，版本号自动匹配--></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-log4j2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+]]></content>
+      <categories>
+        <category>后端框架</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git基础操作</title>
+    <url>/blog/post/aa301862.html</url>
+    <content><![CDATA[<p><code>git init</code> ：进入需要git的目录下，设置为本地仓库，执行后会生成一个.git文件</p>
+<p><code>git add .</code>：将未添加的文件添加到本地缓存</p>
+<p><code>git add xxx.js yyy.html</code>：将特定文件添加到git缓存</p>
+<p><code>git commit -m &#39;提交描述&#39;</code>：记录变更到仓库</p>
+<p>需要建立远程仓库，可以使用gitub、gitlab等，复制git仓库的http地址</p>
+<p><code>git remote add origin 拷贝的远程项目地址</code>：设置远程仓库地址，接下来输入git账号及密码</p>
+<p><code>git push -u origin master</code>：提交文件到远程仓库</p>
+<p>设置tag</p>
+<p><code>git tag tag名字</code>：例如git tag 01知识点1，设置当前编辑的文件处于01知识点1的tag下</p>
+<p><code>git tag</code>：查看所有的tag</p>
+<p><code>git push --tags</code>：提交所有的tags到远程仓库</p>
+<p><code>git status</code>：查看工作区状态</p>
+<p>如果想回到某一个tag，去查看相应的信息</p>
+<p><code>git checkout tag名字</code></p>
+]]></content>
+      <categories>
+        <category>代码管理工具</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>idea下git的基础操作</title>
+    <url>/blog/post/4f4a33fd.html</url>
+    <content><![CDATA[<p>前提：电脑上自行安装好git，记得在IDEA的settings里面配置一下git的路径</p>
+<p><img src="../images/git01.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第一步：在idea上创建Git Repository…</p>
+<p><img src="../images/git02.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第二步：选中你要上传的项目，例如我要上传的是demo</p>
+<p>​                                            <img src="../images/git03.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第三步：在VCS这个下面找到Git-Remotes，并输入你在Git网页上的地址</p>
+<p><img src="../images/git04.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="../images/git05.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">)<img src="../images/git12.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">)<img src="../images/git13.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第四步：在你要上传的项目上右键，找到Git-add,然后你会发现你项目下的文件变成了</p>
+<p><img src="../images/git06.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第五步：在同样的位置右键，找到Git-Commit Directory…</p>
+<p><img src="../images/git07.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第六步：输入描述信息，然后commit，其他不用管</p>
+<p><img src="../images/git08.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第七步：在相同位置同样右键，找到Git-repository-push,点击它</p>
+<p><img src="../images/git09.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第八步：在接下来的界面点击push</p>
+<p><img src="../images/git10.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第九步：在右下角出现push successful就是成功了</p>
+<p><img src="../images/git11.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+]]></content>
+      <categories>
+        <category>idea</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>jqGrid自定义搜索框进行条件查询并且刷新表格</title>
     <url>/blog/post/f3e55310.html</url>
     <content><![CDATA[<p>前提：正常使用jqGrid表格插件，只是不愿意使用它的搜索框，所以选择自定义；</p>
@@ -2198,63 +2255,6 @@ Base logback configuration provided for compatibility with Spring Boot 1.1
       </categories>
       <tags>
         <tag>jqGrid</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>idea下git的基础操作</title>
-    <url>/blog/post/4f4a33fd.html</url>
-    <content><![CDATA[<p>前提：电脑上自行安装好git，记得在IDEA的settings里面配置一下git的路径</p>
-<p><img src="../images/git01.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第一步：在idea上创建Git Repository…</p>
-<p><img src="../images/git02.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第二步：选中你要上传的项目，例如我要上传的是demo</p>
-<p>​                                            <img src="../images/git03.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第三步：在VCS这个下面找到Git-Remotes，并输入你在Git网页上的地址</p>
-<p><img src="../images/git04.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p><img src="../images/git05.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">)<img src="../images/git12.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">)<img src="../images/git13.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第四步：在你要上传的项目上右键，找到Git-add,然后你会发现你项目下的文件变成了</p>
-<p><img src="../images/git06.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第五步：在同样的位置右键，找到Git-Commit Directory…</p>
-<p><img src="../images/git07.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第六步：输入描述信息，然后commit，其他不用管</p>
-<p><img src="../images/git08.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第七步：在相同位置同样右键，找到Git-repository-push,点击它</p>
-<p><img src="../images/git09.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第八步：在接下来的界面点击push</p>
-<p><img src="../images/git10.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第九步：在右下角出现push successful就是成功了</p>
-<p><img src="../images/git11.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-]]></content>
-      <categories>
-        <category>idea</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git基础操作</title>
-    <url>/blog/post/aa301862.html</url>
-    <content><![CDATA[<p><code>git init</code> ：进入需要git的目录下，设置为本地仓库，执行后会生成一个.git文件</p>
-<p><code>git add .</code>：将未添加的文件添加到本地缓存</p>
-<p><code>git add xxx.js yyy.html</code>：将特定文件添加到git缓存</p>
-<p><code>git commit -m &#39;提交描述&#39;</code>：记录变更到仓库</p>
-<p>需要建立远程仓库，可以使用gitub、gitlab等，复制git仓库的http地址</p>
-<p><code>git remote add origin 拷贝的远程项目地址</code>：设置远程仓库地址，接下来输入git账号及密码</p>
-<p><code>git push -u origin master</code>：提交文件到远程仓库</p>
-<p>设置tag</p>
-<p><code>git tag tag名字</code>：例如git tag 01知识点1，设置当前编辑的文件处于01知识点1的tag下</p>
-<p><code>git tag</code>：查看所有的tag</p>
-<p><code>git push --tags</code>：提交所有的tags到远程仓库</p>
-<p><code>git status</code>：查看工作区状态</p>
-<p>如果想回到某一个tag，去查看相应的信息</p>
-<p><code>git checkout tag名字</code></p>
-]]></content>
-      <categories>
-        <category>代码管理工具</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -2829,11 +2829,6 @@ sdiff <span class="token operator">&lt;</span>key1<span class="token operator">>
       </tags>
   </entry>
   <entry>
-    <title>刷题记录</title>
-    <url>/blog/post/fe644ae0.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>初次整合springboot+kafka</title>
     <url>/blog/post/572f0779.html</url>
     <content><![CDATA[<p>一、kafka的下载与使用<br>进入官网：<a href="http://kafka.apache.org/" target="_blank" rel="noopener">http://kafka.apache.org/</a><img src="../images/kafka01.png" alt="在这里插入图片描述"><br><img src="../images/kafka02.png" alt="在这里插入图片描述"><br><img src="../images/kafka03.png" alt="在这里插入图片描述"><br>下载好之后解压进入config文件夹编辑一下server.properties和    zookeeper.properties这两个配置文件，目前我也就更改了一下数据存储位置和日志存储位置<br><img src="../images/kafka04.png" alt="在这里插入图片描述">)<img src="../images/kafka05.png" alt="在这里插入图片描述"><br>然后就可以启动：</p>
@@ -2849,6 +2844,11 @@ sdiff <span class="token operator">&lt;</span>key1<span class="token operator">>
         <tag>SpringBoot</tag>
         <tag>kafka</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>刷题记录</title>
+    <url>/blog/post/fe644ae0.html</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>搭建个人的ngrok服务器</title>
