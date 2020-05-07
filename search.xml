@@ -1067,260 +1067,6 @@ Negative matches<span class="token operator">:</span>　　<span class="token co
       </tags>
   </entry>
   <entry>
-    <title>初识SpringBoot之错误处理机制</title>
-    <url>/blog/post/9e23b664.html</url>
-    <content><![CDATA[<h3 id="一、默认错误处理机制"><a href="#一、默认错误处理机制" class="headerlink" title="一、默认错误处理机制"></a>一、默认错误处理机制</h3><p>１．默认效果：</p>
-<p>１）．浏览器，默认返回一个错误页面</p>
-<p><img src="../images/%E9%BB%98%E8%AE%A4%E9%94%99%E8%AF%AF%E9%A1%B5%E9%9D%A2%E4%BF%A1%E6%81%AF.png" alt=""></p>
-<p>浏览器发送请求的请求头：</p>
-<p><img src="../images/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E7%9A%84%E8%AF%B7%E6%B1%82%E5%A4%B4.png" alt=""></p>
-<p>２）．如果其他客户端访问，默认响应一个json数据</p>
-<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
-    <span class="token property">"timestamp"</span><span class="token operator">:</span> <span class="token number">1581062865115</span><span class="token punctuation">,</span>
-    <span class="token property">"status"</span><span class="token operator">:</span> <span class="token number">404</span><span class="token punctuation">,</span>
-    <span class="token property">"error"</span><span class="token operator">:</span> <span class="token string">"Not Found"</span><span class="token punctuation">,</span>
-    <span class="token property">"message"</span><span class="token operator">:</span> <span class="token string">"No message available"</span><span class="token punctuation">,</span>
-    <span class="token property">"path"</span><span class="token operator">:</span> <span class="token string">"/hello2"</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>例如postman发送请求的请求头:</p>
-<p><img src="../images/postman%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E7%9A%84%E8%AF%B7%E6%B1%82%E5%A4%B4.png" alt=""></p>
-<p>原理：参照ErrorMvcAutoConfiguration.class错误处理的自动配置；</p>
-<p>给容器中添加了一下组件：</p>
-<p>１．DefaultErrorAttributes</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//帮我们在页面上共享信息</span>
-<span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>WebRequest webRequest<span class="token punctuation">,</span> <span class="token keyword">boolean</span> includeStackTrace<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> errorAttributes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        errorAttributes<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"timestamp"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">addStatus</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">addErrorDetails</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">,</span> includeStackTrace<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">addPath</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> errorAttributes<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>２．BasicErrorController</p>
-<pre class="line-numbers language-java"><code class="language-java">   <span class="token comment" spellcheck="true">/**
-    *处理默认的/error请求
-    */</span>
-    <span class="token annotation punctuation">@Controller</span>
-<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"${server.error.path:${error.path:/error}}"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BasicErrorController</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractErrorController</span> <span class="token punctuation">{</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>produces <span class="token operator">=</span> MediaType<span class="token punctuation">.</span>TEXT_HTML_VALUE<span class="token punctuation">)</span>
-    <span class="token comment" spellcheck="true">//public static final String TEXT_HTML_VALUE = "text/html";产生html类型的数据,浏览器发送的请求到这个方法处理</span>
-    <span class="token keyword">public</span> ModelAndView <span class="token function">errorHtml</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        HttpStatus status <span class="token operator">=</span> <span class="token function">getStatus</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> model <span class="token operator">=</span> Collections
-                <span class="token punctuation">.</span><span class="token function">unmodifiableMap</span><span class="token punctuation">(</span><span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token function">isIncludeStackTrace</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> MediaType<span class="token punctuation">.</span>TEXT_HTML<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        response<span class="token punctuation">.</span><span class="token function">setStatus</span><span class="token punctuation">(</span>status<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//去哪个页面作为错误页面；包含页面地址和页面内容</span>
-        ModelAndView modelAndView <span class="token operator">=</span> <span class="token function">resolveErrorView</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">,</span> status<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token punctuation">(</span>modelAndView <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token operator">?</span> modelAndView <span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">ModelAndView</span><span class="token punctuation">(</span><span class="token string">"error"</span><span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@RequestMapping</span><span class="token comment" spellcheck="true">//产生json数据，其他软件发送的请求到这个方法处理</span>
-    <span class="token keyword">public</span> ResponseEntity<span class="token operator">&lt;</span>Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">>></span> <span class="token function">error</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        HttpStatus status <span class="token operator">=</span> <span class="token function">getStatus</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>status <span class="token operator">==</span> HttpStatus<span class="token punctuation">.</span>NO_CONTENT<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ResponseEntity</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>status<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> body <span class="token operator">=</span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token function">isIncludeStackTrace</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> MediaType<span class="token punctuation">.</span>ALL<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ResponseEntity</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>body<span class="token punctuation">,</span> status<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>３．ErrorPageCustomizer</p>
-<pre class="line-numbers language-java"><code class="language-java">       <span class="token comment" spellcheck="true">/**
-     * Path of the error controller.
-     *系统出现错误之后来到error请求进行处理（web.xml注册的错误页面规则）
-     */</span>
-    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${error.path:/error}"</span><span class="token punctuation">)</span>
-    <span class="token keyword">private</span> String path <span class="token operator">=</span> <span class="token string">"/error"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>４．DefaultErrorViewResolver</p>
-<pre class="line-numbers language-java"><code class="language-java">        <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> ModelAndView <span class="token function">resolveErrorView</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpStatus status<span class="token punctuation">,</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        ModelAndView modelAndView <span class="token operator">=</span> <span class="token function">resolve</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>status<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>modelAndView <span class="token operator">==</span> null <span class="token operator">&amp;&amp;</span> SERIES_VIEWS<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>status<span class="token punctuation">.</span><span class="token function">series</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            modelAndView <span class="token operator">=</span> <span class="token function">resolve</span><span class="token punctuation">(</span>SERIES_VIEWS<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>status<span class="token punctuation">.</span><span class="token function">series</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> modelAndView<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">private</span> ModelAndView <span class="token function">resolve</span><span class="token punctuation">(</span>String viewName<span class="token punctuation">,</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//SpringBoot默认可以去找到一个页面？例如error/404</span>
-        String errorViewName <span class="token operator">=</span> <span class="token string">"error/"</span> <span class="token operator">+</span> viewName<span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//模板引擎可以解析这个页面地址就用模板引擎解析</span>
-        TemplateAvailabilityProvider provider <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>templateAvailabilityProviders<span class="token punctuation">.</span><span class="token function">getProvider</span><span class="token punctuation">(</span>errorViewName<span class="token punctuation">,</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span>applicationContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>provider <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//模板引擎可用的情况下返回到errorViewName指定的视图地址</span>
-            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ModelAndView</span><span class="token punctuation">(</span>errorViewName<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//模板引擎不可用，就在静态资源文件夹下找errorViewName对应的页面error/404.html</span>
-        <span class="token keyword">return</span> <span class="token function">resolveResource</span><span class="token punctuation">(</span>errorViewName<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>步骤：</p>
-<p>​    一旦出现4xx、5xx的错误，<code>ErrorPageCustomizer</code>会生效（定制错误的响应规则）；就会来到/error请求；就会被<code>BasicErrorController</code>处理;</p>
-<p>​    1).响应页面:去哪个页面是由<code>DefaultErrorViewResolver</code>解析得到的</p>
-<pre class="line-numbers language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * Resolve any specific error views. By default this method delegates to
-     * {@link ErrorViewResolver ErrorViewResolvers}.
-     * @param request the request
-     * @param response the response
-     * @param status the HTTP status
-     * @param model the suggested model
-     * @return a specific {@link ModelAndView} or {@code null} if the default should be
-     * used
-     * @since 1.4.0
-     */</span>
-    <span class="token keyword">protected</span> ModelAndView <span class="token function">resolveErrorView</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">,</span> HttpStatus status<span class="token punctuation">,</span>
-            Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//所有的ErrorViewerResolver得到ModelAndView</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>ErrorViewResolver resolver <span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>errorViewResolvers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            ModelAndView modelAndView <span class="token operator">=</span> resolver<span class="token punctuation">.</span><span class="token function">resolveErrorView</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> status<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>modelAndView <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">return</span> modelAndView<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>２．如何定制错误响应：</p>
-<p>１）、如何定制错误的页面</p>
-<p>​        a).<strong>有模板引擎的情况下；error/状态码</strong>；【将错误页面命名为　错误状态码.html　放在模板引擎文件夹下的error文件夹下】，发生此状态码的错误就会来到对应的页面；</p>
-<p>​            我们可以使用4xx、5xx作为错误页面的文件名来匹配这种类型的所有错误，精确优先（优先寻找精确的状态码.html）；</p>
-<p>​            页面能获取的信息：</p>
-<pre class="line-numbers language-java"><code class="language-java">    timestamp<span class="token operator">:</span>时间戳
-    status<span class="token operator">:</span>状态码
-    error<span class="token operator">:</span>错误提示
-    exception<span class="token operator">:</span>异常对象
-    message<span class="token operator">:</span>异常信息
-    errors<span class="token operator">:</span>JSR303数据校验的错误都在这里面<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>举例：<img src="../images/error-4xx-5xx.png" alt="">        <img src="../images/eg-5xx.html.png" alt=""></p>
-<p>b).<strong>没有模板引擎的情况下（模板引擎找不到这个错误页面）</strong>，静态资源文件夹下去找<strong>（了解即可）</strong></p>
-<p>​        c).以上都没有，就是来到默认的空白信息页面</p>
-<p>２）、如何定制错误的json数据</p>
-<p>​    a).自定义异常处理＆返回定制json数据；</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@ControllerAdvice</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyExceptionHandler</span> <span class="token punctuation">{</span>
-
-      <span class="token comment" spellcheck="true">/**
-     * 浏览器和客户端返回的都是json数据
-     * @param e
-     * @return
-     */</span>
-    <span class="token annotation punctuation">@ResponseBody</span>
-    <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span>UserNotExitExption<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span>  Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> <span class="token function">handleException</span><span class="token punctuation">(</span>Exception e<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> map<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">,</span><span class="token string">"user not exit!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"msg"</span><span class="token punctuation">,</span>e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> map<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>缺点：没有自适应效果</strong></p>
-<p>​    b).转发到 <code>/error</code>进行自适应响应效果处理</p>
-<pre class="line-numbers language-java"><code class="language-java"> <span class="token annotation punctuation">@ControllerAdvice</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyExceptionHandler</span> <span class="token punctuation">{</span>
-<span class="token comment" spellcheck="true">/**
-     * @param e
-     * @return
-     */</span>
-    <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span>UserNotExitExption<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span>  String <span class="token function">handleException</span><span class="token punctuation">(</span>Exception e<span class="token punctuation">,</span> HttpServletRequest req<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> map<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">,</span><span class="token string">"user not exit!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"message"</span><span class="token punctuation">,</span>e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">/**
-         *  传入我们自己的错误状态码　4xx  5xx ,否则就不会进入错误页面的解析过程
-         * Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
-         */</span>
-        req<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"javax.servlet.error.status_code"</span><span class="token punctuation">,</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">//转发到/error，让它进行自适应处理</span>
-        <span class="token comment" spellcheck="true">//BasicErrorController中的errorHtml和error方法会进行自适应处理</span>
-        <span class="token keyword">return</span> <span class="token string">"forward:/error"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>缺点：这种不能返回指定的信息</strong></p>
-<p>​    c).将我们的定制数据携带出去</p>
-<p>出现错误以后，会来到/error请求，会被<code>BasicErrorController</code>处理，响应出去可以获取的数据是由<code>getErrorAttributes</code>（这个方法是<code>BasicErrorController</code>的父类<code>AbstractErrorController</code>规定的方法）得到的，</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">AbstractErrorController</span> <span class="token keyword">implements</span> <span class="token class-name">ErrorController</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>​    方法一（较复杂）：完全类编写一个<code>ErrorController</code>的实现类【或者编写<code>AbstractErrorController</code>的子类】，放在容器中；</p>
-<p>​    <strong>方法二</strong>：页面上能用的数据，或者是json返回的数据都是通过errorAttributes.getErrorAttributes(webRequest, includeStackTrace)得到的；</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">AbstractErrorController</span> <span class="token keyword">implements</span> <span class="token class-name">ErrorController</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">final</span> ErrorAttributes errorAttributes<span class="token punctuation">;</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token keyword">protected</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> <span class="token keyword">boolean</span> includeStackTrace<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        WebRequest webRequest <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ServletWebRequest</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>errorAttributes<span class="token punctuation">.</span><span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>webRequest<span class="token punctuation">,</span> includeStackTrace<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DefaultErrorAttributes</span> <span class="token keyword">implements</span> <span class="token class-name">ErrorAttributes</span><span class="token punctuation">,</span> HandlerExceptionResolver<span class="token punctuation">,</span> Ordered <span class="token punctuation">{</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-        <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>WebRequest webRequest<span class="token punctuation">,</span> <span class="token keyword">boolean</span> includeStackTrace<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> errorAttributes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        errorAttributes<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"timestamp"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">addStatus</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">addErrorDetails</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">,</span> includeStackTrace<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">addPath</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> errorAttributes<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>容器中<code>DefaultErrorAttributes</code>中的getErrorAttributes（）默认进行任务处理；</p>
-<p>所以我们<strong>自定义ErrorAttributes</strong>：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyErrorAttributes</span> <span class="token keyword">extends</span> <span class="token class-name">DefaultErrorAttributes</span> <span class="token punctuation">{</span>
-
-    <span class="token comment" spellcheck="true">//返回的map就是页面和json能获取的所有字段</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>WebRequest webRequest<span class="token punctuation">,</span> <span class="token keyword">boolean</span> includeStackTrace<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> map<span class="token operator">=</span><span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>webRequest<span class="token punctuation">,</span>includeStackTrace<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"team"</span><span class="token punctuation">,</span><span class="token string">"glh"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">//int SCOPE_REQUEST = 0;请求域</span>
-        <span class="token comment" spellcheck="true">//int SCOPE_SESSION = 1;会话域</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> ext<span class="token operator">=</span><span class="token punctuation">(</span>Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span><span class="token punctuation">)</span> webRequest<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"ext"</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"ext"</span><span class="token punctuation">,</span>ext<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> map<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>重新编写<code>MyExceptionHandler</code>，将自定义数据map加入到request域中，给自定义的MyErrorAttributes进行处理</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@ControllerAdvice</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyExceptionHandler</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/**
-     * @param e
-     * @return
-     */</span>
-    <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span>UserNotExitExption<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span>  String <span class="token function">handleException</span><span class="token punctuation">(</span>Exception e<span class="token punctuation">,</span> HttpServletRequest req<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> map<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">,</span><span class="token string">"user not exit!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"message"</span><span class="token punctuation">,</span>e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">/**
-         *  传入我们自己的错误状态码　4xx  5xx ,否则就不会进入错误页面的解析过程
-         * Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
-         */</span>
-        req<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"javax.servlet.error.status_code"</span><span class="token punctuation">,</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">//将自定义数据map加入到request域中，给MyErrorAttributes进行处理</span>
-        req<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"ext"</span><span class="token punctuation">,</span>map<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//转发到/error，让它进行自适应处理</span>
-        <span class="token comment" spellcheck="true">//BasicErrorController中的errorHtml和error方法会进行自适应处理</span>
-        <span class="token keyword">return</span> <span class="token string">"forward:/error"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>最终效果：响应是自适应的，可以通过定制ErrorAttributes改变需要返回的内容</p>
-]]></content>
-      <categories>
-        <category>后端框架</category>
-      </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>初识SpringBoot关于web开发</title>
     <url>/blog/post/29159a57.html</url>
     <content><![CDATA[<h3 id="一、使用SpringBoot"><a href="#一、使用SpringBoot" class="headerlink" title="一、使用SpringBoot"></a>一、使用SpringBoot</h3><p>１．创建SpringBoot应用，选中我们需要的模块；</p>
@@ -2130,60 +1876,257 @@ Base logback configuration provided for compatibility with Spring Boot 1.1
       </tags>
   </entry>
   <entry>
-    <title>git基础操作</title>
-    <url>/blog/post/aa301862.html</url>
-    <content><![CDATA[<p><code>git init</code> ：进入需要git的目录下，设置为本地仓库，执行后会生成一个.git文件</p>
-<p><code>git add .</code>：将未添加的文件添加到本地缓存</p>
-<p><code>git add xxx.js yyy.html</code>：将特定文件添加到git缓存</p>
-<p><code>git commit -m &#39;提交描述&#39;</code>：记录变更到仓库</p>
-<p>需要建立远程仓库，可以使用gitub、gitlab等，复制git仓库的http地址</p>
-<p><code>git remote add origin 拷贝的远程项目地址</code>：设置远程仓库地址，接下来输入git账号及密码</p>
-<p><code>git push -u origin master</code>：提交文件到远程仓库</p>
-<p>设置tag</p>
-<p><code>git tag tag名字</code>：例如git tag 01知识点1，设置当前编辑的文件处于01知识点1的tag下</p>
-<p><code>git tag</code>：查看所有的tag</p>
-<p><code>git push --tags</code>：提交所有的tags到远程仓库</p>
-<p><code>git status</code>：查看工作区状态</p>
-<p>如果想回到某一个tag，去查看相应的信息</p>
-<p><code>git checkout tag名字</code></p>
+    <title>初识SpringBoot之错误处理机制</title>
+    <url>/blog/post/9e23b664.html</url>
+    <content><![CDATA[<h3 id="一、默认错误处理机制"><a href="#一、默认错误处理机制" class="headerlink" title="一、默认错误处理机制"></a>一、默认错误处理机制</h3><p>１．默认效果：</p>
+<p>１）．浏览器，默认返回一个错误页面</p>
+<p><img src="../images/%E9%BB%98%E8%AE%A4%E9%94%99%E8%AF%AF%E9%A1%B5%E9%9D%A2%E4%BF%A1%E6%81%AF.png" alt=""></p>
+<p>浏览器发送请求的请求头：</p>
+<p><img src="../images/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E7%9A%84%E8%AF%B7%E6%B1%82%E5%A4%B4.png" alt=""></p>
+<p>２）．如果其他客户端访问，默认响应一个json数据</p>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"timestamp"</span><span class="token operator">:</span> <span class="token number">1581062865115</span><span class="token punctuation">,</span>
+    <span class="token property">"status"</span><span class="token operator">:</span> <span class="token number">404</span><span class="token punctuation">,</span>
+    <span class="token property">"error"</span><span class="token operator">:</span> <span class="token string">"Not Found"</span><span class="token punctuation">,</span>
+    <span class="token property">"message"</span><span class="token operator">:</span> <span class="token string">"No message available"</span><span class="token punctuation">,</span>
+    <span class="token property">"path"</span><span class="token operator">:</span> <span class="token string">"/hello2"</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>例如postman发送请求的请求头:</p>
+<p><img src="../images/postman%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E7%9A%84%E8%AF%B7%E6%B1%82%E5%A4%B4.png" alt=""></p>
+<p>原理：参照ErrorMvcAutoConfiguration.class错误处理的自动配置；</p>
+<p>给容器中添加了一下组件：</p>
+<p>１．DefaultErrorAttributes</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//帮我们在页面上共享信息</span>
+<span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>WebRequest webRequest<span class="token punctuation">,</span> <span class="token keyword">boolean</span> includeStackTrace<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> errorAttributes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        errorAttributes<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"timestamp"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">addStatus</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">addErrorDetails</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">,</span> includeStackTrace<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">addPath</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> errorAttributes<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>２．BasicErrorController</p>
+<pre class="line-numbers language-java"><code class="language-java">   <span class="token comment" spellcheck="true">/**
+    *处理默认的/error请求
+    */</span>
+    <span class="token annotation punctuation">@Controller</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"${server.error.path:${error.path:/error}}"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BasicErrorController</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractErrorController</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>produces <span class="token operator">=</span> MediaType<span class="token punctuation">.</span>TEXT_HTML_VALUE<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">//public static final String TEXT_HTML_VALUE = "text/html";产生html类型的数据,浏览器发送的请求到这个方法处理</span>
+    <span class="token keyword">public</span> ModelAndView <span class="token function">errorHtml</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        HttpStatus status <span class="token operator">=</span> <span class="token function">getStatus</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> model <span class="token operator">=</span> Collections
+                <span class="token punctuation">.</span><span class="token function">unmodifiableMap</span><span class="token punctuation">(</span><span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token function">isIncludeStackTrace</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> MediaType<span class="token punctuation">.</span>TEXT_HTML<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        response<span class="token punctuation">.</span><span class="token function">setStatus</span><span class="token punctuation">(</span>status<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//去哪个页面作为错误页面；包含页面地址和页面内容</span>
+        ModelAndView modelAndView <span class="token operator">=</span> <span class="token function">resolveErrorView</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">,</span> status<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>modelAndView <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token operator">?</span> modelAndView <span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">ModelAndView</span><span class="token punctuation">(</span><span class="token string">"error"</span><span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token comment" spellcheck="true">//产生json数据，其他软件发送的请求到这个方法处理</span>
+    <span class="token keyword">public</span> ResponseEntity<span class="token operator">&lt;</span>Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">>></span> <span class="token function">error</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        HttpStatus status <span class="token operator">=</span> <span class="token function">getStatus</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>status <span class="token operator">==</span> HttpStatus<span class="token punctuation">.</span>NO_CONTENT<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ResponseEntity</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>status<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> body <span class="token operator">=</span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token function">isIncludeStackTrace</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> MediaType<span class="token punctuation">.</span>ALL<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ResponseEntity</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>body<span class="token punctuation">,</span> status<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>３．ErrorPageCustomizer</p>
+<pre class="line-numbers language-java"><code class="language-java">       <span class="token comment" spellcheck="true">/**
+     * Path of the error controller.
+     *系统出现错误之后来到error请求进行处理（web.xml注册的错误页面规则）
+     */</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${error.path:/error}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String path <span class="token operator">=</span> <span class="token string">"/error"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>４．DefaultErrorViewResolver</p>
+<pre class="line-numbers language-java"><code class="language-java">        <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> ModelAndView <span class="token function">resolveErrorView</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpStatus status<span class="token punctuation">,</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ModelAndView modelAndView <span class="token operator">=</span> <span class="token function">resolve</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>status<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>modelAndView <span class="token operator">==</span> null <span class="token operator">&amp;&amp;</span> SERIES_VIEWS<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>status<span class="token punctuation">.</span><span class="token function">series</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            modelAndView <span class="token operator">=</span> <span class="token function">resolve</span><span class="token punctuation">(</span>SERIES_VIEWS<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>status<span class="token punctuation">.</span><span class="token function">series</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> modelAndView<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> ModelAndView <span class="token function">resolve</span><span class="token punctuation">(</span>String viewName<span class="token punctuation">,</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//SpringBoot默认可以去找到一个页面？例如error/404</span>
+        String errorViewName <span class="token operator">=</span> <span class="token string">"error/"</span> <span class="token operator">+</span> viewName<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//模板引擎可以解析这个页面地址就用模板引擎解析</span>
+        TemplateAvailabilityProvider provider <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>templateAvailabilityProviders<span class="token punctuation">.</span><span class="token function">getProvider</span><span class="token punctuation">(</span>errorViewName<span class="token punctuation">,</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>applicationContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>provider <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//模板引擎可用的情况下返回到errorViewName指定的视图地址</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ModelAndView</span><span class="token punctuation">(</span>errorViewName<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//模板引擎不可用，就在静态资源文件夹下找errorViewName对应的页面error/404.html</span>
+        <span class="token keyword">return</span> <span class="token function">resolveResource</span><span class="token punctuation">(</span>errorViewName<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>步骤：</p>
+<p>​    一旦出现4xx、5xx的错误，<code>ErrorPageCustomizer</code>会生效（定制错误的响应规则）；就会来到/error请求；就会被<code>BasicErrorController</code>处理;</p>
+<p>​    1).响应页面:去哪个页面是由<code>DefaultErrorViewResolver</code>解析得到的</p>
+<pre class="line-numbers language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * Resolve any specific error views. By default this method delegates to
+     * {@link ErrorViewResolver ErrorViewResolvers}.
+     * @param request the request
+     * @param response the response
+     * @param status the HTTP status
+     * @param model the suggested model
+     * @return a specific {@link ModelAndView} or {@code null} if the default should be
+     * used
+     * @since 1.4.0
+     */</span>
+    <span class="token keyword">protected</span> ModelAndView <span class="token function">resolveErrorView</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">,</span> HttpStatus status<span class="token punctuation">,</span>
+            Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//所有的ErrorViewerResolver得到ModelAndView</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>ErrorViewResolver resolver <span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>errorViewResolvers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            ModelAndView modelAndView <span class="token operator">=</span> resolver<span class="token punctuation">.</span><span class="token function">resolveErrorView</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> status<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>modelAndView <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> modelAndView<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>２．如何定制错误响应：</p>
+<p>１）、如何定制错误的页面</p>
+<p>​        a).<strong>有模板引擎的情况下；error/状态码</strong>；【将错误页面命名为　错误状态码.html　放在模板引擎文件夹下的error文件夹下】，发生此状态码的错误就会来到对应的页面；</p>
+<p>​            我们可以使用4xx、5xx作为错误页面的文件名来匹配这种类型的所有错误，精确优先（优先寻找精确的状态码.html）；</p>
+<p>​            页面能获取的信息：</p>
+<pre class="line-numbers language-java"><code class="language-java">    timestamp<span class="token operator">:</span>时间戳
+    status<span class="token operator">:</span>状态码
+    error<span class="token operator">:</span>错误提示
+    exception<span class="token operator">:</span>异常对象
+    message<span class="token operator">:</span>异常信息
+    errors<span class="token operator">:</span>JSR303数据校验的错误都在这里面<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>举例：<img src="../images/error-4xx-5xx.png" alt="">        <img src="../images/eg-5xx.html.png" alt=""></p>
+<p>b).<strong>没有模板引擎的情况下（模板引擎找不到这个错误页面）</strong>，静态资源文件夹下去找<strong>（了解即可）</strong></p>
+<p>​        c).以上都没有，就是来到默认的空白信息页面</p>
+<p>２）、如何定制错误的json数据</p>
+<p>​    a).自定义异常处理＆返回定制json数据；</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@ControllerAdvice</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyExceptionHandler</span> <span class="token punctuation">{</span>
+
+      <span class="token comment" spellcheck="true">/**
+     * 浏览器和客户端返回的都是json数据
+     * @param e
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@ResponseBody</span>
+    <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span>UserNotExitExption<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span>  Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> <span class="token function">handleException</span><span class="token punctuation">(</span>Exception e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> map<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">,</span><span class="token string">"user not exit!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"msg"</span><span class="token punctuation">,</span>e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> map<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>缺点：没有自适应效果</strong></p>
+<p>​    b).转发到 <code>/error</code>进行自适应响应效果处理</p>
+<pre class="line-numbers language-java"><code class="language-java"> <span class="token annotation punctuation">@ControllerAdvice</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyExceptionHandler</span> <span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">/**
+     * @param e
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span>UserNotExitExption<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span>  String <span class="token function">handleException</span><span class="token punctuation">(</span>Exception e<span class="token punctuation">,</span> HttpServletRequest req<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> map<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">,</span><span class="token string">"user not exit!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"message"</span><span class="token punctuation">,</span>e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">/**
+         *  传入我们自己的错误状态码　4xx  5xx ,否则就不会进入错误页面的解析过程
+         * Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
+         */</span>
+        req<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"javax.servlet.error.status_code"</span><span class="token punctuation">,</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//转发到/error，让它进行自适应处理</span>
+        <span class="token comment" spellcheck="true">//BasicErrorController中的errorHtml和error方法会进行自适应处理</span>
+        <span class="token keyword">return</span> <span class="token string">"forward:/error"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>缺点：这种不能返回指定的信息</strong></p>
+<p>​    c).将我们的定制数据携带出去</p>
+<p>出现错误以后，会来到/error请求，会被<code>BasicErrorController</code>处理，响应出去可以获取的数据是由<code>getErrorAttributes</code>（这个方法是<code>BasicErrorController</code>的父类<code>AbstractErrorController</code>规定的方法）得到的，</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">AbstractErrorController</span> <span class="token keyword">implements</span> <span class="token class-name">ErrorController</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>​    方法一（较复杂）：完全类编写一个<code>ErrorController</code>的实现类【或者编写<code>AbstractErrorController</code>的子类】，放在容器中；</p>
+<p>​    <strong>方法二</strong>：页面上能用的数据，或者是json返回的数据都是通过errorAttributes.getErrorAttributes(webRequest, includeStackTrace)得到的；</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">AbstractErrorController</span> <span class="token keyword">implements</span> <span class="token class-name">ErrorController</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> ErrorAttributes errorAttributes<span class="token punctuation">;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token keyword">protected</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> <span class="token keyword">boolean</span> includeStackTrace<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        WebRequest webRequest <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ServletWebRequest</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>errorAttributes<span class="token punctuation">.</span><span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>webRequest<span class="token punctuation">,</span> includeStackTrace<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DefaultErrorAttributes</span> <span class="token keyword">implements</span> <span class="token class-name">ErrorAttributes</span><span class="token punctuation">,</span> HandlerExceptionResolver<span class="token punctuation">,</span> Ordered <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>WebRequest webRequest<span class="token punctuation">,</span> <span class="token keyword">boolean</span> includeStackTrace<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> errorAttributes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        errorAttributes<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"timestamp"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">addStatus</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">addErrorDetails</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">,</span> includeStackTrace<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">addPath</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> errorAttributes<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>容器中<code>DefaultErrorAttributes</code>中的getErrorAttributes（）默认进行任务处理；</p>
+<p>所以我们<strong>自定义ErrorAttributes</strong>：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyErrorAttributes</span> <span class="token keyword">extends</span> <span class="token class-name">DefaultErrorAttributes</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">//返回的map就是页面和json能获取的所有字段</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>WebRequest webRequest<span class="token punctuation">,</span> <span class="token keyword">boolean</span> includeStackTrace<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> map<span class="token operator">=</span><span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>webRequest<span class="token punctuation">,</span>includeStackTrace<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"team"</span><span class="token punctuation">,</span><span class="token string">"glh"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//int SCOPE_REQUEST = 0;请求域</span>
+        <span class="token comment" spellcheck="true">//int SCOPE_SESSION = 1;会话域</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> ext<span class="token operator">=</span><span class="token punctuation">(</span>Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span><span class="token punctuation">)</span> webRequest<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"ext"</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"ext"</span><span class="token punctuation">,</span>ext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> map<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>重新编写<code>MyExceptionHandler</code>，将自定义数据map加入到request域中，给自定义的MyErrorAttributes进行处理</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@ControllerAdvice</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyExceptionHandler</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**
+     * @param e
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span>UserNotExitExption<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span>  String <span class="token function">handleException</span><span class="token punctuation">(</span>Exception e<span class="token punctuation">,</span> HttpServletRequest req<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> map<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">,</span><span class="token string">"user not exit!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"message"</span><span class="token punctuation">,</span>e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">/**
+         *  传入我们自己的错误状态码　4xx  5xx ,否则就不会进入错误页面的解析过程
+         * Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
+         */</span>
+        req<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"javax.servlet.error.status_code"</span><span class="token punctuation">,</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//将自定义数据map加入到request域中，给MyErrorAttributes进行处理</span>
+        req<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"ext"</span><span class="token punctuation">,</span>map<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//转发到/error，让它进行自适应处理</span>
+        <span class="token comment" spellcheck="true">//BasicErrorController中的errorHtml和error方法会进行自适应处理</span>
+        <span class="token keyword">return</span> <span class="token string">"forward:/error"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>最终效果：响应是自适应的，可以通过定制ErrorAttributes改变需要返回的内容</p>
 ]]></content>
       <categories>
-        <category>代码管理工具</category>
+        <category>后端框架</category>
       </categories>
       <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>idea下git的基础操作</title>
-    <url>/blog/post/4f4a33fd.html</url>
-    <content><![CDATA[<p>前提：电脑上自行安装好git，记得在IDEA的settings里面配置一下git的路径</p>
-<p><img src="../images/git01.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第一步：在idea上创建Git Repository…</p>
-<p><img src="../images/git02.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第二步：选中你要上传的项目，例如我要上传的是demo</p>
-<p>​                                            <img src="../images/git03.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第三步：在VCS这个下面找到Git-Remotes，并输入你在Git网页上的地址</p>
-<p><img src="../images/git04.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p><img src="../images/git05.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">)<img src="../images/git12.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">)<img src="../images/git13.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第四步：在你要上传的项目上右键，找到Git-add,然后你会发现你项目下的文件变成了</p>
-<p><img src="../images/git06.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第五步：在同样的位置右键，找到Git-Commit Directory…</p>
-<p><img src="../images/git07.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第六步：输入描述信息，然后commit，其他不用管</p>
-<p><img src="../images/git08.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第七步：在相同位置同样右键，找到Git-repository-push,点击它</p>
-<p><img src="../images/git09.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第八步：在接下来的界面点击push</p>
-<p><img src="../images/git10.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>第九步：在右下角出现push successful就是成功了</p>
-<p><img src="../images/git11.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-]]></content>
-      <categories>
-        <category>idea</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
+        <tag>SpringBoot</tag>
       </tags>
   </entry>
   <entry>
@@ -2255,6 +2198,63 @@ Base logback configuration provided for compatibility with Spring Boot 1.1
       </categories>
       <tags>
         <tag>jqGrid</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>idea下git的基础操作</title>
+    <url>/blog/post/4f4a33fd.html</url>
+    <content><![CDATA[<p>前提：电脑上自行安装好git，记得在IDEA的settings里面配置一下git的路径</p>
+<p><img src="../images/git01.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第一步：在idea上创建Git Repository…</p>
+<p><img src="../images/git02.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第二步：选中你要上传的项目，例如我要上传的是demo</p>
+<p>​                                            <img src="../images/git03.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第三步：在VCS这个下面找到Git-Remotes，并输入你在Git网页上的地址</p>
+<p><img src="../images/git04.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="../images/git05.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">)<img src="../images/git12.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">)<img src="../images/git13.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第四步：在你要上传的项目上右键，找到Git-add,然后你会发现你项目下的文件变成了</p>
+<p><img src="../images/git06.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第五步：在同样的位置右键，找到Git-Commit Directory…</p>
+<p><img src="../images/git07.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第六步：输入描述信息，然后commit，其他不用管</p>
+<p><img src="../images/git08.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第七步：在相同位置同样右键，找到Git-repository-push,点击它</p>
+<p><img src="../images/git09.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第八步：在接下来的界面点击push</p>
+<p><img src="../images/git10.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>第九步：在右下角出现push successful就是成功了</p>
+<p><img src="../images/git11.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+]]></content>
+      <categories>
+        <category>idea</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git基础操作</title>
+    <url>/blog/post/aa301862.html</url>
+    <content><![CDATA[<p><code>git init</code> ：进入需要git的目录下，设置为本地仓库，执行后会生成一个.git文件</p>
+<p><code>git add .</code>：将未添加的文件添加到本地缓存</p>
+<p><code>git add xxx.js yyy.html</code>：将特定文件添加到git缓存</p>
+<p><code>git commit -m &#39;提交描述&#39;</code>：记录变更到仓库</p>
+<p>需要建立远程仓库，可以使用gitub、gitlab等，复制git仓库的http地址</p>
+<p><code>git remote add origin 拷贝的远程项目地址</code>：设置远程仓库地址，接下来输入git账号及密码</p>
+<p><code>git push -u origin master</code>：提交文件到远程仓库</p>
+<p>设置tag</p>
+<p><code>git tag tag名字</code>：例如git tag 01知识点1，设置当前编辑的文件处于01知识点1的tag下</p>
+<p><code>git tag</code>：查看所有的tag</p>
+<p><code>git push --tags</code>：提交所有的tags到远程仓库</p>
+<p><code>git status</code>：查看工作区状态</p>
+<p>如果想回到某一个tag，去查看相应的信息</p>
+<p><code>git checkout tag名字</code></p>
+]]></content>
+      <categories>
+        <category>代码管理工具</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -2829,6 +2829,11 @@ sdiff <span class="token operator">&lt;</span>key1<span class="token operator">>
       </tags>
   </entry>
   <entry>
+    <title>刷题记录</title>
+    <url>/blog/post/fe644ae0.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>初次整合springboot+kafka</title>
     <url>/blog/post/572f0779.html</url>
     <content><![CDATA[<p>一、kafka的下载与使用<br>进入官网：<a href="http://kafka.apache.org/" target="_blank" rel="noopener">http://kafka.apache.org/</a><img src="../images/kafka01.png" alt="在这里插入图片描述"><br><img src="../images/kafka02.png" alt="在这里插入图片描述"><br><img src="../images/kafka03.png" alt="在这里插入图片描述"><br>下载好之后解压进入config文件夹编辑一下server.properties和    zookeeper.properties这两个配置文件，目前我也就更改了一下数据存储位置和日志存储位置<br><img src="../images/kafka04.png" alt="在这里插入图片描述">)<img src="../images/kafka05.png" alt="在这里插入图片描述"><br>然后就可以启动：</p>
@@ -2844,11 +2849,6 @@ sdiff <span class="token operator">&lt;</span>key1<span class="token operator">>
         <tag>SpringBoot</tag>
         <tag>kafka</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>刷题记录</title>
-    <url>/blog/post/fe644ae0.html</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>搭建个人的ngrok服务器</title>
