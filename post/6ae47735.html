@@ -366,7 +366,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h3 id="１、-Value的使用"><a href="#１、-Value的使用" class="headerlink" title="１、@Value的使用"></a>１、@Value的使用</h3><p><img src="../images/@Value.png" alt=""></p>
-<h3 id="2-Value获取值和-ConfigurationProperties获取值比较"><a href="#2-Value获取值和-ConfigurationProperties获取值比较" class="headerlink" title="2.　@Value获取值和@ConfigurationProperties获取值比较"></a>2.　@Value获取值和@ConfigurationProperties获取值比较</h3><table>
+<h3 id="2、Value获取值和-ConfigurationProperties获取值比较"><a href="#2、Value获取值和-ConfigurationProperties获取值比较" class="headerlink" title="2、Value获取值和@ConfigurationProperties获取值比较"></a>2、Value获取值和@ConfigurationProperties获取值比较</h3><table>
 <thead>
 <tr>
 <th></th>
@@ -405,7 +405,7 @@
 <p>配置文件yml还是properties他们都能获取到值，</p>
 <p>如果我们只是在某个业务逻辑中获取配置文件中<strong>某项值</strong>，使用@Value</p>
 <p>如果我们专门编写了一个javaBean来和配置文件中进行映射，那我们就直接使用@ConfigurationProperties</p>
-<h3 id="3-配置文件注入值数据校验"><a href="#3-配置文件注入值数据校验" class="headerlink" title="3.　配置文件注入值数据校验"></a>3.　配置文件注入值数据校验</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<h3 id="3、置文件注入值数据校验"><a href="#3、置文件注入值数据校验" class="headerlink" title="3、置文件注入值数据校验"></a>3、置文件注入值数据校验</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
 <span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"person"</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@Validated</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
@@ -423,8 +423,7 @@
     <span class="token keyword">private</span> Boolean online<span class="token punctuation">;</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>###　４． @PropertySource &amp; @ImportResource</p>
-<p>4.1 @<strong>PropertySource</strong>:　加载指定的配置文件；</p>
+<h3 id="4、-PropertySource-amp-ImportResource"><a href="#4、-PropertySource-amp-ImportResource" class="headerlink" title="4、@PropertySource &amp; @ImportResource"></a>4、@PropertySource &amp; @ImportResource</h3><p>4.1 @<strong>PropertySource</strong>:　加载指定的配置文件；</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
 <span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"person"</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@PropertySource</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"classpath:person.properties"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -489,7 +488,7 @@
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="4-配置文件占位符"><a href="#4-配置文件占位符" class="headerlink" title="4.　配置文件占位符"></a>4.　配置文件占位符</h3><p>１．随机数</p>
+<h3 id="5-配置文件占位符"><a href="#5-配置文件占位符" class="headerlink" title="5.　配置文件占位符"></a>5.　配置文件占位符</h3><p>１．随机数</p>
 <pre class="line-numbers language-java"><code class="language-java">$<span class="token punctuation">{</span>random<span class="token punctuation">.</span>uuid<span class="token punctuation">}</span>、$<span class="token punctuation">{</span>random<span class="token punctuation">.</span>value<span class="token punctuation">}</span>、$<span class="token punctuation">{</span>random<span class="token punctuation">.</span><span class="token keyword">int</span><span class="token punctuation">}</span>、$<span class="token punctuation">{</span>random<span class="token punctuation">.</span><span class="token keyword">long</span><span class="token punctuation">}</span>、$<span class="token punctuation">{</span>random<span class="token punctuation">.</span><span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">}</span>、$<span class="token punctuation">{</span>random<span class="token punctuation">.</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">,</span><span class="token number">65536</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>２．占位符获取之前配置的值，如果没有可以使用：指定默认值；</p>
 <pre class="line-numbers language-properties"><code class="language-properties"><span class="token attr-name">person.name</span><span class="token punctuation">=</span><span class="token attr-value">李四${random.uuid}</span>
@@ -502,7 +501,7 @@
 <span class="token comment" spellcheck="true">#${person.name2:xxxx}可以给没有的属性name2赋值xxxx</span>
 <span class="token attr-name">person.dog.name</span><span class="token punctuation">=</span><span class="token attr-value">哈士奇 is ${person.name2:xxxx}'s　dog</span>
 <span class="token attr-name">person.dog.number</span><span class="token punctuation">=</span><span class="token attr-value">10001</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="5、Profile"><a href="#5、Profile" class="headerlink" title="5、Profile"></a>5、Profile</h3><h4 id="5-1-多Profile文件"><a href="#5-1-多Profile文件" class="headerlink" title="5.1.多Profile文件"></a><strong>5.1.多Profile文件</strong></h4><p>我们在主配置文件编写的时候，文件名可以是　application-{profile}.properties/yml</p>
+<h3 id="6、Profile"><a href="#6、Profile" class="headerlink" title="6、Profile"></a>6、Profile</h3><h4 id="5-1-多Profile文件"><a href="#5-1-多Profile文件" class="headerlink" title="5.1.多Profile文件"></a><strong>5.1.多Profile文件</strong></h4><p>我们在主配置文件编写的时候，文件名可以是　application-{profile}.properties/yml</p>
 <p>默认使用application.properties的配置；</p>
 <p><img src="../images/profiles-1.png" alt=""></p>
 <h4 id="5-2-yml支持多文档方式"><a href="#5-2-yml支持多文档方式" class="headerlink" title="5.2.yml支持多文档方式"></a>5.2.yml支持多文档方式</h4><p>yaml使用—进行document进行分割</p>
@@ -528,12 +527,12 @@
 <p>方法二：<strong>在idea中直接进行配置</strong>虚拟机参数：-Dspring.profiles.active=dev            </p>
 <p><img src="../images/profiles-4.png" alt=""></p>
 <p>方法三：　<strong>在终端使用运行打包后的应用</strong>：        <img src="../images/profiles-3.png" alt=""></p>
-<h3 id="６-配置文件加载位置"><a href="#６-配置文件加载位置" class="headerlink" title="６. 配置文件加载位置"></a>６. 配置文件加载位置</h3><p><img src="../images/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E4%BD%8D%E7%BD%AE.png" alt=""></p>
+<h3 id="7、配置文件加载位置"><a href="#7、配置文件加载位置" class="headerlink" title="7、配置文件加载位置"></a>7、配置文件加载位置</h3><p><img src="../images/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E4%BD%8D%E7%BD%AE.png" alt=""></p>
 <p><strong>注意</strong>：他们之间是互补配置</p>
 <p>​        <strong>修改默认的路径配置</strong>：方法一：使用 spring.context-path=/boot02 ，在路径访问时需要在前面加上/boot02</p>
 <p>​                                            方法二：使用spring.config.location=/home/glh/ideaproject/application.properties 改变默认的配置文件位置</p>
 <p>​        <strong>指定的配置文件和默认加载的这些配置文件共同起作用形成互补配置；</strong></p>
-<h3 id="7-外部配置加载顺序-下面列举主要了解的"><a href="#7-外部配置加载顺序-下面列举主要了解的" class="headerlink" title="7.　 外部配置加载顺序(下面列举主要了解的)"></a>7.　 外部配置加载顺序(下面列举主要了解的)</h3><p>​                <strong>相同内容高优先级覆盖低优先级，但是不同内容之间形成互补配置</strong></p>
+<h3 id="8、外部配置加载顺序-下面列举主要了解的"><a href="#8、外部配置加载顺序-下面列举主要了解的" class="headerlink" title="8、外部配置加载顺序(下面列举主要了解的)"></a>8、外部配置加载顺序(下面列举主要了解的)</h3><p>​                <strong>相同内容高优先级覆盖低优先级，但是不同内容之间形成互补配置</strong></p>
 <p>１．命令行参数</p>
 <!--例如：java -jar xxxx.jar --server.port=8088 --server.context-path=boot2   //访问地址:http://localhost:8088/boot2/hello，多个配置用空格分开-->
 
@@ -556,7 +555,7 @@
 <li>通过SpringApplication.setDefaultProperties指定的默认属性</li>
 </ol>
 <p><strong>官网介绍地址</strong>：<a href="https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/html/spring-boot-features.html#boot-features-profiles" target="_blank" rel="noopener" title="2.Externalized Configuration">链接</a> </p>
-<h3 id="８．自动配置原理"><a href="#８．自动配置原理" class="headerlink" title="８．自动配置原理"></a>８．自动配置原理</h3><p>配置文件到底能写什么？怎么写？</p>
+<h3 id="9、动配置原理"><a href="#9、动配置原理" class="headerlink" title="9、动配置原理"></a>9、动配置原理</h3><p>配置文件到底能写什么？怎么写？</p>
 <p><a href="/home/glh/IdeaProjects/repository/org/springframework/boot/spring-boot-autoconfigure/2.2.2.RELEASE/spring-boot-autoconfigure-2.2.2.RELEASE.jar!/META-INF/spring-configuration-metadata.json">自动配置原理参照</a></p>
 <p><a href="https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/html/appendix-configuration-metadata.html#configuration-metadata-format" target="_blank" rel="noopener">官网链接</a></p>
 <p><strong>自动配置原理：</strong></p>
@@ -625,7 +624,7 @@
 <p>​    b)、我们看我们需要的功能有没有SpringBoot默认写好的自动配置类；</p>
 <p>​    c)、我们再来看这个自动配置类中到底配置了哪些组件；（只要我们需要的组件有，我们就不需要再来配置了）</p>
 <p>​    d)、给容器中自动配置类添加组件的时候，会从properties类中获取某些属性，我们就可以在配置文件中指定这些属性的值；</p>
-<h3 id="９、-Conditional"><a href="#９、-Conditional" class="headerlink" title="９、@Conditional"></a>９、@Conditional</h3><p><img src="../images/@Conditional%E6%89%A9%E5%B1%95.png" alt=""></p>
+<h3 id="10、onditional"><a href="#10、onditional" class="headerlink" title="10、onditional"></a>10、onditional</h3><p><img src="../images/@Conditional%E6%89%A9%E5%B1%95.png" alt=""></p>
 <p><strong>自动配置类必须在一定的条件下才能生效</strong></p>
 <p><strong>怎么才能知道自动配置类生效</strong>：我们可以通过启用　debug=true 属性，来让控制台打印自动配置报告，这样我们就能很方便知道哪些自动配置类生效了；</p>
 <pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
