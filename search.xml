@@ -2846,6 +2846,17 @@ sdiff <span class="token operator">&lt;</span>key1<span class="token operator">>
       </tags>
   </entry>
   <entry>
+    <title>刷题记录</title>
+    <url>/blog/post/fe644ae0.html</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>java题</category>
+      </categories>
+      <tags>
+        <tag>java基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>搭建个人的ngrok服务器</title>
     <url>/blog/post/2c96e6e6.html</url>
     <content><![CDATA[<p>忙活了大半天，终于成功的搭建好了，并且可用，就是所处环境网速限制，体验感不强。在此记录一下过程出现的问题及解决方法，仅供参考。<br>附上以为大佬的ngrok的安装教程<a href="http://www.sunnyos.com/article-show-48.html" target="_blank" rel="noopener">http://www.sunnyos.com/article-show-48.html</a><br>一、安装go的时候，版本尽量高点，我是在官网下载的，别直接在使用sudo apt-get install xxx获取，这个版本不行，到后面编译ngrok的客户端和服务端的时候会出问题。<br>二、服务器端:进入到ngrok目录下的bin目录，使用sudo ./bin/ngrokd -domain=”自定义的域名” -httpAddr=”:访问的端口”<br>        客户端:进入到存在ngrok客户端程序的目录，同级目录下建立ngrok.cfg文件，输入一下内容：</p>
@@ -2863,11 +2874,6 @@ sdiff <span class="token operator">&lt;</span>key1<span class="token operator">>
       <tags>
         <tag>ngrok</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>刷题记录</title>
-    <url>/blog/post/fe644ae0.html</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>解决进入docker之后无法输入中文的简单解决方法</title>
