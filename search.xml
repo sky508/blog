@@ -4987,4 +4987,39 @@ console<span class="token punctuation">.</span><span class="token function">log<
         <tag>Vue</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Github Pages设置自定义域名</title>
+    <url>/post/29aa6db6.html</url>
+    <content><![CDATA[<h3 id="一、准备域名"><a href="#一、准备域名" class="headerlink" title="一、准备域名"></a>一、准备域名</h3><p>我是在阿里云购买的，链接<a href="https://www.aliyun.com/" target="_blank" rel="noopener">https://www.aliyun.com/</a></p>
+<p><img src="../images/%E9%98%BF%E9%87%8C%E4%BA%9101.png" alt=""></p>
+<p>这中间得准备一下注册人信息什么的，这个根据网页指示进行就可以了。</p>
+<h3 id="二、解析"><a href="#二、解析" class="headerlink" title="二、解析"></a>二、解析</h3><p><img src="../images/%E9%98%BF%E9%87%8C%E4%BA%9102.png" alt=""></p>
+<p>点击这个<strong>域名</strong>，进入域名列表界面，然后点击进入<strong>域名解析列表</strong></p>
+<p><img src="../images/%E9%98%BF%E9%87%8C%E4%BA%9103.png" alt=""></p>
+<p>进入后点击解析设置</p>
+<p><img src="../images/%E9%98%BF%E9%87%8C%E4%BA%9104.png" alt=""></p>
+<p>进入点击<strong>添加记录</strong></p>
+<p><img src="../images/%E9%98%BF%E9%87%8C%E4%BA%9106.png" alt=""></p>
+<p>1处：选A就行</p>
+<p>2处：就是你域名的前缀，我想要的是<a href="http://www.glh508.top和glh508.top，所以我此处第一次是www，第二次不填就行" target="_blank" rel="noopener">www.glh508.top和glh508.top，所以我此处第一次是www，第二次不填就行</a></p>
+<p>3处：默认即可</p>
+<p>4处：填ip，这个ip怎么获取呢？比如说我github pages开启之后的地址是<a href="https://sky508.github.io/blog，所以在cmd中ping一下" target="_blank" rel="noopener">https://sky508.github.io/blog，所以在cmd中ping一下</a> sky508.github.io就行(请求超时没事)，填下面那个ip地址就行</p>
+<p>如下图：</p>
+<p><img src="../images/%E9%98%BF%E9%87%8C%E4%BA%9107.png" alt=""></p>
+<p>最后显示就是这个红圈圈住的</p>
+<p><img src="../images/%E9%98%BF%E9%87%8C%E4%BA%9105.png" alt=""></p>
+<h3 id="三、github设置"><a href="#三、github设置" class="headerlink" title="三、github设置"></a>三、github设置</h3><p><img src="../images/%E9%98%BF%E9%87%8C%E4%BA%9108.png" alt=""></p>
+<p>在setting中找到此处，</p>
+<p>1处：填你的域名</p>
+<p>2处：勾选上，安全一些</p>
+<p>Save之后需要等待一会能访问到，因为勾上2处之后他会去生成ssl证书，只要出现3处绿色情况就行，说明可以了，然后点一下你就可以发现可以访问你的静态博客页面了</p>
+<p><img src="../images/%E5%8D%9A%E5%AE%A201.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>技巧介绍</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
 </search>
