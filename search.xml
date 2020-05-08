@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>初识SpringBoot配置</title>
-    <url>/blog/post/6ae47735.html</url>
+    <url>/post/6ae47735.html</url>
     <content><![CDATA[<h3 id="１、-Value的使用"><a href="#１、-Value的使用" class="headerlink" title="１、@Value的使用"></a>１、@Value的使用</h3><p><img src="../images/@Value.png" alt=""></p>
 <h3 id="2-Value获取值和-ConfigurationProperties获取值比较"><a href="#2-Value获取值和-ConfigurationProperties获取值比较" class="headerlink" title="2.　@Value获取值和@ConfigurationProperties获取值比较"></a>2.　@Value获取值和@ConfigurationProperties获取值比较</h3><table>
 <thead>
@@ -325,7 +325,7 @@ Negative matches<span class="token operator">:</span>　　<span class="token co
   </entry>
   <entry>
     <title>SpringBoot+thymeleaf+shiro整合小总结</title>
-    <url>/blog/post/9adc8b84.html</url>
+    <url>/post/9adc8b84.html</url>
     <content><![CDATA[<p>首先确保在不进行shiro整合时正常登录以及拥有权限，然后我们再开始，以下是我个人的思路。<br>首先，准备依赖（这里只讲关键依赖，目前我就用到了这些，够用就行，也别把相关依赖全部弄进来）：</p>
 <pre class="line-numbers language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!--shiro依赖--></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
@@ -1038,7 +1038,7 @@ Negative matches<span class="token operator">:</span>　　<span class="token co
   </entry>
   <entry>
     <title>初识SpringBoot关于web开发</title>
-    <url>/blog/post/29159a57.html</url>
+    <url>/post/29159a57.html</url>
     <content><![CDATA[<h3 id="一、使用SpringBoot"><a href="#一、使用SpringBoot" class="headerlink" title="一、使用SpringBoot"></a>一、使用SpringBoot</h3><p>１．创建SpringBoot应用，选中我们需要的模块；</p>
 <p>２．SpringBoot已经默认将这些场景配置好了，只需要在配置文件中指定少量配置就可以运行起来；</p>
 <p>３．接下里自己编写业务代码；</p>
@@ -1617,7 +1617,7 @@ insert的功能片段在div标签中
   </entry>
   <entry>
     <title>OneDrive网盘5T空间获取方法</title>
-    <url>/blog/post/1011da49.html</url>
+    <url>/post/1011da49.html</url>
     <content><![CDATA[<p>获取office365教育版邮箱及密码的地址</p>
 <h4 id="步骤一、访问"><a href="#步骤一、访问" class="headerlink" title="步骤一、访问"></a>步骤一、访问</h4><p> <a href="https://xlu.me/" target="_blank" rel="noopener">https://xlu.me/</a></p>
 <p><img src="../images/OD%E8%B4%A6%E5%8F%B7%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%951.png" alt=""></p>
@@ -1647,7 +1647,7 @@ insert的功能片段在div标签中
   </entry>
   <entry>
     <title>初识SpringBoot之错误处理机制</title>
-    <url>/blog/post/9e23b664.html</url>
+    <url>/post/9e23b664.html</url>
     <content><![CDATA[<h3 id="一、默认错误处理机制"><a href="#一、默认错误处理机制" class="headerlink" title="一、默认错误处理机制"></a>一、默认错误处理机制</h3><p>１．默认效果：</p>
 <p>１）．浏览器，默认返回一个错误页面</p>
 <p><img src="../images/%E9%BB%98%E8%AE%A4%E9%94%99%E8%AF%AF%E9%A1%B5%E9%9D%A2%E4%BF%A1%E6%81%AF.png" alt=""></p>
@@ -1901,7 +1901,7 @@ insert的功能片段在div标签中
   </entry>
   <entry>
     <title>初识SpringBoot之日志框架</title>
-    <url>/blog/post/d0db4d7d.html</url>
+    <url>/post/d0db4d7d.html</url>
     <content><![CDATA[<h3 id="一、市面上的日志框架"><a href="#一、市面上的日志框架" class="headerlink" title="一、市面上的日志框架"></a>一、市面上的日志框架</h3><p>JUL 、JCL、Jboss-logging、logback、log4j、log4j2、slf4j…….</p>
 <table>
 <thead>
@@ -2130,33 +2130,8 @@ Base logback configuration provided for compatibility with Spring Boot 1.1
       </tags>
   </entry>
   <entry>
-    <title>git基础操作</title>
-    <url>/blog/post/aa301862.html</url>
-    <content><![CDATA[<p><code>git init</code> ：进入需要git的目录下，设置为本地仓库，执行后会生成一个.git文件</p>
-<p><code>git add .</code>：将未添加的文件添加到本地缓存</p>
-<p><code>git add xxx.js yyy.html</code>：将特定文件添加到git缓存</p>
-<p><code>git commit -m &#39;提交描述&#39;</code>：记录变更到仓库</p>
-<p>需要建立远程仓库，可以使用gitub、gitlab等，复制git仓库的http地址</p>
-<p><code>git remote add origin 拷贝的远程项目地址</code>：设置远程仓库地址，接下来输入git账号及密码</p>
-<p><code>git push -u origin master</code>：提交文件到远程仓库</p>
-<p>设置tag</p>
-<p><code>git tag tag名字</code>：例如git tag 01知识点1，设置当前编辑的文件处于01知识点1的tag下</p>
-<p><code>git tag</code>：查看所有的tag</p>
-<p><code>git push --tags</code>：提交所有的tags到远程仓库</p>
-<p><code>git status</code>：查看工作区状态</p>
-<p>如果想回到某一个tag，去查看相应的信息</p>
-<p><code>git checkout tag名字</code></p>
-]]></content>
-      <categories>
-        <category>代码管理工具</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>idea下git的基础操作</title>
-    <url>/blog/post/4f4a33fd.html</url>
+    <url>/post/4f4a33fd.html</url>
     <content><![CDATA[<p>前提：电脑上自行安装好git，记得在IDEA的settings里面配置一下git的路径</p>
 <p><img src="../images/git01.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p>第一步：在idea上创建Git Repository…</p>
@@ -2188,7 +2163,7 @@ Base logback configuration provided for compatibility with Spring Boot 1.1
   </entry>
   <entry>
     <title>jqGrid自定义搜索框进行条件查询并且刷新表格</title>
-    <url>/blog/post/f3e55310.html</url>
+    <url>/post/f3e55310.html</url>
     <content><![CDATA[<p>前提：正常使用jqGrid表格插件，只是不愿意使用它的搜索框，所以选择自定义；</p>
 <p>直接上代码：</p>
 <p>前端：</p>
@@ -2258,197 +2233,25 @@ Base logback configuration provided for compatibility with Spring Boot 1.1
       </tags>
   </entry>
   <entry>
-    <title>leetcode做题记录</title>
-    <url>/blog/post/76a1ede8.html</url>
-    <content><![CDATA[<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h3 id="一、跳跃游戏"><a href="#一、跳跃游戏" class="headerlink" title="一、跳跃游戏"></a>一、<a href="https://leetcode-cn.com/problems/jump-game/" target="_blank" rel="noopener">跳跃游戏</a></h3><p><strong>题目描述</strong>：给定一个非负整数数组，你最初位于数组的第一个位置。</p>
-<p>数组中的每个元素代表你在该位置可以跳跃的最大长度。</p>
-<p>判断你是否能够到达最后一个位置。</p>
-<p>示例 1:</p>
-<p>输入: [2,3,1,1,4]<br>输出: true<br>解释: 我们可以先跳 1 步，从位置 0 到达 位置 1, 然后再从位置 1 跳 3 步到达最后一个位置。<br>示例 2:</p>
-<p>输入: [3,2,1,0,4]<br>输出: false<br>解释: 无论怎样，你总会到达索引为 3 的位置。但该位置的最大跳跃长度是 0 ， 所以你永远不可能到达最后一个位置。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/jump-game" target="_blank" rel="noopener">https://leetcode-cn.com/problems/jump-game</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<p><strong>思路</strong>：</p>
-<pre class="line-numbers language-yaml"><code class="language-yaml">首先取出两种特殊状况：数组长度为0 和 数组长度为1
-然后开始正常的数组跳跃： 首先初始化一个zeroCount=0<span class="token punctuation">,</span> 倒推计算是否可以跳过为 0 的位置， 当碰到为0的zeroCount加1，
-然后走到0前面的那一位，如果那一位为0，则zeroCount继续加1；
-                     如果前一位不是0，计算这一位的值是否大于zeroCount<span class="token punctuation">,</span>如果大于，说明可以跳过0，否则的话就zeroCount加1；
-                     一直算到最后循环结束，zeroCount还是大于0，说明至少始终一位是无法跳过，即到不了最后一位<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>题解</strong>：</p>
-<pre class="line-numbers language-java"><code class="language-java">    <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">canJump</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">int</span> n <span class="token operator">=</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">int</span> zeroCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">>=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                zeroCount<span class="token operator">++</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span> <span class="token keyword">else</span><span class="token punctuation">{</span>
-                <span class="token keyword">if</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">></span>zeroCount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    zeroCount<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-                    zeroCount<span class="token operator">++</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>zeroCount<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h3 id="一、第N高的薪水"><a href="#一、第N高的薪水" class="headerlink" title="一、第N高的薪水"></a>一、<a href="https://leetcode-cn.com/problems/nth-highest-salary/" target="_blank" rel="noopener">第N高的薪水</a></h3><p><strong>题目描述</strong>：编写一个 SQL 查询，获取 <code>Employee</code> 表中第 <em>n</em> 高的薪水（Salary）。</p>
-<p>+—-+——–+<br>| Id | Salary |<br>+—-+——–+<br>| 1  | 100    |<br>| 2  | 200    |<br>| 3  | 300    |<br>+—-+——–+</p>
-<p>例如上述 <code>Employee</code> 表，<em>n = 2</em> 时，应返回第二高的薪水 <code>200</code>。如果不存在第 <em>n</em> 高的薪水，那么查询应返回 <code>null</code>。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/nth-highest-salary" target="_blank" rel="noopener">https://leetcode-cn.com/problems/nth-highest-salary</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<p><strong>思路</strong>：</p>
-<pre class="line-numbers language-yaml"><code class="language-yaml">第N高说明存在排序，所以需要order by<span class="token punctuation">,</span>而且是降序desc，然后取出第N个薪资，使用limit n<span class="token punctuation">,</span>m，由于N与n的关系是：n=N<span class="token punctuation">-</span>1，所以需要声明一个变量，默认值是N<span class="token punctuation">-</span><span class="token number">1</span><span class="token punctuation">,</span>这样取出的结果就是第N高的薪资了<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>题解</strong>：</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">FUNCTION</span> getNthHighestSalary<span class="token punctuation">(</span>N <span class="token keyword">INT</span><span class="token punctuation">)</span> <span class="token keyword">RETURNS</span> <span class="token keyword">INT</span>
-<span class="token keyword">BEGIN</span>
-<span class="token keyword">DECLARE</span> num <span class="token keyword">INT</span> <span class="token keyword">DEFAULT</span> N<span class="token number">-1</span><span class="token punctuation">;</span>
-  <span class="token keyword">RETURN</span> <span class="token punctuation">(</span>
-      <span class="token comment" spellcheck="true"># Write your MySQL query statement below.</span>
-      <span class="token keyword">select</span> <span class="token keyword">temp</span><span class="token punctuation">.</span>Salary 
-      <span class="token keyword">from</span>  
-      <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token keyword">distinct</span><span class="token punctuation">(</span>Salary<span class="token punctuation">)</span> <span class="token keyword">from</span> Employee <span class="token keyword">order</span> <span class="token keyword">by</span> Salary <span class="token keyword">desc</span><span class="token punctuation">)</span> <span class="token keyword">temp</span> 
-      <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token keyword">temp</span><span class="token punctuation">.</span>Salary <span class="token keyword">desc</span>  
-      <span class="token keyword">limit</span> num<span class="token punctuation">,</span><span class="token number">1</span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">END</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="二、部门工资前三高的所有员工"><a href="#二、部门工资前三高的所有员工" class="headerlink" title="二、部门工资前三高的所有员工"></a>二、<a href="https://leetcode-cn.com/problems/department-top-three-salaries/" target="_blank" rel="noopener">部门工资前三高的所有员工</a></h3><p><strong>题目描述</strong>：</p>
-<p><code>Employee</code> 表包含所有员工信息，每个员工有其对应的工号 <code>Id</code>，姓名 <code>Name</code>，工资 <code>Salary</code> 和部门编号 <code>DepartmentId</code> 。</p>
-<p>+—-+——-+——–+————–+<br>| Id | Name  | Salary | DepartmentId |<br>+—-+——-+——–+————–+<br>| 1  | Joe   | 85000  | 1            |<br>| 2  | Henry | 80000  | 2            |<br>| 3  | Sam   | 60000  | 2            |<br>| 4  | Max   | 90000  | 1            |<br>| 5  | Janet | 69000  | 1            |<br>| 6  | Randy | 85000  | 1            |<br>| 7  | Will  | 70000  | 1            |<br>+—-+——-+——–+————–+</p>
-<p><code>Department</code> 表包含公司所有部门的信息。</p>
-<p>+—-+———-+<br>| Id | Name     |<br>+—-+———-+<br>| 1  | IT       |<br>| 2  | Sales    |<br>+—-+———-+</p>
-<p>编写一个 SQL 查询，找出每个部门获得前三高工资的所有员工。例如，根据上述给定的表，查询结果应返回(要是薪资相同的，就排名相同)：</p>
-<p>+————+———-+——–+<br>| Department | Employee | Salary |<br>+————+———-+——–+<br>| IT         | Max      | 90000  |<br>| IT         | Randy    | 85000  |<br>| IT         | Joe      | 85000  |<br>| IT         | Will     | 70000  |<br>| Sales      | Henry    | 80000  |<br>| Sales      | Sam      | 60000  |<br>+————+———-+——–+</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/department-top-three-salaries" target="_blank" rel="noopener">https://leetcode-cn.com/problems/department-top-three-salaries</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<p><strong>思路</strong>：</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> 
-<span class="token function">count</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span><span class="token punctuation">(</span>em<span class="token punctuation">.</span>Salary<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">from</span>
- Department dp <span class="token keyword">left</span> <span class="token keyword">join</span> Employee em <span class="token keyword">on</span> dp<span class="token punctuation">.</span>Id <span class="token operator">=</span> em<span class="token punctuation">.</span>DepartmentId
-<span class="token keyword">where</span> em2<span class="token punctuation">.</span>DepartmentId <span class="token operator">=</span> em<span class="token punctuation">.</span>DepartmentId <span class="token operator">and</span> em<span class="token punctuation">.</span>Salary<span class="token operator">></span>em2<span class="token punctuation">.</span>Salary<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>这个就是em2表中部门相同的em表中薪资大于em2表中薪资，而且去重（就是防止薪资相同，导致取出的结果就少了）,并且是在前三名（他自己算一个，然后再比其他两个薪资大）,必须是存在于部门中的。</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token number">3</span>
-<span class="token operator">></span>
-<span class="token punctuation">(</span>
-<span class="token keyword">SELECT</span> 
-<span class="token function">count</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span><span class="token punctuation">(</span>em<span class="token punctuation">.</span>Salary<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">from</span>
- Department dp <span class="token keyword">left</span> <span class="token keyword">join</span> Employee em <span class="token keyword">on</span> dp<span class="token punctuation">.</span>Id <span class="token operator">=</span> em<span class="token punctuation">.</span>DepartmentId
-<span class="token keyword">where</span> em2<span class="token punctuation">.</span>DepartmentId <span class="token operator">=</span> em<span class="token punctuation">.</span>DepartmentId <span class="token operator">and</span> em<span class="token punctuation">.</span>Salary<span class="token operator">></span>em2<span class="token punctuation">.</span>Salary
-<span class="token punctuation">)</span><span class="token operator">and</span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token keyword">from</span> Department<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>题解</strong>：</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">SELECT</span>
-dp2<span class="token punctuation">.</span>Name Department<span class="token punctuation">,</span>em2<span class="token punctuation">.</span>Name Employee<span class="token punctuation">,</span>em2<span class="token punctuation">.</span>Salary
-<span class="token keyword">from</span>
-Employee em2 <span class="token keyword">left</span> <span class="token keyword">join</span> Department dp2 <span class="token keyword">on</span> dp2<span class="token punctuation">.</span>Id <span class="token operator">=</span> em2<span class="token punctuation">.</span>DepartmentId
-<span class="token keyword">where</span>
-<span class="token number">3</span>
-<span class="token operator">></span>
-<span class="token punctuation">(</span>
-<span class="token keyword">SELECT</span> 
-<span class="token function">count</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span><span class="token punctuation">(</span>em<span class="token punctuation">.</span>Salary<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">from</span>
- Department dp <span class="token keyword">left</span> <span class="token keyword">join</span> Employee em <span class="token keyword">on</span> dp<span class="token punctuation">.</span>Id <span class="token operator">=</span> em<span class="token punctuation">.</span>DepartmentId
-<span class="token keyword">where</span> em2<span class="token punctuation">.</span>DepartmentId <span class="token operator">=</span> em<span class="token punctuation">.</span>DepartmentId <span class="token operator">and</span> em<span class="token punctuation">.</span>Salary<span class="token operator">></span>em2<span class="token punctuation">.</span>Salary
-<span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token keyword">from</span> Department<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span>
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> dp2<span class="token punctuation">.</span>Id<span class="token punctuation">,</span>em2<span class="token punctuation">.</span>Salary <span class="token keyword">desc</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="三、分数排名"><a href="#三、分数排名" class="headerlink" title="三、分数排名"></a>三、<a href="https://leetcode-cn.com/problems/rank-scores/" target="_blank" rel="noopener">分数排名</a></h3><p><strong>题目描述</strong>：</p>
-<p>编写一个 SQL 查询来实现分数排名。</p>
-<p>如果两个分数相同，则两个分数排名（Rank）相同。请注意，平分后的下一个名次应该是下一个连续的整数值。换句话说，名次之间不应该有“间隔”。</p>
-<p>+—-+——-+<br>| Id | Score |<br>+—-+——-+<br>| 1  | 3.50  |<br>| 2  | 3.65  |<br>| 3  | 4.00  |<br>| 4  | 3.85  |<br>| 5  | 4.00  |<br>| 6  | 3.65  |<br>+—-+——-+</p>
-<p>例如，根据上述给定的 <code>Scores</code> 表，你的查询应该返回（按分数从高到低排列）：</p>
-<p>+——-+——+<br>| Score | Rank |<br>+——-+——+<br>| 4.00  | 1    |<br>| 4.00  | 1    |<br>| 3.85  | 2    |<br>| 3.65  | 3    |<br>| 3.65  | 3    |<br>| 3.50  | 4    |<br>+——-+——+</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/rank-scores" target="_blank" rel="noopener">https://leetcode-cn.com/problems/rank-scores</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<p><strong>思路</strong>：</p>
-<pre class="line-numbers language-yaml"><code class="language-yaml">先排序，然后算出当前薪资有多少个低于他的，最后拿 薪资类别总数（不重复）<span class="token punctuation">-</span>当前薪资有多少个低于他的 +1即可<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>题解</strong>：</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> 
-sc<span class="token punctuation">.</span>Score<span class="token punctuation">,</span>
-<span class="token punctuation">(</span>
-<span class="token punctuation">(</span>
-<span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token keyword">distinct</span><span class="token punctuation">(</span>sc2<span class="token punctuation">.</span>Score<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">from</span> Scores sc2
-<span class="token punctuation">)</span>
-<span class="token operator">-</span>
-<span class="token punctuation">(</span><span class="token keyword">select</span> 
-<span class="token function">count</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span><span class="token punctuation">(</span>sc1<span class="token punctuation">.</span>Score<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span>
-<span class="token keyword">from</span>
-Scores sc1
-<span class="token keyword">where</span> sc<span class="token punctuation">.</span>Score <span class="token operator">></span> sc1<span class="token punctuation">.</span>Score<span class="token punctuation">)</span>
-<span class="token punctuation">)</span> <span class="token operator">+</span><span class="token number">1</span>
-Rank
-<span class="token keyword">from</span>
-Scores sc
-<span class="token keyword">order</span> <span class="token keyword">by</span> sc<span class="token punctuation">.</span>Score <span class="token keyword">desc</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="四、连续出现的数字"><a href="#四、连续出现的数字" class="headerlink" title="四、连续出现的数字"></a>四、<a href="https://leetcode-cn.com/problems/consecutive-numbers/" target="_blank" rel="noopener">连续出现的数字</a></h3><p><strong>题目描述</strong>：</p>
-<p>编写一个 SQL 查询，查找所有至少连续出现三次的数字。</p>
-<p>+—-+—–+<br>| Id | Num |<br>+—-+—–+<br>| 1  |  1  |<br>| 2  |  1  |<br>| 3  |  1  |<br>| 4  |  2  |<br>| 5  |  1  |<br>| 6  |  2  |<br>| 7  |  2  |<br>+—-+—–+</p>
-<p>例如，给定上面的 <code>Logs</code> 表， <code>1</code> 是唯一连续出现至少三次的数字。</p>
-<p>+—————–+<br>| ConsecutiveNums |<br>+—————–+<br>| 1               |<br>+—————–+</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/consecutive-numbers" target="_blank" rel="noopener">https://leetcode-cn.com/problems/consecutive-numbers</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<p><strong>思路</strong>：</p>
-<pre class="line-numbers language-yaml"><code class="language-yaml">当前位置，当前位置往前一步，当前位置往前两步，这三个位置的Num相同即可<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong>题解</strong>：</p>
-<p>第一种（只适用于id连续的）</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> 
-<span class="token keyword">DISTINCT</span><span class="token punctuation">(</span>Num<span class="token punctuation">)</span> ConsecutiveNums 
-<span class="token keyword">from</span>
-Logs lg1
-<span class="token keyword">where</span>
-<span class="token punctuation">(</span>
-<span class="token keyword">select</span>
-<span class="token function">count</span><span class="token punctuation">(</span>lg2<span class="token punctuation">.</span>Id<span class="token punctuation">)</span>
-<span class="token keyword">from</span>
-Logs lg2
-<span class="token keyword">where</span> <span class="token punctuation">(</span>lg1<span class="token punctuation">.</span>Num <span class="token operator">=</span> lg2<span class="token punctuation">.</span>Num <span class="token operator">and</span> lg1<span class="token punctuation">.</span>Id <span class="token operator">=</span> lg2<span class="token punctuation">.</span>Id<span class="token punctuation">)</span>
-<span class="token operator">or</span>
-<span class="token punctuation">(</span>lg1<span class="token punctuation">.</span>Num <span class="token operator">=</span> lg2<span class="token punctuation">.</span>Num <span class="token operator">and</span> lg1<span class="token punctuation">.</span>Id<span class="token operator">+</span><span class="token number">1</span><span class="token operator">=</span> lg2<span class="token punctuation">.</span>Id<span class="token punctuation">)</span>
-<span class="token operator">or</span>
-<span class="token punctuation">(</span>lg1<span class="token punctuation">.</span>Num <span class="token operator">=</span> lg2<span class="token punctuation">.</span>Num <span class="token operator">and</span> lg1<span class="token punctuation">.</span>Id<span class="token operator">+</span><span class="token number">2</span><span class="token operator">=</span> lg2<span class="token punctuation">.</span>Id <span class="token punctuation">)</span>
-<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="五、换座位"><a href="#五、换座位" class="headerlink" title="五、换座位"></a>五、<a href="https://leetcode-cn.com/problems/exchange-seats/" target="_blank" rel="noopener">换座位</a></h3><p><strong>题目描述</strong>：</p>
-<p>小美是一所中学的信息科技老师，她有一张 seat 座位表，平时用来储存学生名字和与他们相对应的座位 id。</p>
-<p>其中纵列的 id 是连续递增的</p>
-<p>小美想改变相邻俩学生的座位。</p>
-<p>你能不能帮她写一个 SQL query 来输出小美想要的结果呢？</p>
-<p>示例：</p>
-<p>+———+———+<br>|    id   | student |<br>+———+———+<br>|    1    | Abbot   |<br>|    2    | Doris   |<br>|    3    | Emerson |<br>|    4    | Green   |<br>|    5    | Jeames  |<br>+———+———+<br>假如数据输入的是上表，则输出结果如下：</p>
-<p>+———+———+<br>|    id   | student |<br>+———+———+<br>|    1    | Doris   |<br>|    2    | Abbot   |<br>|    3    | Green   |<br>|    4    | Emerson |<br>|    5    | Jeames  |<br>+———+———+<br>注意：</p>
-<p>如果学生人数是奇数，则不需要改变最后一个同学的座位。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/exchange-seats" target="_blank" rel="noopener">https://leetcode-cn.com/problems/exchange-seats</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<p><strong>思路</strong>：想办法让偶数和相邻位的奇数调换位置</p>
-<p><strong>题解</strong>：</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">SELECT</span>
-    S1<span class="token punctuation">.</span>id<span class="token punctuation">,</span>
-        ifnull<span class="token punctuation">(</span>S2<span class="token punctuation">.</span>student<span class="token punctuation">,</span>S1<span class="token punctuation">.</span>student<span class="token punctuation">)</span> student
-<span class="token keyword">FROM</span>
-    seat S1
-    <span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span>
-    seat S2
-<span class="token keyword">ON</span>
-    S1<span class="token punctuation">.</span>id<span class="token operator">%</span><span class="token number">2</span><span class="token operator">!=</span><span class="token number">0</span> <span class="token operator">and</span> S1<span class="token punctuation">.</span>id <span class="token operator">=</span> S2<span class="token punctuation">.</span>id <span class="token operator">-</span> <span class="token number">1</span>
-        <span class="token operator">or</span> 
-        S1<span class="token punctuation">.</span>id<span class="token operator">%</span><span class="token number">2</span><span class="token operator">=</span><span class="token number">0</span>  <span class="token operator">and</span> S1<span class="token punctuation">.</span>id <span class="token operator">=</span> S2<span class="token punctuation">.</span>id <span class="token operator">+</span><span class="token number">1</span>
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> 
-    S1<span class="token punctuation">.</span>id<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <title>初次整合springboot+kafka</title>
+    <url>/post/572f0779.html</url>
+    <content><![CDATA[<p>一、kafka的下载与使用<br>进入官网：<a href="http://kafka.apache.org/" target="_blank" rel="noopener">http://kafka.apache.org/</a><img src="../images/kafka01.png" alt="在这里插入图片描述"><br><img src="../images/kafka02.png" alt="在这里插入图片描述"><br><img src="../images/kafka03.png" alt="在这里插入图片描述"><br>下载好之后解压进入config文件夹编辑一下server.properties和    zookeeper.properties这两个配置文件，目前我也就更改了一下数据存储位置和日志存储位置<br><img src="../images/kafka04.png" alt="在这里插入图片描述">)<img src="../images/kafka05.png" alt="在这里插入图片描述"><br>然后就可以启动：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token punctuation">.</span><span class="token operator">/</span>zookeeper<span class="token operator">-</span>server<span class="token operator">-</span><span class="token function">start</span><span class="token punctuation">.</span>sh <span class="token operator">/</span>home<span class="token operator">/</span>glh<span class="token operator">/</span>kafka_2<span class="token punctuation">.</span>13<span class="token operator">-</span>2<span class="token punctuation">.</span>4<span class="token punctuation">.</span>0<span class="token operator">/</span>config<span class="token operator">/</span>zookeeper<span class="token punctuation">.</span>properties &amp; <span class="token punctuation">.</span><span class="token operator">/</span>kafka<span class="token operator">-</span>server<span class="token operator">-</span><span class="token function">start</span><span class="token punctuation">.</span>sh <span class="token operator">/</span>home<span class="token operator">/</span>glh<span class="token operator">/</span>kafka_2<span class="token punctuation">.</span>13<span class="token operator">-</span>2<span class="token punctuation">.</span>4<span class="token punctuation">.</span>0<span class="token operator">/</span>config<span class="token operator">/</span>server<span class="token punctuation">.</span>properties
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="../images/kafka06.png" alt="在这里插入图片描述"><br>检查是否启动成功，另开一个终端，输入jps，这个就是启动成功<br><img src="../images/kafka07.png" alt="在这里插入图片描述"><br>测试是否可以正常工作，上面启动的端口暂时不要关闭，再开两个终端窗口<br>窗口一：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token punctuation">.</span><span class="token operator">/</span>bin<span class="token operator">/</span>kafka<span class="token operator">-</span>topics<span class="token punctuation">.</span>sh <span class="token operator">--</span>create <span class="token operator">--</span>zookeeper 127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:2181 <span class="token operator">--</span>replication<span class="token operator">-</span>factor 1 <span class="token operator">--</span>partitions 1 <span class="token operator">--</span>topic hello<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 ]]></content>
       <categories>
-        <category>算法题</category>
+        <category>后端框架</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
+        <tag>SpringBoot</tag>
+        <tag>kafka</tag>
       </tags>
   </entry>
   <entry>
     <title>初识redis</title>
-    <url>/blog/post/67d51f09.html</url>
+    <url>/post/67d51f09.html</url>
     <content><![CDATA[<h3 id="一、初始Redis"><a href="#一、初始Redis" class="headerlink" title="一、初始Redis"></a>一、初始Redis</h3><p>１．基本知识</p>
 <p>Redis:REmote DIctionary Server(远程字典服务器)</p>
 <p>是完全开元免费的，用c语言开发的，遵守BSD协议，是一个高性能的（key-value）分布式内存数据库，基于内存运行并支持持久化的NoSQL数据库，是当前最热门的NoSQL数据库之一，也被人们称为数据结构服务器。</p>
@@ -2799,8 +2602,242 @@ sdiff <span class="token operator">&lt;</span>key1<span class="token operator">>
       </tags>
   </entry>
   <entry>
+    <title>刷题记录</title>
+    <url>/post/fe644ae0.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>git基础操作</title>
+    <url>/post/aa301862.html</url>
+    <content><![CDATA[<p><code>git init</code> ：进入需要git的目录下，设置为本地仓库，执行后会生成一个.git文件</p>
+<p><code>git add .</code>：将未添加的文件添加到本地缓存</p>
+<p><code>git add xxx.js yyy.html</code>：将特定文件添加到git缓存</p>
+<p><code>git commit -m &#39;提交描述&#39;</code>：记录变更到仓库</p>
+<p>需要建立远程仓库，可以使用gitub、gitlab等，复制git仓库的http地址</p>
+<p><code>git remote add origin 拷贝的远程项目地址</code>：设置远程仓库地址，接下来输入git账号及密码</p>
+<p><code>git push -u origin master</code>：提交文件到远程仓库</p>
+<p>设置tag</p>
+<p><code>git tag tag名字</code>：例如git tag 01知识点1，设置当前编辑的文件处于01知识点1的tag下</p>
+<p><code>git tag</code>：查看所有的tag</p>
+<p><code>git push --tags</code>：提交所有的tags到远程仓库</p>
+<p><code>git status</code>：查看工作区状态</p>
+<p>如果想回到某一个tag，去查看相应的信息</p>
+<p><code>git checkout tag名字</code></p>
+]]></content>
+      <categories>
+        <category>代码管理工具</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode做题记录</title>
+    <url>/post/76a1ede8.html</url>
+    <content><![CDATA[<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h3 id="一、跳跃游戏"><a href="#一、跳跃游戏" class="headerlink" title="一、跳跃游戏"></a>一、<a href="https://leetcode-cn.com/problems/jump-game/" target="_blank" rel="noopener">跳跃游戏</a></h3><p><strong>题目描述</strong>：给定一个非负整数数组，你最初位于数组的第一个位置。</p>
+<p>数组中的每个元素代表你在该位置可以跳跃的最大长度。</p>
+<p>判断你是否能够到达最后一个位置。</p>
+<p>示例 1:</p>
+<p>输入: [2,3,1,1,4]<br>输出: true<br>解释: 我们可以先跳 1 步，从位置 0 到达 位置 1, 然后再从位置 1 跳 3 步到达最后一个位置。<br>示例 2:</p>
+<p>输入: [3,2,1,0,4]<br>输出: false<br>解释: 无论怎样，你总会到达索引为 3 的位置。但该位置的最大跳跃长度是 0 ， 所以你永远不可能到达最后一个位置。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/jump-game" target="_blank" rel="noopener">https://leetcode-cn.com/problems/jump-game</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<p><strong>思路</strong>：</p>
+<pre class="line-numbers language-yaml"><code class="language-yaml">首先取出两种特殊状况：数组长度为0 和 数组长度为1
+然后开始正常的数组跳跃： 首先初始化一个zeroCount=0<span class="token punctuation">,</span> 倒推计算是否可以跳过为 0 的位置， 当碰到为0的zeroCount加1，
+然后走到0前面的那一位，如果那一位为0，则zeroCount继续加1；
+                     如果前一位不是0，计算这一位的值是否大于zeroCount<span class="token punctuation">,</span>如果大于，说明可以跳过0，否则的话就zeroCount加1；
+                     一直算到最后循环结束，zeroCount还是大于0，说明至少始终一位是无法跳过，即到不了最后一位<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>题解</strong>：</p>
+<pre class="line-numbers language-java"><code class="language-java">    <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">canJump</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">int</span> n <span class="token operator">=</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">int</span> zeroCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">>=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                zeroCount<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span><span class="token punctuation">{</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">></span>zeroCount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    zeroCount<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    zeroCount<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>zeroCount<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h3 id="一、第N高的薪水"><a href="#一、第N高的薪水" class="headerlink" title="一、第N高的薪水"></a>一、<a href="https://leetcode-cn.com/problems/nth-highest-salary/" target="_blank" rel="noopener">第N高的薪水</a></h3><p><strong>题目描述</strong>：编写一个 SQL 查询，获取 <code>Employee</code> 表中第 <em>n</em> 高的薪水（Salary）。</p>
+<p>+—-+——–+<br>| Id | Salary |<br>+—-+——–+<br>| 1  | 100    |<br>| 2  | 200    |<br>| 3  | 300    |<br>+—-+——–+</p>
+<p>例如上述 <code>Employee</code> 表，<em>n = 2</em> 时，应返回第二高的薪水 <code>200</code>。如果不存在第 <em>n</em> 高的薪水，那么查询应返回 <code>null</code>。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/nth-highest-salary" target="_blank" rel="noopener">https://leetcode-cn.com/problems/nth-highest-salary</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<p><strong>思路</strong>：</p>
+<pre class="line-numbers language-yaml"><code class="language-yaml">第N高说明存在排序，所以需要order by<span class="token punctuation">,</span>而且是降序desc，然后取出第N个薪资，使用limit n<span class="token punctuation">,</span>m，由于N与n的关系是：n=N<span class="token punctuation">-</span>1，所以需要声明一个变量，默认值是N<span class="token punctuation">-</span><span class="token number">1</span><span class="token punctuation">,</span>这样取出的结果就是第N高的薪资了<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>题解</strong>：</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">FUNCTION</span> getNthHighestSalary<span class="token punctuation">(</span>N <span class="token keyword">INT</span><span class="token punctuation">)</span> <span class="token keyword">RETURNS</span> <span class="token keyword">INT</span>
+<span class="token keyword">BEGIN</span>
+<span class="token keyword">DECLARE</span> num <span class="token keyword">INT</span> <span class="token keyword">DEFAULT</span> N<span class="token number">-1</span><span class="token punctuation">;</span>
+  <span class="token keyword">RETURN</span> <span class="token punctuation">(</span>
+      <span class="token comment" spellcheck="true"># Write your MySQL query statement below.</span>
+      <span class="token keyword">select</span> <span class="token keyword">temp</span><span class="token punctuation">.</span>Salary 
+      <span class="token keyword">from</span>  
+      <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token keyword">distinct</span><span class="token punctuation">(</span>Salary<span class="token punctuation">)</span> <span class="token keyword">from</span> Employee <span class="token keyword">order</span> <span class="token keyword">by</span> Salary <span class="token keyword">desc</span><span class="token punctuation">)</span> <span class="token keyword">temp</span> 
+      <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token keyword">temp</span><span class="token punctuation">.</span>Salary <span class="token keyword">desc</span>  
+      <span class="token keyword">limit</span> num<span class="token punctuation">,</span><span class="token number">1</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">END</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="二、部门工资前三高的所有员工"><a href="#二、部门工资前三高的所有员工" class="headerlink" title="二、部门工资前三高的所有员工"></a>二、<a href="https://leetcode-cn.com/problems/department-top-three-salaries/" target="_blank" rel="noopener">部门工资前三高的所有员工</a></h3><p><strong>题目描述</strong>：</p>
+<p><code>Employee</code> 表包含所有员工信息，每个员工有其对应的工号 <code>Id</code>，姓名 <code>Name</code>，工资 <code>Salary</code> 和部门编号 <code>DepartmentId</code> 。</p>
+<p>+—-+——-+——–+————–+<br>| Id | Name  | Salary | DepartmentId |<br>+—-+——-+——–+————–+<br>| 1  | Joe   | 85000  | 1            |<br>| 2  | Henry | 80000  | 2            |<br>| 3  | Sam   | 60000  | 2            |<br>| 4  | Max   | 90000  | 1            |<br>| 5  | Janet | 69000  | 1            |<br>| 6  | Randy | 85000  | 1            |<br>| 7  | Will  | 70000  | 1            |<br>+—-+——-+——–+————–+</p>
+<p><code>Department</code> 表包含公司所有部门的信息。</p>
+<p>+—-+———-+<br>| Id | Name     |<br>+—-+———-+<br>| 1  | IT       |<br>| 2  | Sales    |<br>+—-+———-+</p>
+<p>编写一个 SQL 查询，找出每个部门获得前三高工资的所有员工。例如，根据上述给定的表，查询结果应返回(要是薪资相同的，就排名相同)：</p>
+<p>+————+———-+——–+<br>| Department | Employee | Salary |<br>+————+———-+——–+<br>| IT         | Max      | 90000  |<br>| IT         | Randy    | 85000  |<br>| IT         | Joe      | 85000  |<br>| IT         | Will     | 70000  |<br>| Sales      | Henry    | 80000  |<br>| Sales      | Sam      | 60000  |<br>+————+———-+——–+</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/department-top-three-salaries" target="_blank" rel="noopener">https://leetcode-cn.com/problems/department-top-three-salaries</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<p><strong>思路</strong>：</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> 
+<span class="token function">count</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span><span class="token punctuation">(</span>em<span class="token punctuation">.</span>Salary<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">from</span>
+ Department dp <span class="token keyword">left</span> <span class="token keyword">join</span> Employee em <span class="token keyword">on</span> dp<span class="token punctuation">.</span>Id <span class="token operator">=</span> em<span class="token punctuation">.</span>DepartmentId
+<span class="token keyword">where</span> em2<span class="token punctuation">.</span>DepartmentId <span class="token operator">=</span> em<span class="token punctuation">.</span>DepartmentId <span class="token operator">and</span> em<span class="token punctuation">.</span>Salary<span class="token operator">></span>em2<span class="token punctuation">.</span>Salary<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这个就是em2表中部门相同的em表中薪资大于em2表中薪资，而且去重（就是防止薪资相同，导致取出的结果就少了）,并且是在前三名（他自己算一个，然后再比其他两个薪资大）,必须是存在于部门中的。</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token number">3</span>
+<span class="token operator">></span>
+<span class="token punctuation">(</span>
+<span class="token keyword">SELECT</span> 
+<span class="token function">count</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span><span class="token punctuation">(</span>em<span class="token punctuation">.</span>Salary<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">from</span>
+ Department dp <span class="token keyword">left</span> <span class="token keyword">join</span> Employee em <span class="token keyword">on</span> dp<span class="token punctuation">.</span>Id <span class="token operator">=</span> em<span class="token punctuation">.</span>DepartmentId
+<span class="token keyword">where</span> em2<span class="token punctuation">.</span>DepartmentId <span class="token operator">=</span> em<span class="token punctuation">.</span>DepartmentId <span class="token operator">and</span> em<span class="token punctuation">.</span>Salary<span class="token operator">></span>em2<span class="token punctuation">.</span>Salary
+<span class="token punctuation">)</span><span class="token operator">and</span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token keyword">from</span> Department<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>题解</strong>：</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">SELECT</span>
+dp2<span class="token punctuation">.</span>Name Department<span class="token punctuation">,</span>em2<span class="token punctuation">.</span>Name Employee<span class="token punctuation">,</span>em2<span class="token punctuation">.</span>Salary
+<span class="token keyword">from</span>
+Employee em2 <span class="token keyword">left</span> <span class="token keyword">join</span> Department dp2 <span class="token keyword">on</span> dp2<span class="token punctuation">.</span>Id <span class="token operator">=</span> em2<span class="token punctuation">.</span>DepartmentId
+<span class="token keyword">where</span>
+<span class="token number">3</span>
+<span class="token operator">></span>
+<span class="token punctuation">(</span>
+<span class="token keyword">SELECT</span> 
+<span class="token function">count</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span><span class="token punctuation">(</span>em<span class="token punctuation">.</span>Salary<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">from</span>
+ Department dp <span class="token keyword">left</span> <span class="token keyword">join</span> Employee em <span class="token keyword">on</span> dp<span class="token punctuation">.</span>Id <span class="token operator">=</span> em<span class="token punctuation">.</span>DepartmentId
+<span class="token keyword">where</span> em2<span class="token punctuation">.</span>DepartmentId <span class="token operator">=</span> em<span class="token punctuation">.</span>DepartmentId <span class="token operator">and</span> em<span class="token punctuation">.</span>Salary<span class="token operator">></span>em2<span class="token punctuation">.</span>Salary
+<span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token keyword">from</span> Department<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> dp2<span class="token punctuation">.</span>Id<span class="token punctuation">,</span>em2<span class="token punctuation">.</span>Salary <span class="token keyword">desc</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="三、分数排名"><a href="#三、分数排名" class="headerlink" title="三、分数排名"></a>三、<a href="https://leetcode-cn.com/problems/rank-scores/" target="_blank" rel="noopener">分数排名</a></h3><p><strong>题目描述</strong>：</p>
+<p>编写一个 SQL 查询来实现分数排名。</p>
+<p>如果两个分数相同，则两个分数排名（Rank）相同。请注意，平分后的下一个名次应该是下一个连续的整数值。换句话说，名次之间不应该有“间隔”。</p>
+<p>+—-+——-+<br>| Id | Score |<br>+—-+——-+<br>| 1  | 3.50  |<br>| 2  | 3.65  |<br>| 3  | 4.00  |<br>| 4  | 3.85  |<br>| 5  | 4.00  |<br>| 6  | 3.65  |<br>+—-+——-+</p>
+<p>例如，根据上述给定的 <code>Scores</code> 表，你的查询应该返回（按分数从高到低排列）：</p>
+<p>+——-+——+<br>| Score | Rank |<br>+——-+——+<br>| 4.00  | 1    |<br>| 4.00  | 1    |<br>| 3.85  | 2    |<br>| 3.65  | 3    |<br>| 3.65  | 3    |<br>| 3.50  | 4    |<br>+——-+——+</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/rank-scores" target="_blank" rel="noopener">https://leetcode-cn.com/problems/rank-scores</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<p><strong>思路</strong>：</p>
+<pre class="line-numbers language-yaml"><code class="language-yaml">先排序，然后算出当前薪资有多少个低于他的，最后拿 薪资类别总数（不重复）<span class="token punctuation">-</span>当前薪资有多少个低于他的 +1即可<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>题解</strong>：</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> 
+sc<span class="token punctuation">.</span>Score<span class="token punctuation">,</span>
+<span class="token punctuation">(</span>
+<span class="token punctuation">(</span>
+<span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token keyword">distinct</span><span class="token punctuation">(</span>sc2<span class="token punctuation">.</span>Score<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">from</span> Scores sc2
+<span class="token punctuation">)</span>
+<span class="token operator">-</span>
+<span class="token punctuation">(</span><span class="token keyword">select</span> 
+<span class="token function">count</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span><span class="token punctuation">(</span>sc1<span class="token punctuation">.</span>Score<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span>
+<span class="token keyword">from</span>
+Scores sc1
+<span class="token keyword">where</span> sc<span class="token punctuation">.</span>Score <span class="token operator">></span> sc1<span class="token punctuation">.</span>Score<span class="token punctuation">)</span>
+<span class="token punctuation">)</span> <span class="token operator">+</span><span class="token number">1</span>
+Rank
+<span class="token keyword">from</span>
+Scores sc
+<span class="token keyword">order</span> <span class="token keyword">by</span> sc<span class="token punctuation">.</span>Score <span class="token keyword">desc</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="四、连续出现的数字"><a href="#四、连续出现的数字" class="headerlink" title="四、连续出现的数字"></a>四、<a href="https://leetcode-cn.com/problems/consecutive-numbers/" target="_blank" rel="noopener">连续出现的数字</a></h3><p><strong>题目描述</strong>：</p>
+<p>编写一个 SQL 查询，查找所有至少连续出现三次的数字。</p>
+<p>+—-+—–+<br>| Id | Num |<br>+—-+—–+<br>| 1  |  1  |<br>| 2  |  1  |<br>| 3  |  1  |<br>| 4  |  2  |<br>| 5  |  1  |<br>| 6  |  2  |<br>| 7  |  2  |<br>+—-+—–+</p>
+<p>例如，给定上面的 <code>Logs</code> 表， <code>1</code> 是唯一连续出现至少三次的数字。</p>
+<p>+—————–+<br>| ConsecutiveNums |<br>+—————–+<br>| 1               |<br>+—————–+</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/consecutive-numbers" target="_blank" rel="noopener">https://leetcode-cn.com/problems/consecutive-numbers</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<p><strong>思路</strong>：</p>
+<pre class="line-numbers language-yaml"><code class="language-yaml">当前位置，当前位置往前一步，当前位置往前两步，这三个位置的Num相同即可<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>题解</strong>：</p>
+<p>第一种（只适用于id连续的）</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> 
+<span class="token keyword">DISTINCT</span><span class="token punctuation">(</span>Num<span class="token punctuation">)</span> ConsecutiveNums 
+<span class="token keyword">from</span>
+Logs lg1
+<span class="token keyword">where</span>
+<span class="token punctuation">(</span>
+<span class="token keyword">select</span>
+<span class="token function">count</span><span class="token punctuation">(</span>lg2<span class="token punctuation">.</span>Id<span class="token punctuation">)</span>
+<span class="token keyword">from</span>
+Logs lg2
+<span class="token keyword">where</span> <span class="token punctuation">(</span>lg1<span class="token punctuation">.</span>Num <span class="token operator">=</span> lg2<span class="token punctuation">.</span>Num <span class="token operator">and</span> lg1<span class="token punctuation">.</span>Id <span class="token operator">=</span> lg2<span class="token punctuation">.</span>Id<span class="token punctuation">)</span>
+<span class="token operator">or</span>
+<span class="token punctuation">(</span>lg1<span class="token punctuation">.</span>Num <span class="token operator">=</span> lg2<span class="token punctuation">.</span>Num <span class="token operator">and</span> lg1<span class="token punctuation">.</span>Id<span class="token operator">+</span><span class="token number">1</span><span class="token operator">=</span> lg2<span class="token punctuation">.</span>Id<span class="token punctuation">)</span>
+<span class="token operator">or</span>
+<span class="token punctuation">(</span>lg1<span class="token punctuation">.</span>Num <span class="token operator">=</span> lg2<span class="token punctuation">.</span>Num <span class="token operator">and</span> lg1<span class="token punctuation">.</span>Id<span class="token operator">+</span><span class="token number">2</span><span class="token operator">=</span> lg2<span class="token punctuation">.</span>Id <span class="token punctuation">)</span>
+<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="五、换座位"><a href="#五、换座位" class="headerlink" title="五、换座位"></a>五、<a href="https://leetcode-cn.com/problems/exchange-seats/" target="_blank" rel="noopener">换座位</a></h3><p><strong>题目描述</strong>：</p>
+<p>小美是一所中学的信息科技老师，她有一张 seat 座位表，平时用来储存学生名字和与他们相对应的座位 id。</p>
+<p>其中纵列的 id 是连续递增的</p>
+<p>小美想改变相邻俩学生的座位。</p>
+<p>你能不能帮她写一个 SQL query 来输出小美想要的结果呢？</p>
+<p>示例：</p>
+<p>+———+———+<br>|    id   | student |<br>+———+———+<br>|    1    | Abbot   |<br>|    2    | Doris   |<br>|    3    | Emerson |<br>|    4    | Green   |<br>|    5    | Jeames  |<br>+———+———+<br>假如数据输入的是上表，则输出结果如下：</p>
+<p>+———+———+<br>|    id   | student |<br>+———+———+<br>|    1    | Doris   |<br>|    2    | Abbot   |<br>|    3    | Green   |<br>|    4    | Emerson |<br>|    5    | Jeames  |<br>+———+———+<br>注意：</p>
+<p>如果学生人数是奇数，则不需要改变最后一个同学的座位。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/exchange-seats" target="_blank" rel="noopener">https://leetcode-cn.com/problems/exchange-seats</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<p><strong>思路</strong>：想办法让偶数和相邻位的奇数调换位置</p>
+<p><strong>题解</strong>：</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">SELECT</span>
+    S1<span class="token punctuation">.</span>id<span class="token punctuation">,</span>
+        ifnull<span class="token punctuation">(</span>S2<span class="token punctuation">.</span>student<span class="token punctuation">,</span>S1<span class="token punctuation">.</span>student<span class="token punctuation">)</span> student
+<span class="token keyword">FROM</span>
+    seat S1
+    <span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span>
+    seat S2
+<span class="token keyword">ON</span>
+    S1<span class="token punctuation">.</span>id<span class="token operator">%</span><span class="token number">2</span><span class="token operator">!=</span><span class="token number">0</span> <span class="token operator">and</span> S1<span class="token punctuation">.</span>id <span class="token operator">=</span> S2<span class="token punctuation">.</span>id <span class="token operator">-</span> <span class="token number">1</span>
+        <span class="token operator">or</span> 
+        S1<span class="token punctuation">.</span>id<span class="token operator">%</span><span class="token number">2</span><span class="token operator">=</span><span class="token number">0</span>  <span class="token operator">and</span> S1<span class="token punctuation">.</span>id <span class="token operator">=</span> S2<span class="token punctuation">.</span>id <span class="token operator">+</span><span class="token number">1</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> 
+    S1<span class="token punctuation">.</span>id<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+]]></content>
+      <categories>
+        <category>算法题</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决进入docker之后无法输入中文的简单解决方法</title>
+    <url>/post/d15a4a60.html</url>
+    <content><![CDATA[<p>在进入docker的命令上设置语言编码格式：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">docker <span class="token function">exec</span> -it 容器名称 <span class="token function">env</span> LANG<span class="token operator">=</span>C.UTF-8 <span class="token function">bash</span>   <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong><em>注意</em></strong>：LANG=C.UTF-8大写，不要小写<br><img src="../images/docker01.png" alt="实际操作图片"><br>感谢dockone这条讨论带来的解决办法<br><a href="http://dockone.io/question/195" target="_blank" rel="noopener">dockerone</a></p>
+]]></content>
+      <categories>
+        <category>技巧介绍</category>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu16.04下安装flameshot时出现Unkown module(s) in QT:svg的解决方法</title>
-    <url>/blog/post/b0689396.html</url>
+    <url>/post/b0689396.html</url>
     <content><![CDATA[<p>在安装之前先保证ubuntu16.04安装过QT5，并配置好环境变量(配置etc下的profile文件，在最后一行写下如下代码（以下为示例，地址填实际的地址）：</p>
 <p>#——qt start——<br>export QT5_HOME=/usr/lib/x86_64-linux-gnu/qt5<br>export PATH=${QT5_HOME}/bin:$PATH<br>#————–qt end————-</p>
 <p>);</p>
@@ -2829,30 +2866,8 @@ sdiff <span class="token operator">&lt;</span>key1<span class="token operator">>
       </tags>
   </entry>
   <entry>
-    <title>初次整合springboot+kafka</title>
-    <url>/blog/post/572f0779.html</url>
-    <content><![CDATA[<p>一、kafka的下载与使用<br>进入官网：<a href="http://kafka.apache.org/" target="_blank" rel="noopener">http://kafka.apache.org/</a><img src="../images/kafka01.png" alt="在这里插入图片描述"><br><img src="../images/kafka02.png" alt="在这里插入图片描述"><br><img src="../images/kafka03.png" alt="在这里插入图片描述"><br>下载好之后解压进入config文件夹编辑一下server.properties和    zookeeper.properties这两个配置文件，目前我也就更改了一下数据存储位置和日志存储位置<br><img src="../images/kafka04.png" alt="在这里插入图片描述">)<img src="../images/kafka05.png" alt="在这里插入图片描述"><br>然后就可以启动：</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token punctuation">.</span><span class="token operator">/</span>zookeeper<span class="token operator">-</span>server<span class="token operator">-</span><span class="token function">start</span><span class="token punctuation">.</span>sh <span class="token operator">/</span>home<span class="token operator">/</span>glh<span class="token operator">/</span>kafka_2<span class="token punctuation">.</span>13<span class="token operator">-</span>2<span class="token punctuation">.</span>4<span class="token punctuation">.</span>0<span class="token operator">/</span>config<span class="token operator">/</span>zookeeper<span class="token punctuation">.</span>properties &amp; <span class="token punctuation">.</span><span class="token operator">/</span>kafka<span class="token operator">-</span>server<span class="token operator">-</span><span class="token function">start</span><span class="token punctuation">.</span>sh <span class="token operator">/</span>home<span class="token operator">/</span>glh<span class="token operator">/</span>kafka_2<span class="token punctuation">.</span>13<span class="token operator">-</span>2<span class="token punctuation">.</span>4<span class="token punctuation">.</span>0<span class="token operator">/</span>config<span class="token operator">/</span>server<span class="token punctuation">.</span>properties
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="../images/kafka06.png" alt="在这里插入图片描述"><br>检查是否启动成功，另开一个终端，输入jps，这个就是启动成功<br><img src="../images/kafka07.png" alt="在这里插入图片描述"><br>测试是否可以正常工作，上面启动的端口暂时不要关闭，再开两个终端窗口<br>窗口一：</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token punctuation">.</span><span class="token operator">/</span>bin<span class="token operator">/</span>kafka<span class="token operator">-</span>topics<span class="token punctuation">.</span>sh <span class="token operator">--</span>create <span class="token operator">--</span>zookeeper 127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:2181 <span class="token operator">--</span>replication<span class="token operator">-</span>factor 1 <span class="token operator">--</span>partitions 1 <span class="token operator">--</span>topic hello<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-]]></content>
-      <categories>
-        <category>后端框架</category>
-      </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-        <tag>kafka</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>刷题记录</title>
-    <url>/blog/post/fe644ae0.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>搭建个人的ngrok服务器</title>
-    <url>/blog/post/2c96e6e6.html</url>
+    <url>/post/2c96e6e6.html</url>
     <content><![CDATA[<p>忙活了大半天，终于成功的搭建好了，并且可用，就是所处环境网速限制，体验感不强。在此记录一下过程出现的问题及解决方法，仅供参考。<br>附上以为大佬的ngrok的安装教程<a href="http://www.sunnyos.com/article-show-48.html" target="_blank" rel="noopener">http://www.sunnyos.com/article-show-48.html</a><br>一、安装go的时候，版本尽量高点，我是在官网下载的，别直接在使用sudo apt-get install xxx获取，这个版本不行，到后面编译ngrok的客户端和服务端的时候会出问题。<br>二、服务器端:进入到ngrok目录下的bin目录，使用sudo ./bin/ngrokd -domain=”自定义的域名” -httpAddr=”:访问的端口”<br>        客户端:进入到存在ngrok客户端程序的目录，同级目录下建立ngrok.cfg文件，输入一下内容：</p>
 <pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">server_addr</span><span class="token punctuation">:</span> <span class="token string">"xxxx.com:4443"</span> <span class="token comment" spellcheck="true"># xxxx.com是公网主机的域名，与你在进行秘钥生成时用到的域名要一致，不然启动客户端时tunnel status会一直是reconnecting，4443是公网主机默认的端口不要改动</span>
         <span class="token key atrule">trust_host_root_certs</span><span class="token punctuation">:</span> <span class="token boolean important">false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -2870,23 +2885,8 @@ sdiff <span class="token operator">&lt;</span>key1<span class="token operator">>
       </tags>
   </entry>
   <entry>
-    <title>解决进入docker之后无法输入中文的简单解决方法</title>
-    <url>/blog/post/d15a4a60.html</url>
-    <content><![CDATA[<p>在进入docker的命令上设置语言编码格式：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">docker <span class="token function">exec</span> -it 容器名称 <span class="token function">env</span> LANG<span class="token operator">=</span>C.UTF-8 <span class="token function">bash</span>   <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><strong><em>注意</em></strong>：LANG=C.UTF-8大写，不要小写<br><img src="../images/docker01.png" alt="实际操作图片"><br>感谢dockone这条讨论带来的解决办法<br><a href="http://dockone.io/question/195" target="_blank" rel="noopener">dockerone</a></p>
-]]></content>
-      <categories>
-        <category>技巧介绍</category>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>初识Vue</title>
-    <url>/blog/post/5f9a6bb0.html</url>
+    <url>/post/5f9a6bb0.html</url>
     <content><![CDATA[<h3 id="一、初始Vue"><a href="#一、初始Vue" class="headerlink" title="一、初始Vue"></a>一、初始Vue</h3><p>１．Vue(读音：/vju:/，类似于view)，不要读错，不要读成v　u　e三个字母。</p>
 <p>２．Vue是一个渐进式框架</p>
 <p>。渐进式意味着你可以将Vue作为你应用的一部分嵌入到其中，带来更丰富的交互体验。</p>
