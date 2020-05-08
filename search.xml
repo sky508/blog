@@ -1067,251 +1067,227 @@ Negative matches<span class="token operator">:</span>　　<span class="token co
       </tags>
   </entry>
   <entry>
-    <title>初识SpringBoot之错误处理机制</title>
-    <url>/post/9e23b664.html</url>
-    <content><![CDATA[<h3 id="一、默认错误处理机制"><a href="#一、默认错误处理机制" class="headerlink" title="一、默认错误处理机制"></a>一、默认错误处理机制</h3><p>１．默认效果：</p>
-<p>１）．浏览器，默认返回一个错误页面</p>
-<p><img src="../images/%E9%BB%98%E8%AE%A4%E9%94%99%E8%AF%AF%E9%A1%B5%E9%9D%A2%E4%BF%A1%E6%81%AF.png" alt=""></p>
-<p>浏览器发送请求的请求头：</p>
-<p><img src="../images/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E7%9A%84%E8%AF%B7%E6%B1%82%E5%A4%B4.png" alt=""></p>
-<p>２）．如果其他客户端访问，默认响应一个json数据</p>
-<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
-    <span class="token property">"timestamp"</span><span class="token operator">:</span> <span class="token number">1581062865115</span><span class="token punctuation">,</span>
-    <span class="token property">"status"</span><span class="token operator">:</span> <span class="token number">404</span><span class="token punctuation">,</span>
-    <span class="token property">"error"</span><span class="token operator">:</span> <span class="token string">"Not Found"</span><span class="token punctuation">,</span>
-    <span class="token property">"message"</span><span class="token operator">:</span> <span class="token string">"No message available"</span><span class="token punctuation">,</span>
-    <span class="token property">"path"</span><span class="token operator">:</span> <span class="token string">"/hello2"</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>例如postman发送请求的请求头:</p>
-<p><img src="../images/postman%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E7%9A%84%E8%AF%B7%E6%B1%82%E5%A4%B4.png" alt=""></p>
-<p>原理：参照ErrorMvcAutoConfiguration.class错误处理的自动配置；</p>
-<p>给容器中添加了一下组件：</p>
-<p>１．DefaultErrorAttributes</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//帮我们在页面上共享信息</span>
-<span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>WebRequest webRequest<span class="token punctuation">,</span> <span class="token keyword">boolean</span> includeStackTrace<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> errorAttributes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        errorAttributes<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"timestamp"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">addStatus</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">addErrorDetails</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">,</span> includeStackTrace<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">addPath</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> errorAttributes<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>２．BasicErrorController</p>
-<pre class="line-numbers language-java"><code class="language-java">   <span class="token comment" spellcheck="true">/**
-    *处理默认的/error请求
-    */</span>
-    <span class="token annotation punctuation">@Controller</span>
-<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"${server.error.path:${error.path:/error}}"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BasicErrorController</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractErrorController</span> <span class="token punctuation">{</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>produces <span class="token operator">=</span> MediaType<span class="token punctuation">.</span>TEXT_HTML_VALUE<span class="token punctuation">)</span>
-    <span class="token comment" spellcheck="true">//public static final String TEXT_HTML_VALUE = "text/html";产生html类型的数据,浏览器发送的请求到这个方法处理</span>
-    <span class="token keyword">public</span> ModelAndView <span class="token function">errorHtml</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        HttpStatus status <span class="token operator">=</span> <span class="token function">getStatus</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> model <span class="token operator">=</span> Collections
-                <span class="token punctuation">.</span><span class="token function">unmodifiableMap</span><span class="token punctuation">(</span><span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token function">isIncludeStackTrace</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> MediaType<span class="token punctuation">.</span>TEXT_HTML<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        response<span class="token punctuation">.</span><span class="token function">setStatus</span><span class="token punctuation">(</span>status<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//去哪个页面作为错误页面；包含页面地址和页面内容</span>
-        ModelAndView modelAndView <span class="token operator">=</span> <span class="token function">resolveErrorView</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">,</span> status<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token punctuation">(</span>modelAndView <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token operator">?</span> modelAndView <span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">ModelAndView</span><span class="token punctuation">(</span><span class="token string">"error"</span><span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <title>初识SpringBoot之日志框架</title>
+    <url>/post/d0db4d7d.html</url>
+    <content><![CDATA[<h3 id="一、市面上的日志框架"><a href="#一、市面上的日志框架" class="headerlink" title="一、市面上的日志框架"></a>一、市面上的日志框架</h3><p>JUL 、JCL、Jboss-logging、logback、log4j、log4j2、slf4j…….</p>
+<table>
+<thead>
+<tr>
+<th>日志门面(日志的抽象层)</th>
+<th>日志实现</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><del>JCL(Jakarta Commons Logging)</del> 、<strong>slf4j</strong>(Simple Logging Facade for Java)、<del>Jboss-logging</del></td>
+<td>Log4j、JUL(java.util.logging)、Log4j2、<strong>Logback</strong></td>
+</tr>
+</tbody></table>
+<p>SpringBoot底层是Spring,它默认使用的日志框架是JCL</p>
+<p><strong>SpringBoot选用slf4j和Logback；</strong></p>
+<h3 id="二、SLF4J的使用"><a href="#二、SLF4J的使用" class="headerlink" title="二、SLF4J的使用"></a>二、SLF4J的使用</h3><p>１．使用(导入slf4j和logback的依赖即可)：日志记录方法的调用，不是直接调用日志的实现类，而是调用日志抽象层里面的方法；</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">import</span> org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Logger<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>LoggerFactory<span class="token punctuation">;</span>
 
-    <span class="token annotation punctuation">@RequestMapping</span><span class="token comment" spellcheck="true">//产生json数据，其他软件发送的请求到这个方法处理</span>
-    <span class="token keyword">public</span> ResponseEntity<span class="token operator">&lt;</span>Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">>></span> <span class="token function">error</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        HttpStatus status <span class="token operator">=</span> <span class="token function">getStatus</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>status <span class="token operator">==</span> HttpStatus<span class="token punctuation">.</span>NO_CONTENT<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ResponseEntity</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>status<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> body <span class="token operator">=</span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token function">isIncludeStackTrace</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> MediaType<span class="token punctuation">.</span>ALL<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ResponseEntity</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>body<span class="token punctuation">,</span> status<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>３．ErrorPageCustomizer</p>
-<pre class="line-numbers language-java"><code class="language-java">       <span class="token comment" spellcheck="true">/**
-     * Path of the error controller.
-     *系统出现错误之后来到error请求进行处理（web.xml注册的错误页面规则）
-     */</span>
-    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${error.path:/error}"</span><span class="token punctuation">)</span>
-    <span class="token keyword">private</span> String path <span class="token operator">=</span> <span class="token string">"/error"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>４．DefaultErrorViewResolver</p>
-<pre class="line-numbers language-java"><code class="language-java">        <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> ModelAndView <span class="token function">resolveErrorView</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpStatus status<span class="token punctuation">,</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        ModelAndView modelAndView <span class="token operator">=</span> <span class="token function">resolve</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>status<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>modelAndView <span class="token operator">==</span> null <span class="token operator">&amp;&amp;</span> SERIES_VIEWS<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>status<span class="token punctuation">.</span><span class="token function">series</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            modelAndView <span class="token operator">=</span> <span class="token function">resolve</span><span class="token punctuation">(</span>SERIES_VIEWS<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>status<span class="token punctuation">.</span><span class="token function">series</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> modelAndView<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloWorld</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Logger logger <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>HelloWorld<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"Hello World"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>图示：</p>
+<p><img src="../images/slf4j-concrete-bindings.png" alt=""></p>
+<p>每个日志的实现框架都有自己的配置文件，使用slf4j之后，<strong>配置文件还是做成日志实现框架的配置文件</strong>。</p>
+<p>２．统一日志记录为slf4j</p>
+<img src="../images/slf4j-统一日志记录.png"  />
 
-    <span class="token keyword">private</span> ModelAndView <span class="token function">resolve</span><span class="token punctuation">(</span>String viewName<span class="token punctuation">,</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//SpringBoot默认可以去找到一个页面？例如error/404</span>
-        String errorViewName <span class="token operator">=</span> <span class="token string">"error/"</span> <span class="token operator">+</span> viewName<span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//模板引擎可以解析这个页面地址就用模板引擎解析</span>
-        TemplateAvailabilityProvider provider <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>templateAvailabilityProviders<span class="token punctuation">.</span><span class="token function">getProvider</span><span class="token punctuation">(</span>errorViewName<span class="token punctuation">,</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span>applicationContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>provider <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//模板引擎可用的情况下返回到errorViewName指定的视图地址</span>
-            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ModelAndView</span><span class="token punctuation">(</span>errorViewName<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//模板引擎不可用，就在静态资源文件夹下找errorViewName对应的页面error/404.html</span>
-        <span class="token keyword">return</span> <span class="token function">resolveResource</span><span class="token punctuation">(</span>errorViewName<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>步骤：</p>
-<p>​    一旦出现4xx、5xx的错误，<code>ErrorPageCustomizer</code>会生效（定制错误的响应规则）；就会来到/error请求；就会被<code>BasicErrorController</code>处理;</p>
-<p>​    1).响应页面:去哪个页面是由<code>DefaultErrorViewResolver</code>解析得到的</p>
-<pre class="line-numbers language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
-     * Resolve any specific error views. By default this method delegates to
-     * {@link ErrorViewResolver ErrorViewResolvers}.
-     * @param request the request
-     * @param response the response
-     * @param status the HTTP status
-     * @param model the suggested model
-     * @return a specific {@link ModelAndView} or {@code null} if the default should be
-     * used
-     * @since 1.4.0
-     */</span>
-    <span class="token keyword">protected</span> ModelAndView <span class="token function">resolveErrorView</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">,</span> HttpStatus status<span class="token punctuation">,</span>
-            Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//所有的ErrorViewerResolver得到ModelAndView</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>ErrorViewResolver resolver <span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>errorViewResolvers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            ModelAndView modelAndView <span class="token operator">=</span> resolver<span class="token punctuation">.</span><span class="token function">resolveErrorView</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> status<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>modelAndView <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">return</span> modelAndView<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>２．如何定制错误响应：</p>
-<p>１）、如何定制错误的页面</p>
-<p>​        a).<strong>有模板引擎的情况下；error/状态码</strong>；【将错误页面命名为　错误状态码.html　放在模板引擎文件夹下的error文件夹下】，发生此状态码的错误就会来到对应的页面；</p>
-<p>​            我们可以使用4xx、5xx作为错误页面的文件名来匹配这种类型的所有错误，精确优先（优先寻找精确的状态码.html）；</p>
-<p>​            页面能获取的信息：</p>
-<pre class="line-numbers language-java"><code class="language-java">    timestamp<span class="token operator">:</span>时间戳
-    status<span class="token operator">:</span>状态码
-    error<span class="token operator">:</span>错误提示
-    exception<span class="token operator">:</span>异常对象
-    message<span class="token operator">:</span>异常信息
-    errors<span class="token operator">:</span>JSR303数据校验的错误都在这里面<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>举例：<img src="../images/error-4xx-5xx.png" alt="">        <img src="../images/eg-5xx.html.png" alt=""></p>
-<p>b).<strong>没有模板引擎的情况下（模板引擎找不到这个错误页面）</strong>，静态资源文件夹下去找<strong>（了解即可）</strong></p>
-<p>​        c).以上都没有，就是来到默认的空白信息页面</p>
-<p>２）、如何定制错误的json数据</p>
-<p>​    a).自定义异常处理＆返回定制json数据；</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@ControllerAdvice</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyExceptionHandler</span> <span class="token punctuation">{</span>
+<p><strong>步骤：</strong></p>
+<p>1). 先把系统中其他的日志框架排除出去</p>
+<p>2). 用中间包来替换原有的日志框架</p>
+<p>3). 我们导入slf4j其他的实现</p>
+<h3 id="三、SpringBoot日志关系"><a href="#三、SpringBoot日志关系" class="headerlink" title="三、SpringBoot日志关系"></a>三、SpringBoot日志关系</h3><pre class="line-numbers language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>SpringBoot使用它做日志记录</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="../images/slf4j%EF%BC%8Dspringboot.png" alt=""></p>
+<p>总结：</p>
+<p>１）、SpringBoot使用slf4j+logback做日志记录；</p>
+<p>２）、SpringBoot也把其他的日志替换成slf4j；</p>
+<p>３）、中间替换包？</p>
+<p><img src="../images/slf4j-jul.png" alt=""></p>
+<p>４）、如果我们要引入其他框架，一定要把这个框架默认的日志依赖移除掉；</p>
+<p>Spring框架用的是commons-logging；类似于以下写法，排除掉commons-logging</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-core<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusions</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusion</span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>commons-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>commons-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusion</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusions</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>SpringBoot能自动匹配所有的日志，而且底层使用的是slf4j+logback的方式记录日志，引入其他框架时，只需要把这个框架依赖的日志框架排除掉即可。</strong></p>
+<h3 id="四、日志的使用"><a href="#四、日志的使用" class="headerlink" title="四、日志的使用"></a>四、日志的使用</h3><p><a href="https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/html/spring-boot-features.html#boot-features-logging" target="_blank" rel="noopener">官网链接 4. Logging</a></p>
+<ol>
+<li><p>使用</p>
+<pre class="line-numbers language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//日志记录器</span>
+    Logger logger<span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-      <span class="token comment" spellcheck="true">/**
-     * 浏览器和客户端返回的都是json数据
-     * @param e
-     * @return
-     */</span>
-    <span class="token annotation punctuation">@ResponseBody</span>
-    <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span>UserNotExitExption<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span>  Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> <span class="token function">handleException</span><span class="token punctuation">(</span>Exception e<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> map<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">,</span><span class="token string">"user not exit!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"msg"</span><span class="token punctuation">,</span>e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> map<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>缺点：没有自适应效果</strong></p>
-<p>​    b).转发到 <code>/error</code>进行自适应响应效果处理</p>
-<pre class="line-numbers language-java"><code class="language-java"> <span class="token annotation punctuation">@ControllerAdvice</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyExceptionHandler</span> <span class="token punctuation">{</span>
-<span class="token comment" spellcheck="true">/**
-     * @param e
-     * @return
-     */</span>
-    <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span>UserNotExitExption<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span>  String <span class="token function">handleException</span><span class="token punctuation">(</span>Exception e<span class="token punctuation">,</span> HttpServletRequest req<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> map<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">,</span><span class="token string">"user not exit!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"message"</span><span class="token punctuation">,</span>e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">/**
-         *  传入我们自己的错误状态码　4xx  5xx ,否则就不会进入错误页面的解析过程
-         * Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
-         */</span>
-        req<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"javax.servlet.error.status_code"</span><span class="token punctuation">,</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">void</span> <span class="token function">contextLoads</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token comment" spellcheck="true">//日志的级别,从上至下级别由低到高</span>
+        <span class="token comment" spellcheck="true">//可以调整输出的日志级别，日志就只会在这个级别及以后的高级别生效</span>
+        logger<span class="token punctuation">.</span><span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－这是一个trace日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－这是一个debug日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//SpringBoot默认给我们使用的是info级别的,没有指定就使用其默认的级别，</span>
+        <span class="token comment" spellcheck="true">// 调整可以在配置文件中调整，例如调整为root 级别：                logging.level.team.glh.demo.springboottest=trace</span>
+        logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－－这是一个info日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        logger<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－－这是一个warn日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－这是一个error日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>在org/springframework/boot/spring-boot/2.2.2.RELEASE/spring-boot-2.2.2.RELEASE.jar!/org/springframework/boot/logging/logback/base.xml中制定了日志级别为info级别</strong></p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
 
-        <span class="token comment" spellcheck="true">//转发到/error，让它进行自适应处理</span>
-        <span class="token comment" spellcheck="true">//BasicErrorController中的errorHtml和error方法会进行自适应处理</span>
-        <span class="token keyword">return</span> <span class="token string">"forward:/error"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>缺点：这种不能返回指定的信息</strong></p>
-<p>​    c).将我们的定制数据携带出去</p>
-<p>出现错误以后，会来到/error请求，会被<code>BasicErrorController</code>处理，响应出去可以获取的数据是由<code>getErrorAttributes</code>（这个方法是<code>BasicErrorController</code>的父类<code>AbstractErrorController</code>规定的方法）得到的，</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">AbstractErrorController</span> <span class="token keyword">implements</span> <span class="token class-name">ErrorController</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>​    方法一（较复杂）：完全类编写一个<code>ErrorController</code>的实现类【或者编写<code>AbstractErrorController</code>的子类】，放在容器中；</p>
-<p>​    <strong>方法二</strong>：页面上能用的数据，或者是json返回的数据都是通过errorAttributes.getErrorAttributes(webRequest, includeStackTrace)得到的；</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">AbstractErrorController</span> <span class="token keyword">implements</span> <span class="token class-name">ErrorController</span> <span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">&lt;!--
+Base logback configuration provided for compatibility with Spring Boot 1.1
+--></span>
 
-    <span class="token keyword">private</span> <span class="token keyword">final</span> ErrorAttributes errorAttributes<span class="token punctuation">;</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token keyword">protected</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> <span class="token keyword">boolean</span> includeStackTrace<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        WebRequest webRequest <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ServletWebRequest</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>errorAttributes<span class="token punctuation">.</span><span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>webRequest<span class="token punctuation">,</span> includeStackTrace<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DefaultErrorAttributes</span> <span class="token keyword">implements</span> <span class="token class-name">ErrorAttributes</span><span class="token punctuation">,</span> HandlerExceptionResolver<span class="token punctuation">,</span> Ordered <span class="token punctuation">{</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-        <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>WebRequest webRequest<span class="token punctuation">,</span> <span class="token keyword">boolean</span> includeStackTrace<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> errorAttributes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        errorAttributes<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"timestamp"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">addStatus</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">addErrorDetails</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">,</span> includeStackTrace<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">addPath</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> errorAttributes<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>容器中<code>DefaultErrorAttributes</code>中的getErrorAttributes（）默认进行任务处理；</p>
-<p>所以我们<strong>自定义ErrorAttributes</strong>：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyErrorAttributes</span> <span class="token keyword">extends</span> <span class="token class-name">DefaultErrorAttributes</span> <span class="token punctuation">{</span>
-
-    <span class="token comment" spellcheck="true">//返回的map就是页面和json能获取的所有字段</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>WebRequest webRequest<span class="token punctuation">,</span> <span class="token keyword">boolean</span> includeStackTrace<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> map<span class="token operator">=</span><span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>webRequest<span class="token punctuation">,</span>includeStackTrace<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"team"</span><span class="token punctuation">,</span><span class="token string">"glh"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">//int SCOPE_REQUEST = 0;请求域</span>
-        <span class="token comment" spellcheck="true">//int SCOPE_SESSION = 1;会话域</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> ext<span class="token operator">=</span><span class="token punctuation">(</span>Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span><span class="token punctuation">)</span> webRequest<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"ext"</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"ext"</span><span class="token punctuation">,</span>ext<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> map<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>重新编写<code>MyExceptionHandler</code>，将自定义数据map加入到request域中，给自定义的MyErrorAttributes进行处理</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@ControllerAdvice</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyExceptionHandler</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/**
-     * @param e
-     * @return
-     */</span>
-    <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span>UserNotExitExption<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span>  String <span class="token function">handleException</span><span class="token punctuation">(</span>Exception e<span class="token punctuation">,</span> HttpServletRequest req<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> map<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">,</span><span class="token string">"user not exit!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"message"</span><span class="token punctuation">,</span>e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">/**
-         *  传入我们自己的错误状态码　4xx  5xx ,否则就不会进入错误页面的解析过程
-         * Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
-         */</span>
-        req<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"javax.servlet.error.status_code"</span><span class="token punctuation">,</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">//将自定义数据map加入到request域中，给MyErrorAttributes进行处理</span>
-        req<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"ext"</span><span class="token punctuation">,</span>map<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//转发到/error，让它进行自适应处理</span>
-        <span class="token comment" spellcheck="true">//BasicErrorController中的errorHtml和error方法会进行自适应处理</span>
-        <span class="token keyword">return</span> <span class="token string">"forward:/error"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>最终效果：响应是自适应的，可以通过定制ErrorAttributes改变需要返回的内容</p>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>included</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span> <span class="token attr-name">resource</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org/springframework/boot/logging/logback/defaults.xml<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>LOG_FILE<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/spring.log}<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span> <span class="token attr-name">resource</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org/springframework/boot/logging/logback/console-appender.xml<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span> <span class="token attr-name">resource</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org/springframework/boot/logging/logback/file-appender.xml<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token comment" spellcheck="true">&lt;!--此处指定日志的默认级别为info级别--></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>root</span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>INFO<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender-ref</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>CONSOLE<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender-ref</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>FILE<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>root</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>included</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<ol start="2">
+<li><p>调整日志级别</p>
+<p>1)  application.yaml</p>
+<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true">#logging.level.team.glh.demo.springboottest: trace</span>
+<span class="token key atrule">logging</span><span class="token punctuation">:</span>
+  <span class="token key atrule">level</span><span class="token punctuation">:</span>
+    <span class="token key atrule">team</span><span class="token punctuation">:</span>
+      <span class="token key atrule">glh</span><span class="token punctuation">:</span>
+        <span class="token key atrule">demo</span><span class="token punctuation">:</span>
+          <span class="token key atrule">springboottest</span><span class="token punctuation">:</span> trace     <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>2) application.properties </p>
+<pre class="line-numbers language-properties"><code class="language-properties"><span class="token attr-name">logging.level.team.glh.demo.springboottest</span><span class="token punctuation">=</span><span class="token attr-value">trace</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="3">
+<li><p>更改日志的一些默认配置</p>
+<p>在以前的版本中使用下面这种可以修改配置</p>
+<pre class="line-numbers language-properties"><code class="language-properties"><span class="token attr-name">logging.level.team.glh.demo.springboottest</span><span class="token punctuation">=</span><span class="token attr-value">trace</span>
+<span class="token comment" spellcheck="true">#可以指定文件位置，但是必须指定文件名，如果不指定路径，默认在当前项目下生成</span>
+<span class="token comment" spellcheck="true">#logging.file=/home/glh/IdeaProjects/logs/spring-boot-test-demo/spring-boot-test.log</span>
+<span class="token comment" spellcheck="true">#只需要指定日志生成路径，默认生成文件spring.log</span>
+<span class="token attr-name">logging.path</span><span class="token punctuation">=</span><span class="token attr-value">/home/glh/IdeaProjects/logs/spring-boot-test-demo</span>
+<span class="token comment" spellcheck="true">#在控制台输出的格式</span>
+<span class="token attr-name">logging.pattern.console</span><span class="token punctuation">=</span><span class="token attr-value">[%d{yyyy-MM-dd}]:%p %l%m%n</span>
+<span class="token comment" spellcheck="true">#指定文件中日志输出的格式</span>
+<span class="token attr-name">logging.pattern.file</span><span class="token punctuation">=</span><span class="token attr-value">[%d{yyyy-MM-dd}]:%p %l%m%n</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>而在现如今的版本中可以这么指定（spring-boot.2.2.2.RELEASE）</p>
+<pre class="line-numbers language-properties"><code class="language-properties"><span class="token comment" spellcheck="true">#只需要指定日志生成路径，默认生成文件spring.log</span>
+<span class="token comment" spellcheck="true">#logging.file.path=/home/glh/IdeaProjects/logs/spring-boot-test-demo</span>
+<span class="token comment" spellcheck="true">#可以指定文件位置，但是必须指定文件名，如果不指定路径，默认在当前项目下生成</span>
+<span class="token attr-name">logging.file.name</span><span class="token punctuation">=</span><span class="token attr-value">/home/glh/IdeaProjects/logs/spring-boot-test-demo/spring-boot-test.log</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>官方介绍</p>
+<table>
+<thead>
+<tr>
+<th align="left"><code>logging.file.name</code></th>
+<th align="left"><code>logging.file.path</code></th>
+<th align="left">Example</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><em>(none)</em></td>
+<td align="left"><em>(none)</em></td>
+<td align="left"></td>
+<td align="left">Console only logging.</td>
+</tr>
+<tr>
+<td align="left">Specific file</td>
+<td align="left"><em>(none)</em></td>
+<td align="left"><code>my.log</code></td>
+<td align="left">Writes to the specified log file. Names can be an exact location or relative to the current directory.</td>
+</tr>
+<tr>
+<td align="left"><em>(none)</em></td>
+<td align="left">Specific directory</td>
+<td align="left"><code>/var/log</code></td>
+<td align="left">Writes <code>spring.log</code> to the specified directory. Names can be an exact location or relative to the current directory.</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+</ol>
+<p>４.　指定配置文件</p>
+<p><a href="https://www.cnblogs.com/light-zhang/p/8744647.html" target="_blank" rel="noopener">模板参考</a></p>
+<table>
+<thead>
+<tr>
+<th align="left">Logging System</th>
+<th align="left">Customization</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Logback</td>
+<td align="left"><code>logback-spring.xml</code>, <code>logback-spring.groovy</code>, <code>logback.xml</code>, or <code>logback.groovy</code></td>
+</tr>
+<tr>
+<td align="left">Log4j2</td>
+<td align="left"><code>log4j2-spring.xml</code> or <code>log4j2.xml</code></td>
+</tr>
+<tr>
+<td align="left">JDK (Java Util Logging)</td>
+<td align="left"><code>logging.properties</code></td>
+</tr>
+</tbody></table>
+<p>logback.xml:可以被日志框架识别；<strong>可以使用下面的profile进行日志类型指定，例如：在不同环境下使用不同格式的日志类型</strong></p>
+<pre class="line-numbers language-xml"><code class="language-xml"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>springProfile</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dev<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pattern</span><span class="token punctuation">></span></span>
+                    [%-5level] -----------------============= %d{${DATETIME}} [%thread] %logger{36} - %m%n
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pattern</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>springProfile</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>springProfile</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>!dev<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pattern</span><span class="token punctuation">></span></span>
+                    [%-5level] ----------------- %d{${DATETIME}} [%thread] %logger{36} - %m%n
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pattern</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>springProfile</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>５．切换日志框架</p>
+<p>先把原先的日志框架排除，再引入新的日志框架依赖</p>
+<p>例如：切换为log4j2日志框架</p>
+<pre class="line-numbers language-xml"><code class="language-xml">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-web<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token comment" spellcheck="true">&lt;!--排除原先的logging日志框架--></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusions</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusion</span><span class="token punctuation">></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusion</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusions</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+        <span class="token comment" spellcheck="true">&lt;!--引入新的日志框架依赖，版本号自动匹配--></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-log4j2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 ]]></content>
       <categories>
         <category>后端框架</category>
@@ -1900,227 +1876,251 @@ insert的功能片段在div标签中
       </tags>
   </entry>
   <entry>
-    <title>初识SpringBoot之日志框架</title>
-    <url>/post/d0db4d7d.html</url>
-    <content><![CDATA[<h3 id="一、市面上的日志框架"><a href="#一、市面上的日志框架" class="headerlink" title="一、市面上的日志框架"></a>一、市面上的日志框架</h3><p>JUL 、JCL、Jboss-logging、logback、log4j、log4j2、slf4j…….</p>
-<table>
-<thead>
-<tr>
-<th>日志门面(日志的抽象层)</th>
-<th>日志实现</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><del>JCL(Jakarta Commons Logging)</del> 、<strong>slf4j</strong>(Simple Logging Facade for Java)、<del>Jboss-logging</del></td>
-<td>Log4j、JUL(java.util.logging)、Log4j2、<strong>Logback</strong></td>
-</tr>
-</tbody></table>
-<p>SpringBoot底层是Spring,它默认使用的日志框架是JCL</p>
-<p><strong>SpringBoot选用slf4j和Logback；</strong></p>
-<h3 id="二、SLF4J的使用"><a href="#二、SLF4J的使用" class="headerlink" title="二、SLF4J的使用"></a>二、SLF4J的使用</h3><p>１．使用(导入slf4j和logback的依赖即可)：日志记录方法的调用，不是直接调用日志的实现类，而是调用日志抽象层里面的方法；</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">import</span> org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Logger<span class="token punctuation">;</span>
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>LoggerFactory<span class="token punctuation">;</span>
+    <title>初识SpringBoot之错误处理机制</title>
+    <url>/post/9e23b664.html</url>
+    <content><![CDATA[<h3 id="一、默认错误处理机制"><a href="#一、默认错误处理机制" class="headerlink" title="一、默认错误处理机制"></a>一、默认错误处理机制</h3><p>１．默认效果：</p>
+<p>１）．浏览器，默认返回一个错误页面</p>
+<p><img src="../images/%E9%BB%98%E8%AE%A4%E9%94%99%E8%AF%AF%E9%A1%B5%E9%9D%A2%E4%BF%A1%E6%81%AF.png" alt=""></p>
+<p>浏览器发送请求的请求头：</p>
+<p><img src="../images/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E7%9A%84%E8%AF%B7%E6%B1%82%E5%A4%B4.png" alt=""></p>
+<p>２）．如果其他客户端访问，默认响应一个json数据</p>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"timestamp"</span><span class="token operator">:</span> <span class="token number">1581062865115</span><span class="token punctuation">,</span>
+    <span class="token property">"status"</span><span class="token operator">:</span> <span class="token number">404</span><span class="token punctuation">,</span>
+    <span class="token property">"error"</span><span class="token operator">:</span> <span class="token string">"Not Found"</span><span class="token punctuation">,</span>
+    <span class="token property">"message"</span><span class="token operator">:</span> <span class="token string">"No message available"</span><span class="token punctuation">,</span>
+    <span class="token property">"path"</span><span class="token operator">:</span> <span class="token string">"/hello2"</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>例如postman发送请求的请求头:</p>
+<p><img src="../images/postman%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E7%9A%84%E8%AF%B7%E6%B1%82%E5%A4%B4.png" alt=""></p>
+<p>原理：参照ErrorMvcAutoConfiguration.class错误处理的自动配置；</p>
+<p>给容器中添加了一下组件：</p>
+<p>１．DefaultErrorAttributes</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//帮我们在页面上共享信息</span>
+<span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>WebRequest webRequest<span class="token punctuation">,</span> <span class="token keyword">boolean</span> includeStackTrace<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> errorAttributes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        errorAttributes<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"timestamp"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">addStatus</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">addErrorDetails</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">,</span> includeStackTrace<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">addPath</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> errorAttributes<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>２．BasicErrorController</p>
+<pre class="line-numbers language-java"><code class="language-java">   <span class="token comment" spellcheck="true">/**
+    *处理默认的/error请求
+    */</span>
+    <span class="token annotation punctuation">@Controller</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"${server.error.path:${error.path:/error}}"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BasicErrorController</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractErrorController</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>produces <span class="token operator">=</span> MediaType<span class="token punctuation">.</span>TEXT_HTML_VALUE<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">//public static final String TEXT_HTML_VALUE = "text/html";产生html类型的数据,浏览器发送的请求到这个方法处理</span>
+    <span class="token keyword">public</span> ModelAndView <span class="token function">errorHtml</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        HttpStatus status <span class="token operator">=</span> <span class="token function">getStatus</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> model <span class="token operator">=</span> Collections
+                <span class="token punctuation">.</span><span class="token function">unmodifiableMap</span><span class="token punctuation">(</span><span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token function">isIncludeStackTrace</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> MediaType<span class="token punctuation">.</span>TEXT_HTML<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        response<span class="token punctuation">.</span><span class="token function">setStatus</span><span class="token punctuation">(</span>status<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//去哪个页面作为错误页面；包含页面地址和页面内容</span>
+        ModelAndView modelAndView <span class="token operator">=</span> <span class="token function">resolveErrorView</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">,</span> status<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>modelAndView <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token operator">?</span> modelAndView <span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">ModelAndView</span><span class="token punctuation">(</span><span class="token string">"error"</span><span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloWorld</span> <span class="token punctuation">{</span>
-  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    Logger logger <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>HelloWorld<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"Hello World"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>图示：</p>
-<p><img src="../images/slf4j-concrete-bindings.png" alt=""></p>
-<p>每个日志的实现框架都有自己的配置文件，使用slf4j之后，<strong>配置文件还是做成日志实现框架的配置文件</strong>。</p>
-<p>２．统一日志记录为slf4j</p>
-<img src="../images/slf4j-统一日志记录.png"  />
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token comment" spellcheck="true">//产生json数据，其他软件发送的请求到这个方法处理</span>
+    <span class="token keyword">public</span> ResponseEntity<span class="token operator">&lt;</span>Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">>></span> <span class="token function">error</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        HttpStatus status <span class="token operator">=</span> <span class="token function">getStatus</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>status <span class="token operator">==</span> HttpStatus<span class="token punctuation">.</span>NO_CONTENT<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ResponseEntity</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>status<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> body <span class="token operator">=</span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token function">isIncludeStackTrace</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> MediaType<span class="token punctuation">.</span>ALL<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ResponseEntity</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>body<span class="token punctuation">,</span> status<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>３．ErrorPageCustomizer</p>
+<pre class="line-numbers language-java"><code class="language-java">       <span class="token comment" spellcheck="true">/**
+     * Path of the error controller.
+     *系统出现错误之后来到error请求进行处理（web.xml注册的错误页面规则）
+     */</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${error.path:/error}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String path <span class="token operator">=</span> <span class="token string">"/error"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>４．DefaultErrorViewResolver</p>
+<pre class="line-numbers language-java"><code class="language-java">        <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> ModelAndView <span class="token function">resolveErrorView</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpStatus status<span class="token punctuation">,</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ModelAndView modelAndView <span class="token operator">=</span> <span class="token function">resolve</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>status<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>modelAndView <span class="token operator">==</span> null <span class="token operator">&amp;&amp;</span> SERIES_VIEWS<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>status<span class="token punctuation">.</span><span class="token function">series</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            modelAndView <span class="token operator">=</span> <span class="token function">resolve</span><span class="token punctuation">(</span>SERIES_VIEWS<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>status<span class="token punctuation">.</span><span class="token function">series</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> modelAndView<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-<p><strong>步骤：</strong></p>
-<p>1). 先把系统中其他的日志框架排除出去</p>
-<p>2). 用中间包来替换原有的日志框架</p>
-<p>3). 我们导入slf4j其他的实现</p>
-<h3 id="三、SpringBoot日志关系"><a href="#三、SpringBoot日志关系" class="headerlink" title="三、SpringBoot日志关系"></a>三、SpringBoot日志关系</h3><pre class="line-numbers language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>SpringBoot使用它做日志记录</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="../images/slf4j%EF%BC%8Dspringboot.png" alt=""></p>
-<p>总结：</p>
-<p>１）、SpringBoot使用slf4j+logback做日志记录；</p>
-<p>２）、SpringBoot也把其他的日志替换成slf4j；</p>
-<p>３）、中间替换包？</p>
-<p><img src="../images/slf4j-jul.png" alt=""></p>
-<p>４）、如果我们要引入其他框架，一定要把这个框架默认的日志依赖移除掉；</p>
-<p>Spring框架用的是commons-logging；类似于以下写法，排除掉commons-logging</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-core<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusions</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusion</span><span class="token punctuation">></span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>commons-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>commons-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusion</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusions</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>SpringBoot能自动匹配所有的日志，而且底层使用的是slf4j+logback的方式记录日志，引入其他框架时，只需要把这个框架依赖的日志框架排除掉即可。</strong></p>
-<h3 id="四、日志的使用"><a href="#四、日志的使用" class="headerlink" title="四、日志的使用"></a>四、日志的使用</h3><p><a href="https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/html/spring-boot-features.html#boot-features-logging" target="_blank" rel="noopener">官网链接 4. Logging</a></p>
-<ol>
-<li><p>使用</p>
-<pre class="line-numbers language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//日志记录器</span>
-    Logger logger<span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> ModelAndView <span class="token function">resolve</span><span class="token punctuation">(</span>String viewName<span class="token punctuation">,</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//SpringBoot默认可以去找到一个页面？例如error/404</span>
+        String errorViewName <span class="token operator">=</span> <span class="token string">"error/"</span> <span class="token operator">+</span> viewName<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//模板引擎可以解析这个页面地址就用模板引擎解析</span>
+        TemplateAvailabilityProvider provider <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>templateAvailabilityProviders<span class="token punctuation">.</span><span class="token function">getProvider</span><span class="token punctuation">(</span>errorViewName<span class="token punctuation">,</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>applicationContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>provider <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//模板引擎可用的情况下返回到errorViewName指定的视图地址</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ModelAndView</span><span class="token punctuation">(</span>errorViewName<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//模板引擎不可用，就在静态资源文件夹下找errorViewName对应的页面error/404.html</span>
+        <span class="token keyword">return</span> <span class="token function">resolveResource</span><span class="token punctuation">(</span>errorViewName<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>步骤：</p>
+<p>​    一旦出现4xx、5xx的错误，<code>ErrorPageCustomizer</code>会生效（定制错误的响应规则）；就会来到/error请求；就会被<code>BasicErrorController</code>处理;</p>
+<p>​    1).响应页面:去哪个页面是由<code>DefaultErrorViewResolver</code>解析得到的</p>
+<pre class="line-numbers language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * Resolve any specific error views. By default this method delegates to
+     * {@link ErrorViewResolver ErrorViewResolvers}.
+     * @param request the request
+     * @param response the response
+     * @param status the HTTP status
+     * @param model the suggested model
+     * @return a specific {@link ModelAndView} or {@code null} if the default should be
+     * used
+     * @since 1.4.0
+     */</span>
+    <span class="token keyword">protected</span> ModelAndView <span class="token function">resolveErrorView</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">,</span> HttpStatus status<span class="token punctuation">,</span>
+            Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//所有的ErrorViewerResolver得到ModelAndView</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>ErrorViewResolver resolver <span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>errorViewResolvers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            ModelAndView modelAndView <span class="token operator">=</span> resolver<span class="token punctuation">.</span><span class="token function">resolveErrorView</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> status<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>modelAndView <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> modelAndView<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>２．如何定制错误响应：</p>
+<p>１）、如何定制错误的页面</p>
+<p>​        a).<strong>有模板引擎的情况下；error/状态码</strong>；【将错误页面命名为　错误状态码.html　放在模板引擎文件夹下的error文件夹下】，发生此状态码的错误就会来到对应的页面；</p>
+<p>​            我们可以使用4xx、5xx作为错误页面的文件名来匹配这种类型的所有错误，精确优先（优先寻找精确的状态码.html）；</p>
+<p>​            页面能获取的信息：</p>
+<pre class="line-numbers language-java"><code class="language-java">    timestamp<span class="token operator">:</span>时间戳
+    status<span class="token operator">:</span>状态码
+    error<span class="token operator">:</span>错误提示
+    exception<span class="token operator">:</span>异常对象
+    message<span class="token operator">:</span>异常信息
+    errors<span class="token operator">:</span>JSR303数据校验的错误都在这里面<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>举例：<img src="../images/error-4xx-5xx.png" alt="">        <img src="../images/eg-5xx.html.png" alt=""></p>
+<p>b).<strong>没有模板引擎的情况下（模板引擎找不到这个错误页面）</strong>，静态资源文件夹下去找<strong>（了解即可）</strong></p>
+<p>​        c).以上都没有，就是来到默认的空白信息页面</p>
+<p>２）、如何定制错误的json数据</p>
+<p>​    a).自定义异常处理＆返回定制json数据；</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@ControllerAdvice</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyExceptionHandler</span> <span class="token punctuation">{</span>
 
-    <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">void</span> <span class="token function">contextLoads</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-       <span class="token comment" spellcheck="true">//日志的级别,从上至下级别由低到高</span>
-        <span class="token comment" spellcheck="true">//可以调整输出的日志级别，日志就只会在这个级别及以后的高级别生效</span>
-        logger<span class="token punctuation">.</span><span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－这是一个trace日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－这是一个debug日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//SpringBoot默认给我们使用的是info级别的,没有指定就使用其默认的级别，</span>
-        <span class="token comment" spellcheck="true">// 调整可以在配置文件中调整，例如调整为root 级别：                logging.level.team.glh.demo.springboottest=trace</span>
-        logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－－这是一个info日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        logger<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－－这是一个warn日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"－－－－－－－－－－－－－－－这是一个error日志－－－－－－－－－－－"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>在org/springframework/boot/spring-boot/2.2.2.RELEASE/spring-boot-2.2.2.RELEASE.jar!/org/springframework/boot/logging/logback/base.xml中制定了日志级别为info级别</strong></p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+      <span class="token comment" spellcheck="true">/**
+     * 浏览器和客户端返回的都是json数据
+     * @param e
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@ResponseBody</span>
+    <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span>UserNotExitExption<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span>  Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> <span class="token function">handleException</span><span class="token punctuation">(</span>Exception e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> map<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">,</span><span class="token string">"user not exit!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"msg"</span><span class="token punctuation">,</span>e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> map<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>缺点：没有自适应效果</strong></p>
+<p>​    b).转发到 <code>/error</code>进行自适应响应效果处理</p>
+<pre class="line-numbers language-java"><code class="language-java"> <span class="token annotation punctuation">@ControllerAdvice</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyExceptionHandler</span> <span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">/**
+     * @param e
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span>UserNotExitExption<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span>  String <span class="token function">handleException</span><span class="token punctuation">(</span>Exception e<span class="token punctuation">,</span> HttpServletRequest req<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> map<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">,</span><span class="token string">"user not exit!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"message"</span><span class="token punctuation">,</span>e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">/**
+         *  传入我们自己的错误状态码　4xx  5xx ,否则就不会进入错误页面的解析过程
+         * Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
+         */</span>
+        req<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"javax.servlet.error.status_code"</span><span class="token punctuation">,</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">&lt;!--
-Base logback configuration provided for compatibility with Spring Boot 1.1
---></span>
+        <span class="token comment" spellcheck="true">//转发到/error，让它进行自适应处理</span>
+        <span class="token comment" spellcheck="true">//BasicErrorController中的errorHtml和error方法会进行自适应处理</span>
+        <span class="token keyword">return</span> <span class="token string">"forward:/error"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>缺点：这种不能返回指定的信息</strong></p>
+<p>​    c).将我们的定制数据携带出去</p>
+<p>出现错误以后，会来到/error请求，会被<code>BasicErrorController</code>处理，响应出去可以获取的数据是由<code>getErrorAttributes</code>（这个方法是<code>BasicErrorController</code>的父类<code>AbstractErrorController</code>规定的方法）得到的，</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">AbstractErrorController</span> <span class="token keyword">implements</span> <span class="token class-name">ErrorController</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>​    方法一（较复杂）：完全类编写一个<code>ErrorController</code>的实现类【或者编写<code>AbstractErrorController</code>的子类】，放在容器中；</p>
+<p>​    <strong>方法二</strong>：页面上能用的数据，或者是json返回的数据都是通过errorAttributes.getErrorAttributes(webRequest, includeStackTrace)得到的；</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">AbstractErrorController</span> <span class="token keyword">implements</span> <span class="token class-name">ErrorController</span> <span class="token punctuation">{</span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>included</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span> <span class="token attr-name">resource</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org/springframework/boot/logging/logback/defaults.xml<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>LOG_FILE<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/spring.log}<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span> <span class="token attr-name">resource</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org/springframework/boot/logging/logback/console-appender.xml<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>include</span> <span class="token attr-name">resource</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org/springframework/boot/logging/logback/file-appender.xml<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token comment" spellcheck="true">&lt;!--此处指定日志的默认级别为info级别--></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>root</span> <span class="token attr-name">level</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>INFO<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender-ref</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>CONSOLE<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>appender-ref</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>FILE<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>root</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>included</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<ol start="2">
-<li><p>调整日志级别</p>
-<p>1)  application.yaml</p>
-<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true">#logging.level.team.glh.demo.springboottest: trace</span>
-<span class="token key atrule">logging</span><span class="token punctuation">:</span>
-  <span class="token key atrule">level</span><span class="token punctuation">:</span>
-    <span class="token key atrule">team</span><span class="token punctuation">:</span>
-      <span class="token key atrule">glh</span><span class="token punctuation">:</span>
-        <span class="token key atrule">demo</span><span class="token punctuation">:</span>
-          <span class="token key atrule">springboottest</span><span class="token punctuation">:</span> trace     <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>2) application.properties </p>
-<pre class="line-numbers language-properties"><code class="language-properties"><span class="token attr-name">logging.level.team.glh.demo.springboottest</span><span class="token punctuation">=</span><span class="token attr-value">trace</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="3">
-<li><p>更改日志的一些默认配置</p>
-<p>在以前的版本中使用下面这种可以修改配置</p>
-<pre class="line-numbers language-properties"><code class="language-properties"><span class="token attr-name">logging.level.team.glh.demo.springboottest</span><span class="token punctuation">=</span><span class="token attr-value">trace</span>
-<span class="token comment" spellcheck="true">#可以指定文件位置，但是必须指定文件名，如果不指定路径，默认在当前项目下生成</span>
-<span class="token comment" spellcheck="true">#logging.file=/home/glh/IdeaProjects/logs/spring-boot-test-demo/spring-boot-test.log</span>
-<span class="token comment" spellcheck="true">#只需要指定日志生成路径，默认生成文件spring.log</span>
-<span class="token attr-name">logging.path</span><span class="token punctuation">=</span><span class="token attr-value">/home/glh/IdeaProjects/logs/spring-boot-test-demo</span>
-<span class="token comment" spellcheck="true">#在控制台输出的格式</span>
-<span class="token attr-name">logging.pattern.console</span><span class="token punctuation">=</span><span class="token attr-value">[%d{yyyy-MM-dd}]:%p %l%m%n</span>
-<span class="token comment" spellcheck="true">#指定文件中日志输出的格式</span>
-<span class="token attr-name">logging.pattern.file</span><span class="token punctuation">=</span><span class="token attr-value">[%d{yyyy-MM-dd}]:%p %l%m%n</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>而在现如今的版本中可以这么指定（spring-boot.2.2.2.RELEASE）</p>
-<pre class="line-numbers language-properties"><code class="language-properties"><span class="token comment" spellcheck="true">#只需要指定日志生成路径，默认生成文件spring.log</span>
-<span class="token comment" spellcheck="true">#logging.file.path=/home/glh/IdeaProjects/logs/spring-boot-test-demo</span>
-<span class="token comment" spellcheck="true">#可以指定文件位置，但是必须指定文件名，如果不指定路径，默认在当前项目下生成</span>
-<span class="token attr-name">logging.file.name</span><span class="token punctuation">=</span><span class="token attr-value">/home/glh/IdeaProjects/logs/spring-boot-test-demo/spring-boot-test.log</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>官方介绍</p>
-<table>
-<thead>
-<tr>
-<th align="left"><code>logging.file.name</code></th>
-<th align="left"><code>logging.file.path</code></th>
-<th align="left">Example</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><em>(none)</em></td>
-<td align="left"><em>(none)</em></td>
-<td align="left"></td>
-<td align="left">Console only logging.</td>
-</tr>
-<tr>
-<td align="left">Specific file</td>
-<td align="left"><em>(none)</em></td>
-<td align="left"><code>my.log</code></td>
-<td align="left">Writes to the specified log file. Names can be an exact location or relative to the current directory.</td>
-</tr>
-<tr>
-<td align="left"><em>(none)</em></td>
-<td align="left">Specific directory</td>
-<td align="left"><code>/var/log</code></td>
-<td align="left">Writes <code>spring.log</code> to the specified directory. Names can be an exact location or relative to the current directory.</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-</li>
-</ol>
-<p>４.　指定配置文件</p>
-<p><a href="https://www.cnblogs.com/light-zhang/p/8744647.html" target="_blank" rel="noopener">模板参考</a></p>
-<table>
-<thead>
-<tr>
-<th align="left">Logging System</th>
-<th align="left">Customization</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Logback</td>
-<td align="left"><code>logback-spring.xml</code>, <code>logback-spring.groovy</code>, <code>logback.xml</code>, or <code>logback.groovy</code></td>
-</tr>
-<tr>
-<td align="left">Log4j2</td>
-<td align="left"><code>log4j2-spring.xml</code> or <code>log4j2.xml</code></td>
-</tr>
-<tr>
-<td align="left">JDK (Java Util Logging)</td>
-<td align="left"><code>logging.properties</code></td>
-</tr>
-</tbody></table>
-<p>logback.xml:可以被日志框架识别；<strong>可以使用下面的profile进行日志类型指定，例如：在不同环境下使用不同格式的日志类型</strong></p>
-<pre class="line-numbers language-xml"><code class="language-xml"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>springProfile</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dev<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pattern</span><span class="token punctuation">></span></span>
-                    [%-5level] -----------------============= %d{${DATETIME}} [%thread] %logger{36} - %m%n
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pattern</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>springProfile</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>springProfile</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>!dev<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pattern</span><span class="token punctuation">></span></span>
-                    [%-5level] ----------------- %d{${DATETIME}} [%thread] %logger{36} - %m%n
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pattern</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>springProfile</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>５．切换日志框架</p>
-<p>先把原先的日志框架排除，再引入新的日志框架依赖</p>
-<p>例如：切换为log4j2日志框架</p>
-<pre class="line-numbers language-xml"><code class="language-xml">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-web<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-            <span class="token comment" spellcheck="true">&lt;!--排除原先的logging日志框架--></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusions</span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusion</span><span class="token punctuation">></span></span>
-                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusion</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusions</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
-        <span class="token comment" spellcheck="true">&lt;!--引入新的日志框架依赖，版本号自动匹配--></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-log4j2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> ErrorAttributes errorAttributes<span class="token punctuation">;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token keyword">protected</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> <span class="token keyword">boolean</span> includeStackTrace<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        WebRequest webRequest <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ServletWebRequest</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>errorAttributes<span class="token punctuation">.</span><span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>webRequest<span class="token punctuation">,</span> includeStackTrace<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DefaultErrorAttributes</span> <span class="token keyword">implements</span> <span class="token class-name">ErrorAttributes</span><span class="token punctuation">,</span> HandlerExceptionResolver<span class="token punctuation">,</span> Ordered <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>WebRequest webRequest<span class="token punctuation">,</span> <span class="token keyword">boolean</span> includeStackTrace<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> errorAttributes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        errorAttributes<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"timestamp"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">addStatus</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">addErrorDetails</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">,</span> includeStackTrace<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">addPath</span><span class="token punctuation">(</span>errorAttributes<span class="token punctuation">,</span> webRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> errorAttributes<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>容器中<code>DefaultErrorAttributes</code>中的getErrorAttributes（）默认进行任务处理；</p>
+<p>所以我们<strong>自定义ErrorAttributes</strong>：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyErrorAttributes</span> <span class="token keyword">extends</span> <span class="token class-name">DefaultErrorAttributes</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">//返回的map就是页面和json能获取的所有字段</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> <span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>WebRequest webRequest<span class="token punctuation">,</span> <span class="token keyword">boolean</span> includeStackTrace<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> map<span class="token operator">=</span><span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getErrorAttributes</span><span class="token punctuation">(</span>webRequest<span class="token punctuation">,</span>includeStackTrace<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"team"</span><span class="token punctuation">,</span><span class="token string">"glh"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//int SCOPE_REQUEST = 0;请求域</span>
+        <span class="token comment" spellcheck="true">//int SCOPE_SESSION = 1;会话域</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> ext<span class="token operator">=</span><span class="token punctuation">(</span>Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span><span class="token punctuation">)</span> webRequest<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"ext"</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"ext"</span><span class="token punctuation">,</span>ext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> map<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>重新编写<code>MyExceptionHandler</code>，将自定义数据map加入到request域中，给自定义的MyErrorAttributes进行处理</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@ControllerAdvice</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyExceptionHandler</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**
+     * @param e
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span>UserNotExitExption<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span>  String <span class="token function">handleException</span><span class="token punctuation">(</span>Exception e<span class="token punctuation">,</span> HttpServletRequest req<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span>Object<span class="token operator">></span> map<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">,</span><span class="token string">"user not exit!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"message"</span><span class="token punctuation">,</span>e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">/**
+         *  传入我们自己的错误状态码　4xx  5xx ,否则就不会进入错误页面的解析过程
+         * Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
+         */</span>
+        req<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"javax.servlet.error.status_code"</span><span class="token punctuation">,</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//将自定义数据map加入到request域中，给MyErrorAttributes进行处理</span>
+        req<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"ext"</span><span class="token punctuation">,</span>map<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//转发到/error，让它进行自适应处理</span>
+        <span class="token comment" spellcheck="true">//BasicErrorController中的errorHtml和error方法会进行自适应处理</span>
+        <span class="token keyword">return</span> <span class="token string">"forward:/error"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>最终效果：响应是自适应的，可以通过定制ErrorAttributes改变需要返回的内容</p>
 ]]></content>
       <categories>
         <category>后端框架</category>
@@ -2610,36 +2610,6 @@ sdiff <span class="token operator">&lt;</span>key1<span class="token operator">>
       </tags>
   </entry>
   <entry>
-    <title>ubuntu16.04下安装flameshot时出现Unkown module(s) in QT:svg的解决方法</title>
-    <url>/post/b0689396.html</url>
-    <content><![CDATA[<p>在安装之前先保证ubuntu16.04安装过QT5，并配置好环境变量(配置etc下的profile文件，在最后一行写下如下代码（以下为示例，地址填实际的地址）：</p>
-<p>#——qt start——<br>export QT5_HOME=/usr/lib/x86_64-linux-gnu/qt5<br>export PATH=${QT5_HOME}/bin:$PATH<br>#————–qt end————-</p>
-<p>);</p>
-<p>首先去github上下载flameshot安装包，我之前下过了，附上链接：链接: <a href="https://pan.baidu.com/s/1l-pc6ZsLto5-SOwAF9xyFQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1l-pc6ZsLto5-SOwAF9xyFQ</a> 提取码: r954 ，</p>
-<p>1.下载之后进入flameshot目录，(命令为：cd 路径/flameshot)</p>
-<p>2.根据flameshot里面的README.md 的提示，安装步骤是先在flameshot下创建build,然后进入build，执行qmake ../，之后执行make</p>
-<p>​                                                                            <img src="../images/20191115195134172.png" alt="">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p> 3.使用qmake之后会出现Unkown module(s) in QT:svg，这个应该是版本不一致导致的，我解决的方法是新开一个终端窗口，输入以下命令（参考至<a href="https://stackoverflow.com/questions/21098805/unknown-modules-in-qt-svg/21100312）：" target="_blank" rel="noopener">https://stackoverflow.com/questions/21098805/unknown-modules-in-qt-svg/21100312）：</a></p>
-<pre><code>sudo apt-get install libqt5svg5-dev</code></pre><p><code>4.然后再继续要执行上面第二步就可以解决</code>Unkown module(s) in QT:svg问题了，走完上面还没有安装好;</p>
-<p>5.再输入命令：sudo make install;</p>
-<p>6.然后输入flameshot gui就可以打开截图功能了,但是有个缺点，快捷键没有设置;</p>
-<p>7.在系统设置—-键盘—快捷键—下面的加号</p>
-<p><img src="../images/flameshot.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>8.在出现的窗口中输入以下信息：</p>
-<p>​                                                                    <img src="../images/flameshot-2.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>9.设置快捷键</p>
-<p>​    <img src="../images/flameshot-3.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>10.然后就可以使用快捷键ctrl+f1就可以快捷键打开flameshot</p>
-<p>11.目前的我的解决方法是如此，有问题欢迎留言互相交流</p>
-]]></content>
-      <categories>
-        <category>ubuntu</category>
-      </categories>
-      <tags>
-        <tag>flameshot</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>leetcode做题记录</title>
     <url>/post/76a1ede8.html</url>
     <content><![CDATA[<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h3 id="一、跳跃游戏"><a href="#一、跳跃游戏" class="headerlink" title="一、跳跃游戏"></a>一、<a href="https://leetcode-cn.com/problems/jump-game/" target="_blank" rel="noopener">跳跃游戏</a></h3><p><strong>题目描述</strong>：给定一个非负整数数组，你最初位于数组的第一个位置。</p>
@@ -2829,6 +2799,53 @@ Logs lg2
       </tags>
   </entry>
   <entry>
+    <title>ubuntu16.04下安装flameshot时出现Unkown module(s) in QT:svg的解决方法</title>
+    <url>/post/b0689396.html</url>
+    <content><![CDATA[<p>在安装之前先保证ubuntu16.04安装过QT5，并配置好环境变量(配置etc下的profile文件，在最后一行写下如下代码（以下为示例，地址填实际的地址）：</p>
+<p>#——qt start——<br>export QT5_HOME=/usr/lib/x86_64-linux-gnu/qt5<br>export PATH=${QT5_HOME}/bin:$PATH<br>#————–qt end————-</p>
+<p>);</p>
+<p>首先去github上下载flameshot安装包，我之前下过了，附上链接：链接: <a href="https://pan.baidu.com/s/1l-pc6ZsLto5-SOwAF9xyFQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1l-pc6ZsLto5-SOwAF9xyFQ</a> 提取码: r954 ，</p>
+<p>1.下载之后进入flameshot目录，(命令为：cd 路径/flameshot)</p>
+<p>2.根据flameshot里面的README.md 的提示，安装步骤是先在flameshot下创建build,然后进入build，执行qmake ../，之后执行make</p>
+<p>​                                                                            <img src="../images/20191115195134172.png" alt="">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p> 3.使用qmake之后会出现Unkown module(s) in QT:svg，这个应该是版本不一致导致的，我解决的方法是新开一个终端窗口，输入以下命令（参考至<a href="https://stackoverflow.com/questions/21098805/unknown-modules-in-qt-svg/21100312）：" target="_blank" rel="noopener">https://stackoverflow.com/questions/21098805/unknown-modules-in-qt-svg/21100312）：</a></p>
+<pre><code>sudo apt-get install libqt5svg5-dev</code></pre><p><code>4.然后再继续要执行上面第二步就可以解决</code>Unkown module(s) in QT:svg问题了，走完上面还没有安装好;</p>
+<p>5.再输入命令：sudo make install;</p>
+<p>6.然后输入flameshot gui就可以打开截图功能了,但是有个缺点，快捷键没有设置;</p>
+<p>7.在系统设置—-键盘—快捷键—下面的加号</p>
+<p><img src="../images/flameshot.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>8.在出现的窗口中输入以下信息：</p>
+<p>​                                                                    <img src="../images/flameshot-2.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>9.设置快捷键</p>
+<p>​    <img src="../images/flameshot-3.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>10.然后就可以使用快捷键ctrl+f1就可以快捷键打开flameshot</p>
+<p>11.目前的我的解决方法是如此，有问题欢迎留言互相交流</p>
+]]></content>
+      <categories>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>flameshot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>初次整合springboot+kafka</title>
+    <url>/post/572f0779.html</url>
+    <content><![CDATA[<p>一、kafka的下载与使用<br>进入官网：<a href="http://kafka.apache.org/" target="_blank" rel="noopener">http://kafka.apache.org/</a><img src="../images/kafka01.png" alt="在这里插入图片描述"><br><img src="../images/kafka02.png" alt="在这里插入图片描述"><br><img src="../images/kafka03.png" alt="在这里插入图片描述"><br>下载好之后解压进入config文件夹编辑一下server.properties和    zookeeper.properties这两个配置文件，目前我也就更改了一下数据存储位置和日志存储位置<br><img src="../images/kafka04.png" alt="在这里插入图片描述">)<img src="../images/kafka05.png" alt="在这里插入图片描述"><br>然后就可以启动：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token punctuation">.</span><span class="token operator">/</span>zookeeper<span class="token operator">-</span>server<span class="token operator">-</span><span class="token function">start</span><span class="token punctuation">.</span>sh <span class="token operator">/</span>home<span class="token operator">/</span>glh<span class="token operator">/</span>kafka_2<span class="token punctuation">.</span>13<span class="token operator">-</span>2<span class="token punctuation">.</span>4<span class="token punctuation">.</span>0<span class="token operator">/</span>config<span class="token operator">/</span>zookeeper<span class="token punctuation">.</span>properties &amp; <span class="token punctuation">.</span><span class="token operator">/</span>kafka<span class="token operator">-</span>server<span class="token operator">-</span><span class="token function">start</span><span class="token punctuation">.</span>sh <span class="token operator">/</span>home<span class="token operator">/</span>glh<span class="token operator">/</span>kafka_2<span class="token punctuation">.</span>13<span class="token operator">-</span>2<span class="token punctuation">.</span>4<span class="token punctuation">.</span>0<span class="token operator">/</span>config<span class="token operator">/</span>server<span class="token punctuation">.</span>properties
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="../images/kafka06.png" alt="在这里插入图片描述"><br>检查是否启动成功，另开一个终端，输入jps，这个就是启动成功<br><img src="../images/kafka07.png" alt="在这里插入图片描述"><br>测试是否可以正常工作，上面启动的端口暂时不要关闭，再开两个终端窗口<br>窗口一：</p>
+<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token punctuation">.</span><span class="token operator">/</span>bin<span class="token operator">/</span>kafka<span class="token operator">-</span>topics<span class="token punctuation">.</span>sh <span class="token operator">--</span>create <span class="token operator">--</span>zookeeper 127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:2181 <span class="token operator">--</span>replication<span class="token operator">-</span>factor 1 <span class="token operator">--</span>partitions 1 <span class="token operator">--</span>topic hello<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+]]></content>
+      <categories>
+        <category>后端框架</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+        <tag>kafka</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>刷题记录</title>
     <url>/post/fe644ae0.html</url>
     <content><![CDATA[]]></content>
@@ -2871,23 +2888,6 @@ Logs lg2
       </categories>
       <tags>
         <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>初次整合springboot+kafka</title>
-    <url>/post/572f0779.html</url>
-    <content><![CDATA[<p>一、kafka的下载与使用<br>进入官网：<a href="http://kafka.apache.org/" target="_blank" rel="noopener">http://kafka.apache.org/</a><img src="../images/kafka01.png" alt="在这里插入图片描述"><br><img src="../images/kafka02.png" alt="在这里插入图片描述"><br><img src="../images/kafka03.png" alt="在这里插入图片描述"><br>下载好之后解压进入config文件夹编辑一下server.properties和    zookeeper.properties这两个配置文件，目前我也就更改了一下数据存储位置和日志存储位置<br><img src="../images/kafka04.png" alt="在这里插入图片描述">)<img src="../images/kafka05.png" alt="在这里插入图片描述"><br>然后就可以启动：</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token punctuation">.</span><span class="token operator">/</span>zookeeper<span class="token operator">-</span>server<span class="token operator">-</span><span class="token function">start</span><span class="token punctuation">.</span>sh <span class="token operator">/</span>home<span class="token operator">/</span>glh<span class="token operator">/</span>kafka_2<span class="token punctuation">.</span>13<span class="token operator">-</span>2<span class="token punctuation">.</span>4<span class="token punctuation">.</span>0<span class="token operator">/</span>config<span class="token operator">/</span>zookeeper<span class="token punctuation">.</span>properties &amp; <span class="token punctuation">.</span><span class="token operator">/</span>kafka<span class="token operator">-</span>server<span class="token operator">-</span><span class="token function">start</span><span class="token punctuation">.</span>sh <span class="token operator">/</span>home<span class="token operator">/</span>glh<span class="token operator">/</span>kafka_2<span class="token punctuation">.</span>13<span class="token operator">-</span>2<span class="token punctuation">.</span>4<span class="token punctuation">.</span>0<span class="token operator">/</span>config<span class="token operator">/</span>server<span class="token punctuation">.</span>properties
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="../images/kafka06.png" alt="在这里插入图片描述"><br>检查是否启动成功，另开一个终端，输入jps，这个就是启动成功<br><img src="../images/kafka07.png" alt="在这里插入图片描述"><br>测试是否可以正常工作，上面启动的端口暂时不要关闭，再开两个终端窗口<br>窗口一：</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token punctuation">.</span><span class="token operator">/</span>bin<span class="token operator">/</span>kafka<span class="token operator">-</span>topics<span class="token punctuation">.</span>sh <span class="token operator">--</span>create <span class="token operator">--</span>zookeeper 127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:2181 <span class="token operator">--</span>replication<span class="token operator">-</span>factor 1 <span class="token operator">--</span>partitions 1 <span class="token operator">--</span>topic hello<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-]]></content>
-      <categories>
-        <category>后端框架</category>
-      </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-        <tag>kafka</tag>
       </tags>
   </entry>
   <entry>
