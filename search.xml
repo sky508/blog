@@ -2889,17 +2889,6 @@ Logs lg2
       </tags>
   </entry>
   <entry>
-    <title>刷题记录</title>
-    <url>/post/fe644ae0.html</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>java题</category>
-      </categories>
-      <tags>
-        <tag>java基础</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git基础操作</title>
     <url>/post/aa301862.html</url>
     <content><![CDATA[<p><code>git init</code> ：进入需要git的目录下，设置为本地仓库，执行后会生成一个.git文件</p>
