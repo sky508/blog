@@ -2726,6 +2726,37 @@ Negative matches<span class="token operator">:</span>　　<span class="token co
             <span class="token punctuation">}</span>
             <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="四、从尾到头打印链表"><a href="#四、从尾到头打印链表" class="headerlink" title="四、从尾到头打印链表"></a>四、从尾到头打印链表</h3><p><strong>题目描述：</strong>输入一个链表的头节点，从尾到头反过来返回每个节点的值（用数组返回）。</p>
+<p>示例 1：</p>
+<p>输入：head = [1,3,2]<br>输出：[2,3,1]</p>
+<p>限制：</p>
+<p>0 &lt;= 链表长度 &lt;= 10000</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof" target="_blank" rel="noopener">https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<p><strong>思路：</strong></p>
+<pre class="line-numbers language-yaml"><code class="language-yaml">先用一个集合装递归循环出的链表，然后使用依次遍历加入数组<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>题解：</strong></p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">reversePrint</span><span class="token punctuation">(</span>ListNode head<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ArrayList<span class="token operator">&lt;</span>Integer<span class="token operator">></span> arrs <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>null <span class="token operator">==</span> head<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+         <span class="token function">loopListNode</span> <span class="token punctuation">(</span>head<span class="token punctuation">,</span>arrs<span class="token punctuation">)</span> <span class="token punctuation">;</span>
+
+        <span class="token keyword">int</span> size <span class="token operator">=</span> arrs<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>size<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>size<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> arrs<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+          <span class="token keyword">return</span> nums<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">loopListNode</span><span class="token punctuation">(</span>ListNode head<span class="token punctuation">,</span>ArrayList<span class="token operator">&lt;</span>Integer<span class="token operator">></span> arrs<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span> head<span class="token punctuation">.</span>next <span class="token operator">!=</span> null <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">loopListNode</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span>next<span class="token punctuation">,</span>arrs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        arrs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h3 id="一、第N高的薪水"><a href="#一、第N高的薪水" class="headerlink" title="一、第N高的薪水"></a>一、<a href="https://leetcode-cn.com/problems/nth-highest-salary/" target="_blank" rel="noopener">第N高的薪水</a></h3><p><strong>题目描述</strong>：编写一个 SQL 查询，获取 <code>Employee</code> 表中第 <em>n</em> 高的薪水（Salary）。</p>
 <p>+—-+——–+<br>| Id | Salary |<br>+—-+——–+<br>| 1  | 100    |<br>| 2  | 200    |<br>| 3  | 300    |<br>+—-+——–+</p>
 <p>例如上述 <code>Employee</code> 表，<em>n = 2</em> 时，应返回第二高的薪水 <code>200</code>。如果不存在第 <em>n</em> 高的薪水，那么查询应返回 <code>null</code>。</p>
