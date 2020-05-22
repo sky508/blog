@@ -612,33 +612,33 @@
     </div>
 
     
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
 
-    
-        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
-<link rel="stylesheet" href="/css/gitment.css">
-
-<div class="gitment-card card" data-aos="fade-up">
+<div class="card gitalk-card" data-aos="fade-up">
     <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
         <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
         <span>评论</span>
     </div>
-    <div id="gitment-content" class="card-content"></div>
+    <div id="gitalk-container" class="card-content"></div>
 </div>
 
-<script src="/libs/gitment/gitment.js"></script>
+<script src="/libs/gitalk/gitalk.min.js"></script>
 <script>
-var gitment = new Gitment({
-    id: 'Fri May 08 2020 17:43:22 GMT+0800',
-    owner: 'sky508',
-    repo: 'blog',
-    oauth: {
-        client_id: '341db1a500c9ace36b3c',
-        client_secret: '550e03fe928a0ca33a4cfa70d797af78e24f32bf'
-    }
-});
+    let gitalk = new Gitalk({
+        clientID: '341db1a500c9ace36b3c',
+        clientSecret: '550e03fe928a0ca33a4cfa70d797af78e24f32bf',
+        repo: 'blog',
+        owner: 'sky508',
+        admin: "sky508",
+        id: '2020-05-08T17-43-22',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
 
-gitment.render('gitment-content');
+    gitalk.render('gitalk-container');
 </script>
+
+    
 
     
 
