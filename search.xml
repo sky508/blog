@@ -5877,6 +5877,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>　　（20）<strong>0 15 10 ? * 6L</strong>   每月的最后一个星期五上午10:15触发 </p>
 <p>　　（21）<strong>0 15 10 ? * 6L 2002-2005</strong>  2002年至2005年的每月的最后一个星期五上午10:15触发 </p>
 <p>　　（22）<strong>0 15 10 ? * 6#3</strong>  每月的第三个星期五上午10:15触发</p>
+<p>参考博客：<a href="https://www.cnblogs.com/yanghj010/p/10875151.html" target="_blank" rel="noopener">https://www.cnblogs.com/yanghj010/p/10875151.html</a></p>
+<p>​                        <a href="https://www.cnblogs.com/morethink/p/8908542.html" target="_blank" rel="noopener">https://www.cnblogs.com/morethink/p/8908542.html</a></p>
 ]]></content>
       <categories>
         <category>quartz</category>
