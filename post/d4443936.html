@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="阿里开源工具EasyExcel, 凌">
+    <meta name="keywords" content="linux使用命令记录, 凌">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>阿里开源工具EasyExcel | 凌</title>
+    <title>linux使用命令记录 | 凌</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -202,12 +202,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://glh508-blog-img.oss-cn-beijing.aliyuncs.com/img/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://glh508-blog-img.oss-cn-beijing.aliyuncs.com/img/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">阿里开源工具EasyExcel</h1>
+                    <h1 class="description center-align post-title">linux使用命令记录</h1>
                 </div>
             </div>
         </div>
@@ -324,8 +324,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/EasyExcel/">
-                                <span class="chip bg-color">EasyExcel</span>
+                            <a href="/tags/ubuntu/">
+                                <span class="chip bg-color">ubuntu</span>
+                            </a>
+                        
+                            <a href="/tags/centos/">
+                                <span class="chip bg-color">centos</span>
                             </a>
                         
                     </div>
@@ -336,8 +340,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E9%98%BF%E9%87%8C%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category">
-                                阿里开发工具
+                            <a href="/categories/linux/" class="post-category">
+                                linux
                             </a>
                         
                     </div>
@@ -349,14 +353,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-28
+                    2020-10-13
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-05-28
+                    2020-06-01
                 </div>
                 
 
@@ -375,155 +379,34 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="一、原始poi写法"><a href="#一、原始poi写法" class="headerlink" title="一、原始poi写法"></a>一、原始poi写法</h3><blockquote>
-<p>繁琐、处理慢、耗时</p>
-</blockquote>
-<p>样例程序：</p>
-<ul>
-<li>关于创建表头、插入数据、写入表格</li>
-</ul>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">writeObjectToExcel</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span>Object<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span> list<span class="token punctuation">,</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> excelTitle<span class="token punctuation">,</span> String fileName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <h4 id="1-结束进行中的服务"><a href="#1-结束进行中的服务" class="headerlink" title="1.结束进行中的服务"></a>1.结束进行中的服务</h4><p>​    先查看进行中的服务：sudo netstat -tupln<br>​    杀死进程：sudo kill -9 pid(pid号)</p>
+<h4 id="2-查找某个文件的位置"><a href="#2-查找某个文件的位置" class="headerlink" title="2.查找某个文件的位置"></a>2.查找某个文件的位置</h4><p>​    sudo find / -name file-name (这个是模糊查询，只要位置上有这个名字的都可以)<br>​    whereis redis (查找某个程序安装的位置，程序名必须正确，不然找不到)<br>​    which redis  （查看执行文件的位置）</p>
+<h4 id="3-检查某个服务有没有被占用（例如redis）"><a href="#3-检查某个服务有没有被占用（例如redis）" class="headerlink" title="3.检查某个服务有没有被占用（例如redis）"></a>3.检查某个服务有没有被占用（例如redis）</h4><p>​    ps -ef | grep redis<br>​    sudo netstat -nltp|grep 2181   //查看2181端口的进程</p>
+<h4 id="4-手动开启deluge-使用端口8112-默认密码deluge"><a href="#4-手动开启deluge-使用端口8112-默认密码deluge" class="headerlink" title="4.手动开启deluge(使用端口8112,默认密码deluge)"></a>4.手动开启deluge(使用端口8112,默认密码deluge)</h4><p> deluged<br> deluge-web –fork</p>
+<h4 id="5-docker建立redis容器并用特定配置文件启动"><a href="#5-docker建立redis容器并用特定配置文件启动" class="headerlink" title="5 docker建立redis容器并用特定配置文件启动"></a>5 docker建立redis容器并用特定配置文件启动</h4><p>​        docker run -d -p 6379:6379 -v /usr/redis/redis.conf:/etc/redis/redis.conf -v /usr/redis/data:/data –name myredis redis:latest<br>​        docker中无法使用中文，在进入容器时键入一下命令：docker exec -it 容器名称 env LANG=C.UTF-8 bash   //注意LANG=C.UTF-8大写，不要小写<br>5.1简单安装redis,使用如下命令：<br>​    (1).tar -zxvf redis-5.0.7.tar.gz<br>​    (2).cp redis-5.0.7 /home/glh<br>​    (3).cd redis-5.0.7<br>​    (4).make   //这一步会出错，原因是缺少gcc、gcc-c++，自行安装就行<br>​    (5).sudo make install<br>​    (6).进入redis-cli客户端命令行模式之后可以输入shutdown关闭服务端，然后退出客户端就行了;<br>​        或者直接在命令行输入一下命令：redis-cli shutdown；但是要是设置了密码，好像就关不了，还是先使用ps -ef | grep redis-server，然后使用kill -9 pid号结束redis进程。<br>5.2启动redis<br>   直接在命令行输入就行：<br>　　　(1).redis-server<br>   (2).以特定的配置文件启动：redis-server ./redis.conf<br>   (3).默认启动redis客户端：redis-cli<br>   (4).访问特定的ip的redis服务器：redis-cli -h 127.0.0.1 -p 6379<br>   (5).redis设置密码：编辑redis.conf中的requirepass字段，设置为requirepass 123456，也就是密码为123456<br>   (6).默认16个数据库，下标从0开始，使用select index来选择数据库，例如select 1;选择第二个数据库<br>5.3.带密码启动redis<br>   先使用redis-cli进入redis，使用ping进行测试是否安装成功,返回pong成功,如果设置了密码，就使用如下的代码进行密码验证<br>   auth 密码<br>5.4.使用自定义快捷键Ctrl+F2打开redis-desktop-manager</p>
+<h4 id="6-启动ngrok"><a href="#6-启动ngrok" class="headerlink" title="6.启动ngrok:"></a>6.启动ngrok:</h4><p>​        ./bin/ngrokd -domain=”自定义的域名” -httpAddr=”:端口号”</p>
+<h4 id="7-docker"><a href="#7-docker" class="headerlink" title="7.docker"></a>7.docker</h4><pre><code>刚开始启动前端管理界面：docker run -d --name portainerUI -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer
 
-        <span class="token comment" spellcheck="true">//在内存中创建Excel文件</span>
-        Workbook workbook<span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>fileName<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">"xls"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            workbook <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HSSFWorkbook</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>fileName<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">"xlsx"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            workbook <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XSSFWorkbook</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token string">"fileName not legal"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        Sheet sheet <span class="token operator">=</span> workbook<span class="token punctuation">.</span><span class="token function">createSheet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//标题行</span>
-        Row titleRow <span class="token operator">=</span> sheet<span class="token punctuation">.</span><span class="token function">createRow</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> excelTitle<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            titleRow<span class="token punctuation">.</span><span class="token function">createCell</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setCellValue</span><span class="token punctuation">(</span>excelTitle<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//创建数据行并写入值</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>Object<span class="token punctuation">[</span><span class="token punctuation">]</span> dataArr <span class="token operator">:</span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> lastRowNum <span class="token operator">=</span> sheet<span class="token punctuation">.</span><span class="token function">getLastRowNum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            Row dataRow <span class="token operator">=</span> sheet<span class="token punctuation">.</span><span class="token function">createRow</span><span class="token punctuation">(</span>lastRowNum <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"插入的数据："</span><span class="token operator">+</span>JSON<span class="token punctuation">.</span><span class="token function">toJSONString</span><span class="token punctuation">(</span>dataArr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> dataArr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                Cell cell <span class="token operator">=</span> dataRow<span class="token punctuation">.</span><span class="token function">createCell</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                sheet<span class="token punctuation">.</span><span class="token function">autoSizeColumn</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                Object cellValue <span class="token operator">=</span> dataArr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span><span class="token punctuation">(</span>cellValue <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token function">setCellValue</span><span class="token punctuation">(</span>cellValue<span class="token punctuation">,</span> cell<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//创建输出流对象</span>
-        FileOutputStream outputStream <span class="token operator">=</span> null<span class="token punctuation">;</span>
-        <span class="token keyword">try</span> <span class="token punctuation">{</span>
-            outputStream <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">FileNotFoundException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"file not found"</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">try</span> <span class="token punctuation">{</span>
-            workbook<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>outputStream<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"write to file failed"</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>outputStream <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">try</span> <span class="token punctuation">{</span>
-                    outputStream<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> ignore<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="二、EasyExcel"><a href="#二、EasyExcel" class="headerlink" title="二、EasyExcel"></a>二、EasyExcel</h3><p>官方文档参考地址：<a href="https://www.yuque.com/easyexcel/doc/easyexcel" target="_blank" rel="noopener">https://www.yuque.com/easyexcel/doc/easyexcel</a></p>
-<blockquote>
-<p> 官方介绍：EasyExcel是一个基于Java的简单、省内存的读写Excel的开源项目。在尽可能节约内存的情况下支持读写百M的Excel。</p>
-</blockquote>
-<p>个人小案例地址:<a href="https://gitee.com/sky508/easyexcel-demo.git" target="_blank" rel="noopener">https://gitee.com/sky508/easyexcel-demo.git</a></p>
-<ul>
-<li><p>先导入依赖</p>
-<pre class="line-numbers language-xml"><code class="language-xml">        <span class="token comment" spellcheck="true">&lt;!--阿里巴巴EasyExcel--></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.alibaba<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>easyexcel<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.1.6<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+7.0.0 进入docker中的MySQL容器： docker exec -it centos-mysql(mysql容器名字) bash
 
-        <span class="token comment" spellcheck="true">&lt;!--xml需要的--></span>
-        <span class="token comment" spellcheck="true">&lt;!-- https://mvnrepository.com/artifact/dom4j/dom4j --></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>dom4j<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>dom4j<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.6.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+7.0 查看docker版本：sudo docker version
 
-        <span class="token comment" spellcheck="true">&lt;!--打印需要的--></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.alibaba<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>fastjson<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.2.60<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>设置表头，封装需要写入表格的数据的数据格式，然后构建一些表格基础信息，就行了</p>
-<pre class="line-numbers language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+7.1 启动/关闭/重启容器：sudo docker start/stop/restart 容器名字或者ID   //图形化界面账号及密码admin  12345678
+7.2 查看正在运行的容器： sudo docker ps
+7.3 查看所有的容器：sudo docker ps -a
+7.4 删除容器：sudo docker rm -f 容器名字或者ID
 
-            <span class="token comment" spellcheck="true">//有9682个xml文件，需要提取数据并把相关数据插入表格</span>
-            <span class="token keyword">int</span> num <span class="token operator">=</span><span class="token number">9682</span><span class="token punctuation">;</span>
+7.5 查看已有镜像：sudo docker images
+7.6 删除镜像：sudo docker rmi -f 镜像名字或者ID 
 
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>num<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+7.7 查看镜像列表：sudo docker search 镜像名字:版本号  //具体到官网https://hub.docker.com/查版本
 
-                XmlToExcelUtil3 xmlToExcelUtil3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XmlToExcelUtil3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-                <span class="token comment" spellcheck="true">//需要插入表格的数据</span>
-                List<span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>Object<span class="token operator">>></span> devs <span class="token operator">=</span> xmlToExcelUtil3<span class="token punctuation">.</span><span class="token function">toExcel</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span><span class="token string">"D:/软件下载/xml/down/exportDeviceTemplate_typeid="</span><span class="token operator">+</span>i<span class="token operator">+</span><span class="token string">".xml"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-                <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">==</span> num<span class="token punctuation">)</span><span class="token punctuation">{</span>
-
-                    String pathName <span class="token operator">=</span> <span class="token string">"E:/oid.xlsx"</span><span class="token punctuation">;</span>
-                    String sheetName <span class="token operator">=</span> <span class="token string">"oid表"</span><span class="token punctuation">;</span>
-
-                    <span class="token comment" spellcheck="true">//EasyExcel写法</span>
-                    EasyExcel<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>pathName<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">head</span><span class="token punctuation">(</span><span class="token function">head</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sheet</span><span class="token punctuation">(</span>sheetName<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">registerWriteHandler</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">LongestMatchColumnWidthStyleStrategy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">doWrite</span><span class="token punctuation">(</span>devs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">//设置表头</span>
-    <span class="token keyword">private</span> <span class="token keyword">static</span> List<span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>String<span class="token operator">>></span> <span class="token function">head</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        ArrayList<span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>String<span class="token operator">>></span> objects <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        List<span class="token operator">&lt;</span>String<span class="token operator">></span> head0 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        head0<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"oid"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        head0<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"编号"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        List<span class="token operator">&lt;</span>String<span class="token operator">></span> head1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        head1<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"oid"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        head1<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"OID"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        List<span class="token operator">&lt;</span>String<span class="token operator">></span> head2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        head2<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"oid"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        head2<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"VendorName"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        List<span class="token operator">&lt;</span>String<span class="token operator">></span> head3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        head3<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"oid"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        head3<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"CategoryName"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        List<span class="token operator">&lt;</span>String<span class="token operator">></span> head4 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        head4<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"oid"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        head4<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"DeviceType"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        objects<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>head0<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        objects<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>head1<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        objects<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>head2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        objects<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>head3<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        objects<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>head4<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">return</span> objects<span class="token punctuation">;</span>
-
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>结果图<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://glh508-blog-img.oss-cn-beijing.aliyuncs.com/img/easyexcel.png" alt=""></p>
-</li>
-<li><p>个人体验对比，写入速度有很大程度的提升</p>
-</li>
-</ul>
+7.8 进入容器：sudo docker exec -it 容器ID /bin/bash
+7.9 动态查看容器日志：sudo docker logs 容器名字或者ID </code></pre><h4 id="8-打开微信开发者工具"><a href="#8-打开微信开发者工具" class="headerlink" title="8.打开微信开发者工具"></a>8.打开微信开发者工具</h4><pre><code>下载：git clone https://github.com/cytle/wechat_web_devtools.git -depth 1
+安装：cd wechat_web_devtools
+      # 自动下载最新 `nw.js` , 同时部署目录 `~/.config/wechat_web_devtools/`
+      ./bin/wxdt install
+运行可视化界面：    ./bin/wxdt</code></pre><h4 id="9-解压zip文件，防止乱码"><a href="#9-解压zip文件，防止乱码" class="headerlink" title="9.解压zip文件，防止乱码"></a>9.解压zip文件，防止乱码</h4><p>法一：  unzip -O gbk xxx.zip   //记住O要大写才行<br>         法二：  sudo apt install unar<br>                            #然后使用命令解压文件<br>                            unar file.zip</p>
 
             </div>
             <hr/>
@@ -549,7 +432,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.glh508.top/post/f2efddf3.html">https://blog.glh508.top/post/f2efddf3.html</a>
+                    <a href="https://blog.glh508.top/post/d4443936.html">https://blog.glh508.top/post/d4443936.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -587,8 +470,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/EasyExcel/">
-                                    <span class="chip bg-color">EasyExcel</span>
+                                <a href="/tags/ubuntu/">
+                                    <span class="chip bg-color">ubuntu</span>
+                                </a>
+                            
+                                <a href="/tags/centos/">
+                                    <span class="chip bg-color">centos</span>
                                 </a>
                             
                         </div>
@@ -756,7 +643,7 @@
         repo: 'blog',
         owner: 'sky508',
         admin: "sky508",
-        id: '2020-05-28T08-46-34',
+        id: '2020-10-13T09-43-13',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1043,9 +930,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/post/d4443936.html">
                     <div class="card-image">
@@ -1064,9 +952,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1079,6 +967,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1101,32 +990,38 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/post/76ad3da8.html">
+                <a href="/post/f2efddf3.html">
                     <div class="card-image">
                         
                         
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://glh508-blog-img.oss-cn-beijing.aliyuncs.com/img/21.jpg" class="responsive-img" alt="回顾cron表达式">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://glh508-blog-img.oss-cn-beijing.aliyuncs.com/img/10.jpg" class="responsive-img" alt="阿里开源工具EasyExcel">
                         
-                        <span class="card-title">回顾cron表达式</span>
+                        <span class="card-title">阿里开源工具EasyExcel</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            简介Cron表达式是一个字符串，字符串以5或6个空格隔开，分为6或7个域，每一个域代表一个含义，Cron有如下两种语法格式：
-　　（1） Seconds Minutes Hours DayofMonth Month DayofWeek Ye
+                            一、原始poi写法
+繁琐、处理慢、耗时
+
+样例程序：
+
+关于创建表头、插入数据、写入表格
+
+private static void writeObjectToExcel(List&lt;Object[]> list, String[] ex
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-28
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/quartz/" class="post-category">
-                                    quartz
+                            <a href="/categories/%E9%98%BF%E9%87%8C%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    阿里开发工具
                                 </a>
                             
                             
@@ -1136,8 +1031,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/cron/">
-                        <span class="chip bg-color">cron</span>
+                    <a href="/tags/EasyExcel/">
+                        <span class="chip bg-color">EasyExcel</span>
                     </a>
                     
                 </div>
